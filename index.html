@@ -13,6 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -44,6 +45,11 @@ button,input,textarea,select{
     font-family:"Cairo",sans-serif;
 }
 
+
+/* ================================
+   WELCOME
+================================ */
+
 .welcome{
     position:fixed;
     inset:0;
@@ -52,11 +58,23 @@ button,input,textarea,select{
     align-items:center;
     justify-content:center;
     overflow:hidden;
+
     background:
-        radial-gradient(circle at 50% 42%,rgba(212,175,55,.12),transparent 38%),
-        radial-gradient(circle at 50% 100%,rgba(212,175,55,.05),transparent 50%),
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(212,175,55,.16),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(212,175,55,.07),
+            transparent 50%
+        ),
         #030303;
-    transition:.8s;
+
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
 }
 
 .welcome::before{
@@ -65,8 +83,13 @@ button,input,textarea,select{
     width:600px;
     height:600px;
     border-radius:50%;
-    background:rgba(212,175,55,.035);
+
+    background:rgba(212,175,55,.06);
+
     filter:blur(100px);
+
+    animation:
+        welcomeGlow 3s ease-in-out infinite alternate;
 }
 
 .welcome.hide{
@@ -81,36 +104,126 @@ button,input,textarea,select{
     width:94%;
     max-width:700px;
     text-align:center;
-    animation:welcomeIn 1.2s ease;
+
+    animation:
+        welcomeIn 1.2s ease;
 }
+
+
+/* ================================
+   LION
+================================ */
 
 .lion-wrapper{
     width:300px;
     height:300px;
     margin:0 auto -10px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
+    position:relative;
+}
+
+
+/* دائرة الضوء حول الأسد */
+
+.lion-wrapper::before{
+    content:"";
+    position:absolute;
+
+    width:210px;
+    height:210px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(212,175,55,.30),
+            rgba(212,175,55,.10) 40%,
+            transparent 70%
+        );
+
+    filter:blur(25px);
+
+    animation:
+        lionAura 1.8s ease-in-out infinite alternate;
+}
+
+
+/* حلقة ذهبية خفيفة */
+
+.lion-wrapper::after{
+    content:"";
+    position:absolute;
+
+    width:230px;
+    height:230px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(212,175,55,.25);
+
+    box-shadow:
+        0 0 25px rgba(212,175,55,.15),
+        inset 0 0 25px rgba(212,175,55,.08);
+
+    animation:
+        lionRing 3s ease-in-out infinite;
 }
 
 .lion-wrapper img{
     width:290px;
     height:290px;
+
     object-fit:contain;
     display:block;
+
+    position:relative;
+    z-index:2;
+
     transform:scale(1.25);
+
+    /*
+       هنا التأثير الأساسي للأسد
+       يبدأ فورًا عند فتح الموقع
+    */
+
     filter:
-        drop-shadow(0 0 7px rgba(212,175,55,.7))
-        drop-shadow(0 0 22px rgba(212,175,55,.25));
+        brightness(1.35)
+        contrast(1.08)
+        drop-shadow(0 0 6px rgba(212,175,55,.95))
+        drop-shadow(0 0 16px rgba(212,175,55,.80))
+        drop-shadow(0 0 35px rgba(212,175,55,.55))
+        drop-shadow(0 0 65px rgba(212,175,55,.25));
+
+    animation:
+        lionLight 1.8s ease-in-out infinite alternate,
+        lionFloat 4s ease-in-out infinite;
 }
+
+
+/* ================================
+   BRAND
+================================ */
 
 .brand{
     direction:ltr;
+
     font-family:"Playfair Display",serif;
+
     font-size:clamp(45px,8vw,76px);
+
     font-weight:700;
+
     letter-spacing:3px;
+
     white-space:nowrap;
+
+    text-shadow:
+        0 0 20px rgba(212,175,55,.08);
 }
 
 .brand .gold{
@@ -120,58 +233,106 @@ button,input,textarea,select{
 .gold-line{
     width:155px;
     height:1px;
+
     margin:23px auto;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px rgba(212,175,55,.5);
 }
 
 .subtitle{
     color:#ddd;
+
     font-size:18px;
     font-weight:600;
+
     letter-spacing:3px;
+
     margin-bottom:32px;
 }
 
 .enter-btn{
     min-width:225px;
+
     padding:15px 35px;
+
     border:1px solid var(--gold);
+
     background:transparent;
+
     color:var(--gold);
+
     font-weight:700;
+
     letter-spacing:3px;
+
     cursor:pointer;
+
     transition:.35s;
+
+    box-shadow:
+        0 0 0 rgba(212,175,55,0);
 }
 
 .enter-btn:hover{
     background:var(--gold);
+
     color:#000;
+
     transform:translateY(-3px);
-    box-shadow:0 12px 35px rgba(212,175,55,.15);
+
+    box-shadow:
+        0 12px 35px rgba(212,175,55,.25);
 }
+
+
+/* ================================
+   HEADER
+================================ */
 
 .header{
     height:80px;
+
     position:sticky;
     top:0;
+
     z-index:1000;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:0 6%;
+
     background:rgba(3,3,3,.94);
+
     backdrop-filter:blur(18px);
-    border-bottom:1px solid rgba(212,175,55,.15);
+
+    border-bottom:
+        1px solid rgba(212,175,55,.15);
 }
 
 .logo{
     direction:ltr;
+
     text-decoration:none;
+
     color:white;
+
     font-family:"Playfair Display",serif;
+
     font-size:24px;
+
     font-weight:700;
+
     letter-spacing:5px;
 }
 
@@ -186,8 +347,11 @@ button,input,textarea,select{
 
 .header-nav a{
     color:#999;
+
     text-decoration:none;
+
     font-size:12px;
+
     transition:.3s;
 }
 
@@ -195,52 +359,89 @@ button,input,textarea,select{
     color:var(--gold);
 }
 
+
+/* ================================
+   HERO
+================================ */
+
 .hero{
     min-height:calc(100vh - 80px);
+
     position:relative;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     text-align:center;
+
     overflow:hidden;
+
     background:
-        radial-gradient(circle at 50% 45%,rgba(212,175,55,.12),transparent 38%),
-        radial-gradient(circle at 50% 100%,rgba(212,175,55,.05),transparent 50%),
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(212,175,55,.12),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(212,175,55,.05),
+            transparent 50%
+        ),
         #030303;
 }
 
 .hero::before{
     content:"";
+
     position:absolute;
+
     width:500px;
     height:500px;
+
     border-radius:50%;
-    background:rgba(212,175,55,.035);
+
+    background:
+        rgba(212,175,55,.035);
+
     filter:blur(80px);
-    animation:heroGlow 5s ease-in-out infinite alternate;
+
+    animation:
+        heroGlow 5s ease-in-out infinite alternate;
 }
 
 .hero-content{
     position:relative;
     z-index:2;
+
     width:92%;
     max-width:900px;
+
     padding:70px 20px;
-    animation:heroContentIn 1.2s ease;
+
+    animation:
+        heroContentIn 1.2s ease;
 }
 
 .hero-label{
     color:var(--gold);
+
     font-size:11px;
+
     letter-spacing:7px;
+
     font-weight:600;
 }
 
 .hero h1{
     font-family:"Playfair Display",serif;
+
     font-size:clamp(55px,10vw,105px);
+
     line-height:1;
+
     margin:22px 0;
+
     letter-spacing:2px;
 }
 
@@ -250,49 +451,75 @@ button,input,textarea,select{
 
 .hero p{
     color:#777;
+
     font-size:14px;
+
     line-height:2.5;
 }
 
 .hero-btn{
     position:relative;
+
     display:inline-block;
+
     margin-top:35px;
+
     padding:16px 45px;
+
     background:var(--gold);
+
     color:#000;
+
     text-decoration:none;
+
     font-size:13px;
+
     font-weight:800;
+
     overflow:hidden;
+
     transition:.35s;
 }
 
 .hero-btn:hover{
     background:var(--gold-light);
+
     transform:translateY(-4px);
 }
 
+
+/* ================================
+   COLLECTION
+================================ */
+
 .collection{
     padding:100px 0;
+
     background:var(--black2);
-    border-top:1px solid rgba(212,175,55,.12);
+
+    border-top:
+        1px solid rgba(212,175,55,.12);
 }
 
 .section-title{
     text-align:center;
+
     margin-bottom:40px;
 }
 
 .section-title small{
     color:var(--gold);
+
     font-size:10px;
+
     letter-spacing:6px;
 }
 
 .section-title h2{
     font-family:"Playfair Display",serif;
+
     font-size:clamp(40px,6vw,65px);
+
     margin-top:8px;
 }
 
@@ -300,10 +527,18 @@ button,input,textarea,select{
     color:var(--gold);
 }
 
+
+/* ================================
+   CATEGORIES
+================================ */
+
 .category-bar{
     width:100%;
+
     overflow-x:auto;
+
     scrollbar-width:none;
+
     padding:8px 5% 22px;
 }
 
@@ -313,54 +548,85 @@ button,input,textarea,select{
 
 .category-track{
     display:flex;
+
     justify-content:center;
+
     gap:10px;
+
     min-width:max-content;
 }
 
 .category{
     flex:none;
+
     padding:11px 22px;
-    border:1px solid rgba(212,175,55,.25);
+
+    border:
+        1px solid rgba(212,175,55,.25);
+
     border-radius:40px;
-    background:rgba(255,255,255,.015);
+
+    background:
+        rgba(255,255,255,.015);
+
     color:#aaa;
+
     font-size:11px;
+
     font-weight:600;
+
     cursor:pointer;
+
     white-space:nowrap;
+
     transition:.3s;
 }
 
 .category:hover,
 .category.active{
     background:var(--gold);
+
     color:#000;
+
     border-color:var(--gold);
 }
 
+
+/* ================================
+   PRODUCTS
+================================ */
+
 .products-section{
     width:90%;
+
     max-width:1300px;
+
     margin:45px auto 0;
 }
 
 .products-top{
     display:flex;
+
     justify-content:space-between;
+
     align-items:end;
+
     margin-bottom:25px;
 }
 
 .products-top small{
     color:var(--gold);
+
     font-size:10px;
+
     letter-spacing:4px;
 }
 
 .products-top h3{
     font-family:"Playfair Display",serif;
+
     font-size:30px;
+
     margin-top:5px;
 }
 
@@ -370,35 +636,51 @@ button,input,textarea,select{
 
 .products-count{
     color:#777;
+
     font-size:11px;
 }
 
 .products-count span{
     color:var(--gold);
+
     font-size:18px;
 }
 
 .products-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap:20px;
 }
 
 .empty-products{
     grid-column:1/-1;
+
     min-height:260px;
+
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
+
     justify-content:center;
+
     text-align:center;
-    border:1px dashed rgba(212,175,55,.18);
+
+    border:
+        1px dashed rgba(212,175,55,.18);
+
     background:#090909;
 }
 
 .empty-products span{
     color:var(--gold);
+
     font-size:40px;
+
     margin-bottom:10px;
 }
 
@@ -408,50 +690,80 @@ button,input,textarea,select{
 
 .empty-products p{
     color:#666;
+
     font-size:12px;
+
     margin-top:7px;
 }
 
+
+/* ================================
+   PRODUCT CARD
+================================ */
+
 .product-card{
     background:var(--card);
-    border:1px solid rgba(212,175,55,.12);
+
+    border:
+        1px solid rgba(212,175,55,.12);
+
     overflow:hidden;
+
     transition:.4s;
 }
 
 .product-card:hover{
     transform:translateY(-7px);
-    border-color:rgba(212,175,55,.65);
+
+    border-color:
+        rgba(212,175,55,.65);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.25);
 }
 
 .product-image{
     height:300px;
+
     position:relative;
+
     overflow:hidden;
+
     background:#050505;
 }
 
 .product-image img{
     width:100%;
     height:100%;
+
     object-fit:cover;
+
     display:block;
+
     transition:.6s;
 }
 
-.product-card:hover .product-image img{
+.product-card:hover
+.product-image img{
     transform:scale(1.08);
 }
 
 .product-badge{
     position:absolute;
+
     top:12px;
     right:12px;
+
     padding:5px 10px;
+
     background:var(--gold);
+
     color:#000;
+
     font-size:9px;
+
     font-weight:800;
+
     z-index:2;
 }
 
@@ -461,78 +773,113 @@ button,input,textarea,select{
 
 .product-info small{
     color:var(--gold);
+
     font-size:10px;
 }
 
 .product-info h4{
     font-size:16px;
+
     margin:8px 0;
 }
 
 .product-info p{
     color:#777;
+
     font-size:11px;
+
     line-height:2;
+
     min-height:44px;
 }
 
 .product-bottom{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     gap:10px;
+
     margin-top:17px;
+
     padding-top:14px;
-    border-top:1px solid rgba(255,255,255,.06);
+
+    border-top:
+        1px solid rgba(255,255,255,.06);
 }
 
 .product-price{
     color:var(--gold);
+
     font-weight:800;
+
     font-size:14px;
 }
 
 .product-actions{
     display:flex;
+
     gap:7px;
 }
 
 .details-btn,
 .add-product{
     padding:8px 11px;
+
     border:1px solid var(--gold);
+
     background:transparent;
+
     color:var(--gold);
+
     font-size:9px;
+
     font-weight:700;
+
     cursor:pointer;
 }
 
 .add-product{
     background:var(--gold);
+
     color:#000;
 }
 
+
+/* ================================
+   STORY
+================================ */
+
 .story{
     padding:110px 20px;
+
     text-align:center;
-    border-top:1px solid rgba(212,175,55,.12);
+
+    border-top:
+        1px solid rgba(212,175,55,.12);
 }
 
 .story-content{
     max-width:750px;
+
     margin:auto;
 }
 
 .story small{
     color:var(--gold);
+
     letter-spacing:6px;
+
     font-size:10px;
 }
 
 .story h2{
     font-family:"Playfair Display",serif;
+
     font-size:clamp(40px,7vw,70px);
+
     margin:15px 0;
 }
 
@@ -542,21 +889,35 @@ button,input,textarea,select{
 
 .story p{
     color:#777;
+
     font-size:14px;
+
     line-height:2.7;
 }
 
+
+/* ================================
+   FOOTER
+================================ */
+
 .footer{
     padding:65px 20px;
+
     text-align:center;
+
     background:#010101;
-    border-top:1px solid rgba(212,175,55,.12);
+
+    border-top:
+        1px solid rgba(212,175,55,.12);
 }
 
 .footer-logo{
     direction:ltr;
+
     font-family:"Playfair Display",serif;
+
     font-size:28px;
+
     letter-spacing:5px;
 }
 
@@ -566,25 +927,47 @@ button,input,textarea,select{
 
 .footer p{
     color:#666;
+
     font-size:11px;
+
     margin-top:10px;
 }
 
+
+/* ================================
+   FLOATING CART
+================================ */
+
 .floating-cart{
     position:fixed;
+
     right:24px;
     bottom:24px;
+
     z-index:7000;
+
     width:62px;
     height:62px;
+
     border-radius:50%;
-    border:1px solid rgba(212,175,55,.85);
-    background:linear-gradient(145deg,#151515,#050505);
+
+    border:
+        1px solid rgba(212,175,55,.85);
+
+    background:
+        linear-gradient(145deg,#151515,#050505);
+
     color:var(--gold);
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     cursor:pointer;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.35);
 }
 
 .cart-icon{
@@ -593,47 +976,82 @@ button,input,textarea,select{
 
 .cart-number{
     position:absolute;
+
     top:-4px;
     right:-3px;
+
     min-width:23px;
+
     height:23px;
+
     padding:0 6px;
+
     border-radius:50%;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     background:var(--gold);
+
     color:#000;
+
     font-size:10px;
+
     font-weight:900;
+
     border:2px solid #030303;
 }
 
 .floating-cart-label{
     position:absolute;
+
     right:74px;
+
     white-space:nowrap;
+
     padding:7px 12px;
-    border:1px solid rgba(212,175,55,.2);
+
+    border:
+        1px solid rgba(212,175,55,.2);
+
     background:#0b0b0b;
+
     color:#aaa;
+
     font-size:10px;
+
     opacity:0;
+
     pointer-events:none;
+
+    transition:.3s;
 }
 
-.floating-cart:hover .floating-cart-label{
+.floating-cart:hover
+.floating-cart-label{
     opacity:1;
 }
+
+
+/* ================================
+   OVERLAYS
+================================ */
 
 .cart-overlay,
 .product-modal,
 .order-overlay{
     position:fixed;
+
     inset:0;
+
     background:rgba(0,0,0,.88);
+
     opacity:0;
+
     visibility:hidden;
+
     transition:.35s;
 }
 
@@ -643,17 +1061,25 @@ button,input,textarea,select{
 
 .product-modal{
     z-index:8500;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     padding:20px;
 }
 
 .order-overlay{
     z-index:9000;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     padding:20px;
 }
 
@@ -661,38 +1087,62 @@ button,input,textarea,select{
 .product-modal.open,
 .order-overlay.open{
     opacity:1;
+
     visibility:visible;
 }
 
+
+/* ================================
+   CART PANEL
+================================ */
+
 .cart-panel{
     position:absolute;
+
     top:0;
     left:0;
+
     width:min(440px,100%);
+
     height:100%;
+
     background:#090909;
-    border-right:1px solid rgba(212,175,55,.2);
+
+    border-right:
+        1px solid rgba(212,175,55,.2);
+
     display:flex;
+
     flex-direction:column;
+
     transform:translateX(-100%);
+
     transition:.45s;
 }
 
-.cart-overlay.open .cart-panel{
+.cart-overlay.open
+.cart-panel{
     transform:translateX(0);
 }
 
 .cart-header{
     padding:25px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
-    border-bottom:1px solid rgba(212,175,55,.15);
+
+    border-bottom:
+        1px solid rgba(212,175,55,.15);
 }
 
 .cart-header small{
     color:var(--gold);
+
     font-size:10px;
+
     letter-spacing:4px;
 }
 
@@ -700,47 +1150,71 @@ button,input,textarea,select{
 .modal-close{
     width:38px;
     height:38px;
+
     border-radius:50%;
-    border:1px solid rgba(212,175,55,.2);
+
+    border:
+        1px solid rgba(212,175,55,.2);
+
     background:transparent;
+
     color:white;
+
     font-size:22px;
+
     cursor:pointer;
 }
 
 .cart-items{
     flex:1;
+
     overflow:auto;
+
     padding:20px;
 }
 
 .cart-empty{
     height:100%;
+
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
+
     justify-content:center;
+
     color:#666;
+
     text-align:center;
 }
 
 .cart-empty span{
     color:var(--gold);
+
     font-size:35px;
 }
 
 .cart-empty strong{
     color:white;
+
     margin-top:8px;
 }
 
 .cart-item{
     padding:15px;
+
     margin-bottom:10px;
+
     background:#101010;
-    border:1px solid rgba(212,175,55,.12);
+
+    border:
+        1px solid rgba(212,175,55,.12);
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
 }
 
@@ -750,32 +1224,44 @@ button,input,textarea,select{
 
 .cart-item-price{
     color:var(--gold);
+
     font-size:11px;
+
     margin-top:5px;
 }
 
 .cart-item-qty{
     color:#777;
+
     font-size:10px;
+
     margin-top:3px;
 }
 
 .remove-item{
     border:0;
+
     background:none;
+
     color:#777;
+
     font-size:21px;
+
     cursor:pointer;
 }
 
 .cart-footer{
     padding:20px;
-    border-top:1px solid rgba(212,175,55,.15);
+
+    border-top:
+        1px solid rgba(212,175,55,.15);
 }
 
 .cart-total{
     display:flex;
+
     justify-content:space-between;
+
     margin-bottom:15px;
 }
 
@@ -785,155 +1271,233 @@ button,input,textarea,select{
 
 .checkout-btn{
     width:100%;
+
     padding:15px;
+
     border:0;
+
     background:var(--gold);
+
     color:#000;
+
     font-weight:800;
+
     cursor:pointer;
 }
 
+
+/* ================================
+   PRODUCT MODAL
+================================ */
+
 .product-modal-box{
     width:min(900px,100%);
+
     max-height:90vh;
+
     overflow:auto;
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     background:#0a0a0a;
-    border:1px solid rgba(212,175,55,.3);
+
+    border:
+        1px solid rgba(212,175,55,.3);
 }
 
 .modal-image{
     min-height:500px;
+
     background:#050505;
 }
 
 .modal-image img{
     width:100%;
     height:100%;
+
     object-fit:cover;
 }
 
 .modal-info{
     padding:45px 35px;
+
     position:relative;
 }
 
 .modal-close{
     position:absolute;
+
     top:18px;
     left:18px;
 }
 
 .modal-category{
     color:var(--gold);
+
     font-size:10px;
+
     letter-spacing:3px;
 }
 
 .modal-info h2{
     font-family:"Playfair Display",serif;
+
     font-size:38px;
+
     margin:12px 0;
 }
 
 .modal-description{
     color:#777;
+
     font-size:13px;
+
     line-height:2.5;
 }
 
 .modal-price{
     color:var(--gold);
+
     font-size:24px;
+
     font-weight:800;
+
     margin:25px 0;
 }
 
 .quantity-box{
     display:flex;
+
     align-items:center;
+
     width:max-content;
-    border:1px solid rgba(212,175,55,.3);
+
+    border:
+        1px solid rgba(212,175,55,.3);
 }
 
 .quantity-box button{
     width:42px;
     height:42px;
+
     border:0;
+
     background:transparent;
+
     color:var(--gold);
+
     font-size:20px;
+
     cursor:pointer;
 }
 
 .quantity-box span{
     width:45px;
+
     text-align:center;
 }
 
 .modal-add{
     width:100%;
+
     margin-top:22px;
+
     padding:15px;
+
     border:0;
+
     background:var(--gold);
+
     color:#000;
+
     font-weight:800;
+
     cursor:pointer;
 }
 
+
+/* ================================
+   ORDER
+================================ */
+
 .order-box{
     width:min(650px,100%);
+
     max-height:90vh;
+
     overflow:auto;
+
     background:#090909;
-    border:1px solid rgba(212,175,55,.25);
+
+    border:
+        1px solid rgba(212,175,55,.25);
+
     padding:35px;
 }
 
 .order-title{
     text-align:center;
+
     margin-bottom:25px;
 }
 
 .order-title small{
     color:var(--gold);
+
     letter-spacing:4px;
+
     font-size:10px;
 }
 
 .order-title h2{
     font-family:"Playfair Display",serif;
+
     font-size:32px;
+
     margin-top:6px;
 }
 
 .order-summary{
     padding:15px;
+
     margin-bottom:20px;
+
     background:#050505;
-    border:1px solid rgba(212,175,55,.12);
+
+    border:
+        1px solid rgba(212,175,55,.12);
 }
 
 .order-summary-title{
     color:var(--gold);
+
     font-size:11px;
+
     margin-bottom:10px;
 }
 
 .summary-row{
     display:flex;
+
     justify-content:space-between;
+
     gap:15px;
+
     color:#999;
+
     font-size:11px;
+
     padding:5px 0;
 }
 
 .summary-total{
-    border-top:1px solid rgba(212,175,55,.12);
+    border-top:
+        1px solid rgba(212,175,55,.12);
+
     margin-top:8px;
+
     padding-top:10px;
 }
 
@@ -959,8 +1523,11 @@ button,input,textarea,select{
 
 .form-group label{
     display:block;
+
     color:#aaa;
+
     font-size:11px;
+
     margin-bottom:7px;
 }
 
@@ -968,81 +1535,214 @@ button,input,textarea,select{
 .form-group textarea,
 .form-group select{
     width:100%;
-    border:1px solid rgba(212,175,55,.18);
+
+    border:
+        1px solid rgba(212,175,55,.18);
+
     background:#050505;
+
     color:white;
+
     padding:13px;
+
     outline:none;
+
     font-size:12px;
 }
 
 .form-group textarea{
     min-height:85px;
+
     resize:vertical;
 }
 
 .order-buttons{
     display:flex;
+
     gap:10px;
+
     margin-top:20px;
 }
 
 .send-whatsapp{
     flex:1;
+
     padding:15px;
+
     border:0;
+
     background:var(--gold);
+
     color:#000;
+
     font-weight:800;
+
     cursor:pointer;
 }
 
 .cancel-order{
     padding:15px 25px;
-    border:1px solid rgba(212,175,55,.3);
+
+    border:
+        1px solid rgba(212,175,55,.3);
+
     background:transparent;
+
     color:#aaa;
+
     cursor:pointer;
 }
 
+
+/* ================================
+   ANIMATIONS
+================================ */
+
 @keyframes welcomeIn{
+
     from{
         opacity:0;
         transform:translateY(25px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
     }
+
+}
+
+@keyframes welcomeGlow{
+
+    from{
+        transform:scale(.8);
+        opacity:.35;
+    }
+
+    to{
+        transform:scale(1.2);
+        opacity:1;
+    }
+
+}
+
+
+/*
+   الأسد يفضل منور طول شاشة الترحيب
+   ويزيد النور ويهدى بشكل سينمائي
+*/
+
+@keyframes lionLight{
+
+    0%{
+        filter:
+            brightness(1.15)
+            contrast(1.05)
+            drop-shadow(0 0 5px rgba(212,175,55,.65))
+            drop-shadow(0 0 15px rgba(212,175,55,.45))
+            drop-shadow(0 0 30px rgba(212,175,55,.20));
+    }
+
+    50%{
+        filter:
+            brightness(1.55)
+            contrast(1.12)
+            drop-shadow(0 0 9px rgba(212,175,55,1))
+            drop-shadow(0 0 25px rgba(212,175,55,.85))
+            drop-shadow(0 0 50px rgba(212,175,55,.50))
+            drop-shadow(0 0 80px rgba(212,175,55,.20));
+    }
+
+    100%{
+        filter:
+            brightness(1.30)
+            contrast(1.08)
+            drop-shadow(0 0 7px rgba(212,175,55,.85))
+            drop-shadow(0 0 20px rgba(212,175,55,.70))
+            drop-shadow(0 0 42px rgba(212,175,55,.35));
+    }
+
+}
+
+@keyframes lionAura{
+
+    from{
+        transform:scale(.82);
+        opacity:.45;
+    }
+
+    to{
+        transform:scale(1.18);
+        opacity:1;
+    }
+
+}
+
+@keyframes lionRing{
+
+    0%,100%{
+        transform:scale(.95);
+        opacity:.35;
+    }
+
+    50%{
+        transform:scale(1.08);
+        opacity:.8;
+    }
+
+}
+
+@keyframes lionFloat{
+
+    0%,100%{
+        transform:scale(1.25) translateY(0);
+    }
+
+    50%{
+        transform:scale(1.28) translateY(-5px);
+    }
+
 }
 
 @keyframes heroGlow{
+
     from{
         transform:scale(.9);
         opacity:.5;
     }
+
     to{
         transform:scale(1.15);
         opacity:1;
     }
+
 }
 
 @keyframes heroContentIn{
+
     from{
         opacity:0;
         transform:translateY(30px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
     }
+
 }
+
+
+/* ================================
+   RESPONSIVE
+================================ */
 
 @media(max-width:950px){
 
     .products-grid{
         grid-template-columns:repeat(2,1fr);
     }
+
 }
 
 @media(max-width:700px){
@@ -1067,6 +1767,16 @@ button,input,textarea,select{
     .lion-wrapper img{
         width:235px;
         height:235px;
+    }
+
+    .lion-wrapper::before{
+        width:180px;
+        height:180px;
+    }
+
+    .lion-wrapper::after{
+        width:190px;
+        height:190px;
     }
 
     .brand{
@@ -1110,9 +1820,11 @@ button,input,textarea,select{
     .floating-cart{
         right:18px;
         bottom:18px;
+
         width:58px;
         height:58px;
     }
+
 }
 
 @media(max-width:390px){
@@ -1131,82 +1843,165 @@ button,input,textarea,select{
         width:210px;
         height:210px;
     }
+
 }
+
 </style>
 </head>
 
+
 <body>
+
+
+<!-- ================================
+     WELCOME SCREEN
+================================ -->
 
 <section class="welcome" id="welcome">
 
     <div class="welcome-content">
 
         <div class="lion-wrapper">
-            <img src="logo.png.jpeg" alt="EL MANS Lion Logo">
+
+            <img
+                src="logo.png.jpeg"
+                alt="EL MANS Lion Logo"
+            >
+
         </div>
 
+
         <div class="brand">
-            <span class="gold">EL</span>&nbsp;MANS
+
+            <span class="gold">EL</span>
+            &nbsp;MANS
+
         </div>
+
 
         <div class="gold-line"></div>
 
+
         <p class="subtitle">
+
             انت الآن في عالمي الخاص
+
         </p>
 
-        <button class="enter-btn" onclick="enterStore()">
+
+        <button
+            class="enter-btn"
+            onclick="enterStore()">
+
             اكتشف عالمك
+
         </button>
 
     </div>
 
 </section>
 
+
+
+<!-- ================================
+     HEADER
+================================ -->
+
 <header class="header">
 
-    <a href="#home" class="logo">
+    <a
+        href="#home"
+        class="logo">
+
         EL <span>MANS</span>
+
     </a>
 
+
     <nav class="header-nav">
-        <a href="#home">الرئيسية</a>
-        <a href="#collection">المجموعة</a>
-        <a href="#story">عالم EL MANS</a>
+
+        <a href="#home">
+            الرئيسية
+        </a>
+
+        <a href="#collection">
+            المجموعة
+        </a>
+
+        <a href="#story">
+            عالم EL MANS
+        </a>
+
     </nav>
 
 </header>
 
-<section class="hero" id="home">
+
+
+<!-- ================================
+     HERO
+================================ -->
+
+<section
+    class="hero"
+    id="home">
 
     <div class="hero-content">
 
         <div class="hero-label">
+
             WELCOME TO EL MANS
+
         </div>
 
+
         <h1>
+
             عالمك
+
             <br>
-            <span>اختيارك</span>
+
+            <span>
+                اختيارك
+            </span>
+
         </h1>
 
+
         <p>
+
             اكتشف عالمًا من الاختيارات الفاخرة،
             حيث كل قطعة لها حضورها الخاص.
+
             <br>
+
             إكسسوارات • عطور • هدايا • مناسبات
+
         </p>
 
-        <a href="#collection" class="hero-btn">
+
+        <a
+            href="#collection"
+            class="hero-btn">
+
             اكتشف المجموعة
+
         </a>
 
     </div>
 
 </section>
 
-<section class="collection" id="collection">
+
+
+<!-- ================================
+     COLLECTION
+================================ -->
+
+<section
+    class="collection"
+    id="collection">
+
 
     <div class="section-title">
 
@@ -1214,61 +2009,215 @@ button,input,textarea,select{
             EL MANS COLLECTION
         </small>
 
+
         <h2>
-            اختر <span>عالمك</span>
+
+            اختر
+            <span>
+                عالمك
+            </span>
+
         </h2>
 
     </div>
+
+
+
+    <!-- CATEGORIES -->
 
     <div class="category-bar">
 
         <div class="category-track">
 
-            <button class="category active" onclick="filterCategory('all',this)">الكل</button>
-            <button class="category" onclick="filterCategory('men-accessories',this)">اكسسورات رجالي</button>
-            <button class="category" onclick="filterCategory('women-accessories',this)">اكسسورات حريمي</button>
-            <button class="category" onclick="filterCategory('men-chains',this)">سلاسل رجالي</button>
-            <button class="category" onclick="filterCategory('women-chains',this)">سلاسل حريمي</button>
-            <button class="category" onclick="filterCategory('gifts',this)">هدايا</button>
-            <button class="category" onclick="filterCategory('teddy',this)">دباديب</button>
-            <button class="category" onclick="filterCategory('men-perfume',this)">برفانات رجالي</button>
-            <button class="category" onclick="filterCategory('women-perfume',this)">برفانات حريمي</button>
-            <button class="category" onclick="filterCategory('men-body-splash',this)">بادي سبلاش رجالي</button>
-            <button class="category" onclick="filterCategory('women-body-splash',this)">بادي سبلاش حريمي</button>
-            <button class="category" onclick="filterCategory('parties',this)">حفلات</button>
-            <button class="category" onclick="filterCategory('watches',this)">ساعات</button>
-            <button class="category" onclick="filterCategory('engagement',this)">دبل خطوبة</button>
+            <button
+                class="category active"
+                onclick="filterCategory('all',this)">
+
+                الكل
+
+            </button>
+
+
+            <button
+                class="category"
+                onclick="filterCategory('men-accessories',this)">
+
+                اكسسورات رجالي
+
+            </button>
+
+
+            <button
+                class="category"
+                onclick="filterCategory('women-accessories',this)">
+
+                اكسسورات حريمي
+
+            </button>
+
+
+            <button
+                class="category"
+                onclick="filterCategory('men-chains',this)">
+
+                سلاسل رجالي
+
+            </button>
+
+
+            <button
+                class="category"
+                onclick="filterCategory('women-chains',this)">
+
+                سلاسل حريمي
+
+            </button>
+
+
+            <button
+                class="category"
+                onclick="filterCategory('gifts',this)">
+
+                هدايا
+
+            </button>
+
+
+            <button
+                class="category"
+                onclick="filterCategory('teddy',this)">
+
+                دباديب
+
+            </button>
+
+
+            <button
+                class="category"
+                onclick="filterCategory('men-perfume',this)">
+
+                برفانات رجالي
+
+            </button>
+
+
+            <button
+                class="category"
+                onclick="filterCategory('women-perfume',this)">
+
+                برفانات حريمي
+
+            </button>
+
+
+            <button
+                class="category"
+                onclick="filterCategory('men-body-splash',this)">
+
+                بادي سبلاش رجالي
+
+            </button>
+
+
+            <button
+                class="category"
+                onclick="filterCategory('women-body-splash',this)">
+
+                بادي سبلاش حريمي
+
+            </button>
+
+
+            <button
+                class="category"
+                onclick="filterCategory('parties',this)">
+
+                حفلات
+
+            </button>
+
+
+            <button
+                class="category"
+                onclick="filterCategory('watches',this)">
+
+                ساعات
+
+            </button>
+
+
+            <button
+                class="category"
+                onclick="filterCategory('engagement',this)">
+
+                دبل خطوبة
+
+            </button>
 
         </div>
 
     </div>
 
+
+
+    <!-- PRODUCTS -->
+
     <div class="products-section">
+
 
         <div class="products-top">
 
             <div>
-                <small>EL MANS EDITION</small>
+
+                <small>
+                    EL MANS EDITION
+                </small>
+
 
                 <h3>
-                    مختارات <span>الفخامة</span>
+
+                    مختارات
+                    <span>
+                        الفخامة
+                    </span>
+
                 </h3>
+
             </div>
 
+
             <div class="products-count">
-                <span id="productsCount">0</span>
+
+                <span id="productsCount">
+                    0
+                </span>
+
                 منتج
+
             </div>
 
         </div>
 
-        <div class="products-grid" id="productsGrid"></div>
+
+        <div
+            class="products-grid"
+            id="productsGrid">
+
+        </div>
 
     </div>
 
 </section>
 
-<section class="story" id="story">
+
+
+<!-- ================================
+     STORY
+================================ -->
+
+<section
+    class="story"
+    id="story">
 
     <div class="story-content">
 
@@ -1276,30 +2225,51 @@ button,input,textarea,select{
             THE EL MANS WORLD
         </small>
 
+
         <h2>
-            انت الآن في <span>عالمنا</span>
+
+            انت الآن في
+            <span>
+                عالمنا
+            </span>
+
         </h2>
 
+
         <p>
+
             EL MANS مش مجرد متجر.
+
             <br>
+
             دي تجربة مختلفة تجمع بين الفخامة،
             الذوق، والتفاصيل اللي بتفرق.
+
         </p>
 
     </div>
 
 </section>
 
+
+
+<!-- ================================
+     FOOTER
+================================ -->
+
 <footer class="footer">
 
     <div class="footer-logo">
+
         EL <span>MANS</span>
+
     </div>
+
 
     <p>
         انت الآن في عالمي الخاص
     </p>
+
 
     <p>
         ©️ 2026 EL MANS — جميع الحقوق محفوظة
@@ -1307,54 +2277,116 @@ button,input,textarea,select{
 
 </footer>
 
-<button class="floating-cart" onclick="openCart()" aria-label="فتح السلة">
 
-    <span class="cart-icon">🛍</span>
 
-    <span class="cart-number" id="cartCount">
-        0
+<!-- ================================
+     FLOATING CART
+================================ -->
+
+<button
+    class="floating-cart"
+    onclick="openCart()"
+    aria-label="فتح السلة">
+
+
+    <span class="cart-icon">
+        🛍
     </span>
 
+
+    <span
+        class="cart-number"
+        id="cartCount">
+
+        0
+
+    </span>
+
+
     <span class="floating-cart-label">
+
         سلة المشتريات
+
     </span>
 
 </button>
 
-<div class="cart-overlay" id="cartOverlay">
+
+
+<!-- ================================
+     CART
+================================ -->
+
+<div
+    class="cart-overlay"
+    id="cartOverlay">
+
 
     <aside class="cart-panel">
+
 
         <div class="cart-header">
 
             <div>
-                <small>EL MANS</small>
-                <h3>سلة المشتريات</h3>
+
+                <small>
+                    EL MANS
+                </small>
+
+                <h3>
+                    سلة المشتريات
+                </h3>
+
             </div>
 
-            <button class="close-cart" onclick="closeCart()">
+
+            <button
+                class="close-cart"
+                onclick="closeCart()">
+
                 ×
+
             </button>
 
         </div>
 
-        <div class="cart-items" id="cartItems"></div>
+
+        <div
+            class="cart-items"
+            id="cartItems">
+
+        </div>
+
 
         <div class="cart-footer">
 
+
             <div class="cart-total">
 
-                <span>إجمالي المنتجات</span>
+                <span>
+                    إجمالي المنتجات
+                </span>
+
 
                 <strong>
-                    <span id="cartTotal">0</span>
+
+                    <span id="cartTotal">
+                        0
+                    </span>
+
                     جنيه
+
                 </strong>
 
             </div>
 
-            <button class="checkout-btn" onclick="openOrderForm()">
+
+            <button
+                class="checkout-btn"
+                onclick="openOrderForm()">
+
                 إتمام الطلب
+
             </button>
 
         </div>
@@ -1363,49 +2395,101 @@ button,input,textarea,select{
 
 </div>
 
-<div class="product-modal" id="productModal">
+
+
+<!-- ================================
+     PRODUCT MODAL
+================================ -->
+
+<div
+    class="product-modal"
+    id="productModal">
+
 
     <div class="product-modal-box">
 
+
         <div class="modal-image">
-            <img id="modalImage" src="" alt="">
+
+            <img
+                id="modalImage"
+                src=""
+                alt="">
+
         </div>
+
 
         <div class="modal-info">
 
-            <button class="modal-close" onclick="closeProductModal()">
+
+            <button
+                class="modal-close"
+                onclick="closeProductModal()">
+
                 ×
+
             </button>
 
-            <div class="modal-category" id="modalCategory"></div>
+
+            <div
+                class="modal-category"
+                id="modalCategory">
+
+            </div>
+
 
             <h2 id="modalName"></h2>
 
-            <p class="modal-description" id="modalDescription"></p>
+
+            <p
+                class="modal-description"
+                id="modalDescription">
+
+            </p>
+
 
             <div class="modal-price">
-                <span id="modalPrice"></span>
+
+                <span id="modalPrice">
+                </span>
+
                 جنيه
+
             </div>
+
 
             <div class="quantity-box">
 
-                <button onclick="changeModalQuantity(-1)">
+
+                <button
+                    onclick="changeModalQuantity(-1)">
+
                     −
+
                 </button>
+
 
                 <span id="modalQuantity">
                     1
                 </span>
 
-                <button onclick="changeModalQuantity(1)">
+
+                <button
+                    onclick="changeModalQuantity(1)">
+
                     +
+
                 </button>
 
             </div>
 
-            <button class="modal-add" onclick="addModalProduct()">
+
+            <button
+                class="modal-add"
+                onclick="addModalProduct()">
+
                 أضف للسلة
+
             </button>
 
         </div>
@@ -1414,9 +2498,19 @@ button,input,textarea,select{
 
 </div>
 
-<div class="order-overlay" id="orderOverlay">
+
+
+<!-- ================================
+     ORDER
+================================ -->
+
+<div
+    class="order-overlay"
+    id="orderOverlay">
+
 
     <div class="order-box">
+
 
         <div class="order-title">
 
@@ -1424,17 +2518,27 @@ button,input,textarea,select{
                 EL MANS CHECKOUT
             </small>
 
+
             <h2>
                 بيانات الطلب
             </h2>
 
         </div>
 
-        <div class="order-summary" id="orderSummary"></div>
+
+        <div
+            class="order-summary"
+            id="orderSummary">
+
+        </div>
+
 
         <div class="form-group">
 
-            <label>الاسم بالكامل</label>
+            <label>
+                الاسم بالكامل
+            </label>
+
 
             <input
                 type="text"
@@ -1443,9 +2547,13 @@ button,input,textarea,select{
 
         </div>
 
+
         <div class="form-group">
 
-            <label>رقم الموبايل</label>
+            <label>
+                رقم الموبايل
+            </label>
+
 
             <input
                 type="tel"
@@ -1454,11 +2562,18 @@ button,input,textarea,select{
 
         </div>
 
+
         <div class="form-group">
 
-            <label>المحافظة</label>
+            <label>
+                المحافظة
+            </label>
 
-            <select id="customerGovernorate" onchange="updateShippingPreview()">
+
+            <select
+                id="customerGovernorate"
+                onchange="updateShippingPreview()">
+
 
                 <option value="">
                     اختر المحافظة
@@ -1491,34 +2606,57 @@ button,input,textarea,select{
 
         </div>
 
+
         <div class="form-group">
 
-            <label>العنوان بالتفصيل</label>
+            <label>
+                العنوان بالتفصيل
+            </label>
+
 
             <textarea
                 id="customerAddress"
-                placeholder="المنطقة، الشارع، رقم العمارة، الدور..."></textarea>
+                placeholder="المنطقة، الشارع، رقم العمارة، الدور...">
+
+            </textarea>
 
         </div>
+
 
         <div class="form-group">
 
-            <label>ملاحظات إضافية</label>
+            <label>
+                ملاحظات إضافية
+            </label>
+
 
             <textarea
                 id="customerNotes"
-                placeholder="أي ملاحظات على الطلب..."></textarea>
+                placeholder="أي ملاحظات على الطلب...">
+
+            </textarea>
 
         </div>
 
+
         <div class="order-buttons">
 
-            <button class="send-whatsapp" onclick="sendOrderToWhatsApp()">
+
+            <button
+                class="send-whatsapp"
+                onclick="sendOrderToWhatsApp()">
+
                 إرسال الطلب على واتساب
+
             </button>
 
-            <button class="cancel-order" onclick="closeOrderForm()">
+
+            <button
+                class="cancel-order"
+                onclick="closeOrderForm()">
+
                 رجوع
+
             </button>
 
         </div>
@@ -1527,7 +2665,10 @@ button,input,textarea,select{
 
 </div>
 
+
+
 <script>
+
 
 /* =========================================
    SUPABASE
@@ -1551,9 +2692,13 @@ const supabaseClient =
 ========================================= */
 
 let products = [];
+
 let cart = [];
+
 let selectedProduct = null;
+
 let modalQuantity = 1;
+
 let currentCategory = "all";
 
 
@@ -1563,36 +2708,36 @@ let currentCategory = "all";
 
 const shippingPrices = {
 
-    "الغربية": 50,
+    "الغربية":50,
 
-    "الجيزة": 70,
+    "الجيزة":70,
 
-    "القاهرة": 80,
+    "القاهرة":80,
 
-    "الإسكندرية": 90,
+    "الإسكندرية":90,
 
-    "الدقهلية": 110,
-    "الشرقية": 110,
-    "المنوفية": 110,
-    "البحيرة": 110,
-    "كفر الشيخ": 110,
-    "دمياط": 110,
+    "الدقهلية":110,
+    "الشرقية":110,
+    "المنوفية":110,
+    "البحيرة":110,
+    "كفر الشيخ":110,
+    "دمياط":110,
 
-    "بورسعيد": 120,
-    "الإسماعيلية": 120,
-    "السويس": 120,
+    "بورسعيد":120,
+    "الإسماعيلية":120,
+    "السويس":120,
 
-    "مطروح": 130,
-    "الفيوم": 130,
-    "بني سويف": 130,
+    "مطروح":130,
+    "الفيوم":130,
+    "بني سويف":130,
 
-    "المنيا": 140,
-    "أسيوط": 140,
+    "المنيا":140,
+    "أسيوط":140,
 
-    "سوهاج": 150,
-    "قنا": 150,
-    "الأقصر": 150,
-    "أسوان": 150
+    "سوهاج":150,
+    "قنا":150,
+    "الأقصر":150,
+    "أسوان":150
 
 };
 
@@ -1605,7 +2750,7 @@ function getShippingCost(governorate){
 
 
 /* =========================================
-   ENTER
+   ENTER STORE
 ========================================= */
 
 function enterStore(){
@@ -1626,59 +2771,110 @@ async function loadProducts(){
     const grid =
         document.getElementById("productsGrid");
 
+
     grid.innerHTML = `
+
         <div class="empty-products">
+
             <span>✦</span>
-            <strong>جاري تحميل المجموعة</strong>
-            <p>لحظات ونجهزلك الاختيارات...</p>
+
+            <strong>
+                جاري تحميل المجموعة
+            </strong>
+
+            <p>
+                لحظات ونجهزلك الاختيارات...
+            </p>
+
         </div>
+
     `;
+
 
     try{
 
-        const { data, error } =
+        const { data,error } =
             await supabaseClient
                 .from("elmansstore23")
                 .select("*")
-                .order("id", { ascending:true });
+                .order(
+                    "id",
+                    {
+                        ascending:true
+                    }
+                );
+
 
         if(error){
 
-            console.error("Supabase Error:", error);
+            console.error(
+                "Supabase Error:",
+                error
+            );
+
 
             grid.innerHTML = `
+
                 <div class="empty-products">
+
                     <span>!</span>
-                    <strong>تعذر تحميل المنتجات</strong>
+
+                    <strong>
+                        تعذر تحميل المنتجات
+                    </strong>
+
                     <p>
                         يوجد خطأ في الاتصال بقاعدة البيانات.
                     </p>
+
                 </div>
+
             `;
+
 
             document
                 .getElementById("productsCount")
                 .textContent = "0";
 
+
             return;
+
         }
 
-        products = Array.isArray(data)
+
+        products =
+            Array.isArray(data)
             ? data
             : [];
 
+
         renderProducts(currentCategory);
+
 
     }catch(error){
 
-        console.error("Unexpected Error:", error);
+        console.error(
+            "Unexpected Error:",
+            error
+        );
+
 
         grid.innerHTML = `
+
             <div class="empty-products">
+
                 <span>!</span>
-                <strong>حدث خطأ</strong>
-                <p>حاول تحديث الصفحة مرة أخرى.</p>
+
+                <strong>
+                    حدث خطأ
+                </strong>
+
+                <p>
+                    حاول تحديث الصفحة مرة أخرى.
+                </p>
+
             </div>
+
         `;
 
     }
@@ -1695,12 +2891,18 @@ function filterCategory(category,button){
     document
         .querySelectorAll(".category")
         .forEach(item=>{
+
             item.classList.remove("active");
+
         });
+
 
     button.classList.add("active");
 
-    currentCategory = category;
+
+    currentCategory =
+        category;
+
 
     renderProducts(category);
 
@@ -1708,7 +2910,7 @@ function filterCategory(category,button){
 
 
 /* =========================================
-   RENDER PRODUCTS
+   RENDER
 ========================================= */
 
 function renderProducts(category="all"){
@@ -1716,22 +2918,30 @@ function renderProducts(category="all"){
     const grid =
         document.getElementById("productsGrid");
 
+
     const count =
         document.getElementById("productsCount");
+
 
     const filtered =
         category === "all"
         ? products
-        : products.filter(product =>
-            String(product.category || "").trim() === category
+        : products.filter(
+            product =>
+                String(
+                    product.category || ""
+                ).trim() === category
         );
+
 
     count.textContent =
         filtered.length;
 
+
     if(filtered.length === 0){
 
         grid.innerHTML = `
+
             <div class="empty-products">
 
                 <span>✦</span>
@@ -1745,102 +2955,136 @@ function renderProducts(category="all"){
                 </p>
 
             </div>
+
         `;
 
         return;
+
     }
 
+
     grid.innerHTML =
-        filtered.map(product => {
+        filtered.map(product=>{
 
             const image =
                 product.image
                 ? String(product.image).trim()
                 : "";
 
+
             const name =
                 product.name
                 ? product.name
                 : "منتج EL MANS";
+
 
             const categoryName =
                 product.category_name
                 ? product.category_name
                 : "";
 
+
             const description =
                 product.description
                 ? product.description
                 : "منتج مميز من EL MANS";
 
+
             const price =
-                Number(product.price || 0);
+                Number(
+                    product.price || 0
+                );
+
 
             return `
 
-            <article class="product-card">
+                <article class="product-card">
 
-                <div class="product-image">
 
-                    <span class="product-badge">
-                        EL MANS
-                    </span>
+                    <div class="product-image">
 
-                    <img
-                        src="${escapeHtml(image)}"
-                        alt="${escapeHtml(name)}"
-                        loading="lazy"
-                        onerror="this.style.display='none';"
-                    >
 
-                </div>
+                        <span class="product-badge">
 
-                <div class="product-info">
+                            EL MANS
 
-                    <small>
-                        ${escapeHtml(categoryName)}
-                    </small>
+                        </span>
 
-                    <h4>
-                        ${escapeHtml(name)}
-                    </h4>
 
-                    <p>
-                        ${escapeHtml(description)}
-                    </p>
+                        <img
+                            src="${escapeHtml(image)}"
+                            alt="${escapeHtml(name)}"
+                            loading="lazy"
+                            onerror="this.style.display='none';"
+                        >
 
-                    <div class="product-bottom">
+                    </div>
 
-                        <div class="product-price">
-                            ${price.toLocaleString("ar-EG")}
-                            جنيه
-                        </div>
 
-                        <div class="product-actions">
+                    <div class="product-info">
 
-                            <button
-                                class="details-btn"
-                                onclick="openProductModal(${Number(product.id)})">
 
-                                التفاصيل
+                        <small>
 
-                            </button>
+                            ${escapeHtml(categoryName)}
 
-                            <button
-                                class="add-product"
-                                onclick="addProduct(${Number(product.id)})">
+                        </small>
 
-                                + سلة
 
-                            </button>
+                        <h4>
+
+                            ${escapeHtml(name)}
+
+                        </h4>
+
+
+                        <p>
+
+                            ${escapeHtml(description)}
+
+                        </p>
+
+
+                        <div class="product-bottom">
+
+
+                            <div class="product-price">
+
+                                ${price.toLocaleString("ar-EG")}
+
+                                جنيه
+
+                            </div>
+
+
+                            <div class="product-actions">
+
+
+                                <button
+                                    class="details-btn"
+                                    onclick="openProductModal(${Number(product.id)})">
+
+                                    التفاصيل
+
+                                </button>
+
+
+                                <button
+                                    class="add-product"
+                                    onclick="addProduct(${Number(product.id)})">
+
+                                    + سلة
+
+                                </button>
+
+
+                            </div>
 
                         </div>
 
                     </div>
 
-                </div>
-
-            </article>
+                </article>
 
             `;
 
@@ -1850,17 +3094,37 @@ function renderProducts(category="all"){
 
 
 /* =========================================
-   ESCAPE HTML
+   ESCAPE
 ========================================= */
 
 function escapeHtml(value){
 
     return String(value)
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
+
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
 
 }
 
@@ -1877,34 +3141,62 @@ function openProductModal(id){
                 Number(item.id) === Number(id)
         );
 
+
     if(!product)
         return;
 
-    selectedProduct = product;
+
+    selectedProduct =
+        product;
+
 
     modalQuantity = 1;
 
-    document.getElementById("modalImage").src =
-        product.image || "";
 
-    document.getElementById("modalImage").alt =
-        product.name || "";
+    document
+        .getElementById("modalImage")
+        .src =
+            product.image || "";
 
-    document.getElementById("modalCategory").textContent =
-        product.category_name || "";
 
-    document.getElementById("modalName").textContent =
-        product.name || "منتج EL MANS";
+    document
+        .getElementById("modalImage")
+        .alt =
+            product.name || "";
 
-    document.getElementById("modalDescription").textContent =
-        product.description || "";
 
-    document.getElementById("modalPrice").textContent =
-        Number(product.price || 0)
-        .toLocaleString("ar-EG");
+    document
+        .getElementById("modalCategory")
+        .textContent =
+            product.category_name || "";
 
-    document.getElementById("modalQuantity").textContent =
-        modalQuantity;
+
+    document
+        .getElementById("modalName")
+        .textContent =
+            product.name ||
+            "منتج EL MANS";
+
+
+    document
+        .getElementById("modalDescription")
+        .textContent =
+            product.description || "";
+
+
+    document
+        .getElementById("modalPrice")
+        .textContent =
+            Number(
+                product.price || 0
+            ).toLocaleString("ar-EG");
+
+
+    document
+        .getElementById("modalQuantity")
+        .textContent =
+            modalQuantity;
+
 
     document
         .getElementById("productModal")
@@ -1919,6 +3211,7 @@ function closeProductModal(){
         .getElementById("productModal")
         .classList.remove("open");
 
+
     selectedProduct = null;
 
 }
@@ -1928,11 +3221,14 @@ function changeModalQuantity(amount){
 
     modalQuantity += amount;
 
+
     if(modalQuantity < 1)
         modalQuantity = 1;
 
+
     if(modalQuantity > 20)
         modalQuantity = 20;
+
 
     document
         .getElementById("modalQuantity")
@@ -1947,6 +3243,7 @@ function addModalProduct(){
     if(!selectedProduct)
         return;
 
+
     const existing =
         cart.find(
             item =>
@@ -1954,18 +3251,25 @@ function addModalProduct(){
                 Number(selectedProduct.id)
         );
 
+
     if(existing){
 
-        existing.quantity += modalQuantity;
+        existing.quantity +=
+            modalQuantity;
 
     }else{
 
         cart.push({
+
             ...selectedProduct,
-            quantity:modalQuantity
+
+            quantity:
+                modalQuantity
+
         });
 
     }
+
 
     updateCart();
 
@@ -1988,14 +3292,17 @@ function addProduct(id){
                 Number(item.id) === Number(id)
         );
 
+
     if(!product)
         return;
+
 
     const existing =
         cart.find(
             item =>
                 Number(item.id) === Number(id)
         );
+
 
     if(existing){
 
@@ -2004,11 +3311,15 @@ function addProduct(id){
     }else{
 
         cart.push({
+
             ...product,
+
             quantity:1
+
         });
 
     }
+
 
     updateCart();
 
@@ -2026,21 +3337,26 @@ function updateCart(){
     const container =
         document.getElementById("cartItems");
 
+
     const countElement =
         document.getElementById("cartCount");
+
 
     const totalElement =
         document.getElementById("cartTotal");
 
+
     const quantity =
         cart.reduce(
-            (sum,item) =>
+            (sum,item)=>
                 sum + item.quantity,
             0
         );
 
+
     countElement.textContent =
         quantity;
+
 
     if(cart.length === 0){
 
@@ -2062,55 +3378,79 @@ function updateCart(){
 
         `;
 
+
         totalElement.textContent =
             "0";
 
+
         return;
+
     }
 
+
     container.innerHTML =
-        cart.map((item,index)=>`
+        cart.map(
+            (item,index)=>`
 
-            <div class="cart-item">
+                <div class="cart-item">
 
-                <div>
 
-                    <h4>
-                        ${escapeHtml(item.name || "منتج EL MANS")}
-                    </h4>
+                    <div>
 
-                    <div class="cart-item-price">
-                        ${Number(item.price || 0)
-                            .toLocaleString("ar-EG")}
-                        جنيه
+                        <h4>
+
+                            ${escapeHtml(
+                                item.name ||
+                                "منتج EL MANS"
+                            )}
+
+                        </h4>
+
+
+                        <div class="cart-item-price">
+
+                            ${Number(
+                                item.price || 0
+                            ).toLocaleString("ar-EG")}
+
+                            جنيه
+
+                        </div>
+
+
+                        <div class="cart-item-qty">
+
+                            الكمية:
+                            ${item.quantity}
+
+                        </div>
+
                     </div>
 
-                    <div class="cart-item-qty">
-                        الكمية: ${item.quantity}
-                    </div>
+
+                    <button
+                        class="remove-item"
+                        onclick="removeProduct(${index})">
+
+                        ×
+
+                    </button>
 
                 </div>
 
-                <button
-                    class="remove-item"
-                    onclick="removeProduct(${index})">
+            `
+        ).join("");
 
-                    ×
-
-                </button>
-
-            </div>
-
-        `).join("");
 
     const total =
         cart.reduce(
-            (sum,item) =>
+            (sum,item)=>
                 sum +
                 Number(item.price || 0) *
                 item.quantity,
             0
         );
+
 
     totalElement.textContent =
         total.toLocaleString("ar-EG");
@@ -2120,7 +3460,11 @@ function updateCart(){
 
 function removeProduct(index){
 
-    cart.splice(index,1);
+    cart.splice(
+        index,
+        1
+    );
+
 
     updateCart();
 
@@ -2150,13 +3494,13 @@ function closeCart(){
 
 
 /* =========================================
-   ORDER TOTAL
+   PRODUCTS TOTAL
 ========================================= */
 
 function getProductsTotal(){
 
     return cart.reduce(
-        (sum,item) =>
+        (sum,item)=>
             sum +
             Number(item.price || 0) *
             item.quantity,
@@ -2174,29 +3518,47 @@ function updateShippingPreview(){
 
     const governorate =
         document
-            .getElementById("customerGovernorate")
+            .getElementById(
+                "customerGovernorate"
+            )
             .value;
+
 
     if(!governorate)
         return;
 
+
     const shipping =
-        getShippingCost(governorate);
+        getShippingCost(
+            governorate
+        );
+
 
     const productsTotal =
         getProductsTotal();
 
+
     const finalTotal =
-        productsTotal + shipping;
+        productsTotal +
+        shipping;
+
 
     const summary =
-        document.getElementById("orderSummary");
+        document.getElementById(
+            "orderSummary"
+        );
+
 
     let html = `
+
         <div class="order-summary-title">
+
             ملخص الطلب
+
         </div>
+
     `;
+
 
     cart.forEach(item=>{
 
@@ -2204,19 +3566,28 @@ function updateShippingPreview(){
 
             <div class="summary-row">
 
-                <span>
-                    ${escapeHtml(item.name || "منتج")}
-                    × ${item.quantity}
-                </span>
 
                 <span>
-                    ${
-                        (
-                            Number(item.price || 0) *
-                            item.quantity
-                        ).toLocaleString("ar-EG")
-                    }
+
+                    ${escapeHtml(
+                        item.name ||
+                        "منتج"
+                    )}
+
+                    × ${item.quantity}
+
+                </span>
+
+
+                <span>
+
+                    ${(
+                        Number(item.price || 0) *
+                        item.quantity
+                    ).toLocaleString("ar-EG")}
+
                     جنيه
+
                 </span>
 
             </div>
@@ -2225,48 +3596,70 @@ function updateShippingPreview(){
 
     });
 
+
     html += `
 
         <div class="summary-row">
+
 
             <span>
                 إجمالي المنتجات
             </span>
 
+
             <span>
+
                 ${productsTotal.toLocaleString("ar-EG")}
+
                 جنيه
+
             </span>
 
         </div>
 
+
         <div class="summary-row shipping-row">
 
+
             <span>
-                🚚 الشحن - ${escapeHtml(governorate)}
+
+                🚚 الشحن -
+                ${escapeHtml(governorate)}
+
             </span>
 
+
             <strong>
+
                 ${shipping.toLocaleString("ar-EG")}
+
                 جنيه
+
             </strong>
 
         </div>
 
+
         <div class="summary-row summary-total final-total">
+
 
             <span>
                 الإجمالي النهائي
             </span>
 
+
             <strong>
+
                 ${finalTotal.toLocaleString("ar-EG")}
+
                 جنيه
+
             </strong>
 
         </div>
 
     `;
+
 
     summary.innerHTML =
         html;
@@ -2275,7 +3668,7 @@ function updateShippingPreview(){
 
 
 /* =========================================
-   ORDER
+   ORDER FORM
 ========================================= */
 
 function openOrderForm(){
@@ -2287,19 +3680,30 @@ function openOrderForm(){
         );
 
         return;
+
     }
 
+
     const summary =
-        document.getElementById("orderSummary");
+        document.getElementById(
+            "orderSummary"
+        );
+
 
     const productsTotal =
         getProductsTotal();
 
+
     let html = `
+
         <div class="order-summary-title">
+
             ملخص الطلب
+
         </div>
+
     `;
+
 
     cart.forEach(item=>{
 
@@ -2307,19 +3711,28 @@ function openOrderForm(){
 
             <div class="summary-row">
 
-                <span>
-                    ${escapeHtml(item.name || "منتج")}
-                    × ${item.quantity}
-                </span>
 
                 <span>
-                    ${
-                        (
-                            Number(item.price || 0) *
-                            item.quantity
-                        ).toLocaleString("ar-EG")
-                    }
+
+                    ${escapeHtml(
+                        item.name ||
+                        "منتج"
+                    )}
+
+                    × ${item.quantity}
+
+                </span>
+
+
+                <span>
+
+                    ${(
+                        Number(item.price || 0) *
+                        item.quantity
+                    ).toLocaleString("ar-EG")}
+
                     جنيه
+
                 </span>
 
             </div>
@@ -2328,26 +3741,35 @@ function openOrderForm(){
 
     });
 
+
     html += `
 
         <div class="summary-row summary-total">
+
 
             <span>
                 إجمالي المنتجات
             </span>
 
+
             <strong>
+
                 ${productsTotal.toLocaleString("ar-EG")}
+
                 جنيه
+
             </strong>
 
         </div>
 
+
         <div class="summary-row shipping-row">
+
 
             <span>
                 🚚 الشحن
             </span>
+
 
             <strong>
                 اختر المحافظة
@@ -2357,10 +3779,13 @@ function openOrderForm(){
 
     `;
 
+
     summary.innerHTML =
         html;
 
+
     closeCart();
+
 
     document
         .getElementById("orderOverlay")
@@ -2390,41 +3815,61 @@ function sendOrderToWhatsApp(){
 
     const name =
         document
-            .getElementById("customerName")
+            .getElementById(
+                "customerName"
+            )
             .value
             .trim();
+
 
     const phone =
         document
-            .getElementById("customerPhone")
+            .getElementById(
+                "customerPhone"
+            )
             .value
             .trim();
+
 
     const governorate =
         document
-            .getElementById("customerGovernorate")
+            .getElementById(
+                "customerGovernorate"
+            )
             .value;
+
 
     const address =
         document
-            .getElementById("customerAddress")
+            .getElementById(
+                "customerAddress"
+            )
             .value
             .trim();
+
 
     const notes =
         document
-            .getElementById("customerNotes")
+            .getElementById(
+                "customerNotes"
+            )
             .value
             .trim();
 
 
-    if(!name || !phone || !governorate || !address){
+    if(
+        !name ||
+        !phone ||
+        !governorate ||
+        !address
+    ){
 
         alert(
             "من فضلك املأ البيانات الأساسية للطلب."
         );
 
         return;
+
     }
 
 
@@ -2433,11 +3878,14 @@ function sendOrderToWhatsApp(){
 
 
     const shipping =
-        getShippingCost(governorate);
+        getShippingCost(
+            governorate
+        );
 
 
     const finalTotal =
-        productsTotal + shipping;
+        productsTotal +
+        shipping;
 
 
     let message =
@@ -2525,6 +3973,11 @@ function sendOrderToWhatsApp(){
         " جنيه";
 
 
+    /*
+       رقم واتساب المتجر
+       مكتوب بصيغة دولية بدون +
+    */
+
     const whatsappNumber =
         "201501140025";
 
@@ -2533,7 +3986,9 @@ function sendOrderToWhatsApp(){
         "https://wa.me/" +
         whatsappNumber +
         "?text=" +
-        encodeURIComponent(message);
+        encodeURIComponent(
+            message
+        );
 
 
     window.open(
@@ -2545,7 +4000,7 @@ function sendOrderToWhatsApp(){
 
 
 /* =========================================
-   CLOSE MODALS
+   CLOSE MODALS BY CLICKING OUTSIDE
 ========================================= */
 
 document
@@ -2554,8 +4009,12 @@ document
         "click",
         function(event){
 
-            if(event.target === this){
+            if(
+                event.target === this
+            ){
+
                 closeProductModal();
+
             }
 
         }
@@ -2568,8 +4027,12 @@ document
         "click",
         function(event){
 
-            if(event.target === this){
+            if(
+                event.target === this
+            ){
+
                 closeOrderForm();
+
             }
 
         }
@@ -2582,8 +4045,12 @@ document
         "click",
         function(event){
 
-            if(event.target === this){
+            if(
+                event.target === this
+            ){
+
                 closeCart();
+
             }
 
         }
