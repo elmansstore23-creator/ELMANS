@@ -1591,7 +1591,7 @@ const SUPABASE_URL =
     "https://bwqtsedackwpyllbtdxl.supabase.co";
 
 const SUPABASE_KEY =
-    "PUT_YOUR_PUBLISHABLE_KEY_HERE";
+    "sb_publishable_rawo0SzFw9jUUsjTvEoFJA_mnXpW8ab";
 
 const supabaseClient =
     window.supabase.createClient(
@@ -1605,13 +1605,9 @@ const supabaseClient =
 ========================================= */
 
 let products = [];
-
 let cart = [];
-
 let selectedProduct = null;
-
 let modalQuantity = 1;
-
 let currentCategory = "all";
 
 
@@ -1645,32 +1641,54 @@ async function loadProducts(){
         </div>
     `;
 
-    const { data, error } =
-        await supabaseClient
-            .from("elmansstore23")
-            .select("*")
-            .order("id", { ascending:true });
+    try{
 
-    if(error){
+        const { data, error } =
+            await supabaseClient
+                .from("elmansstore23")
+                .select("*")
+                .order("id", { ascending:true });
 
-        console.error(error);
+        if(error){
+
+            console.error("Supabase Error:", error);
+
+            grid.innerHTML = `
+                <div class="empty-products">
+                    <span>!</span>
+                    <strong>تعذر تحميل المنتجات</strong>
+                    <p>
+                        يوجد خطأ في الاتصال بقاعدة البيانات.
+                    </p>
+                </div>
+            `;
+
+            document
+                .getElementById("productsCount")
+                .textContent = "0";
+
+            return;
+        }
+
+        products = Array.isArray(data)
+            ? data
+            : [];
+
+        renderProducts(currentCategory);
+
+    }catch(error){
+
+        console.error("Unexpected Error:", error);
 
         grid.innerHTML = `
             <div class="empty-products">
                 <span>!</span>
-                <strong>تعذر تحميل المنتجات</strong>
-                <p>تأكد من إعدادات Supabase ثم حاول مرة أخرى.</p>
+                <strong>حدث خطأ</strong>
+                <p>حاول تحديث الصفحة مرة أخرى.</p>
             </div>
         `;
 
-        document.getElementById("productsCount").textContent = "0";
-
-        return;
     }
-
-    products = data || [];
-
-    renderProducts(currentCategory);
 
 }
 
@@ -1697,7 +1715,7 @@ function filterCategory(category,button){
 
 
 /* =========================================
-   RENDER
+   RENDER PRODUCTS
 ========================================= */
 
 function renderProducts(category="all"){
@@ -1711,9 +1729,8 @@ function renderProducts(category="all"){
     const filtered =
         category === "all"
         ? products
-        : products.filter(
-            product =>
-                product.category === category
+        : products.filter(product =>
+            String(product.category || "").trim() === category
         );
 
     count.textContent =
@@ -1741,7 +1758,32 @@ function renderProducts(category="all"){
     }
 
     grid.innerHTML =
-        filtered.map(product => `
+        filtered.map(product => {
+
+            const image =
+                product.image
+                ? String(product.image).trim()
+                : "";
+
+            const name =
+                product.name
+                ? product.name
+                : "منتج EL MANS";
+
+            const categoryName =
+                product.category_name
+                ? product.category_name
+                : "";
+
+            const description =
+                product.description
+                ? product.description
+                : "منتج مميز من EL MANS";
+
+            const price =
+                Number(product.price || 0);
+
+            return `
 
             <article class="product-card">
 
@@ -1752,9 +1794,10 @@ function renderProducts(category="all"){
                     </span>
 
                     <img
-                        src="${product.image || ""}"
-                        alt="${escapeHtml(product.name || "")}"
+                        src="${escapeHtml(image)}"
+                        alt="${escapeHtml(name)}"
                         loading="lazy"
+                        onerror="this.style.display='none';"
                     >
 
                 </div>
@@ -1762,21 +1805,21 @@ function renderProducts(category="all"){
                 <div class="product-info">
 
                     <small>
-                        ${escapeHtml(product.category_name || "")}
+                        ${escapeHtml(categoryName)}
                     </small>
 
                     <h4>
-                        ${escapeHtml(product.name || "")}
+                        ${escapeHtml(name)}
                     </h4>
 
                     <p>
-                        ${escapeHtml(product.description || "")}
+                        ${escapeHtml(description)}
                     </p>
 
                     <div class="product-bottom">
 
                         <div class="product-price">
-                            ${Number(product.price || 0).toLocaleString("ar-EG")}
+                            ${price.toLocaleString("ar-EG")}
                             جنيه
                         </div>
 
@@ -1784,7 +1827,7 @@ function renderProducts(category="all"){
 
                             <button
                                 class="details-btn"
-                                onclick="openProductModal(${product.id})">
+                                onclick="openProductModal(${Number(product.id)})">
 
                                 التفاصيل
 
@@ -1792,7 +1835,7 @@ function renderProducts(category="all"){
 
                             <button
                                 class="add-product"
-                                onclick="addProduct(${product.id})">
+                                onclick="addProduct(${Number(product.id)})">
 
                                 + سلة
 
@@ -1806,13 +1849,15 @@ function renderProducts(category="all"){
 
             </article>
 
-        `).join("");
+            `;
+
+        }).join("");
 
 }
 
 
 /* =========================================
-   ESCAPE
+   ESCAPE HTML
 ========================================= */
 
 function escapeHtml(value){
@@ -1835,10 +1880,12 @@ function openProductModal(id){
 
     const product =
         products.find(
-            item => Number(item.id) === Number(id)
+            item =>
+                Number(item.id) === Number(id)
         );
 
-    if(!product) return;
+    if(!product)
+        return;
 
     selectedProduct = product;
 
@@ -1854,13 +1901,14 @@ function openProductModal(id){
         product.category_name || "";
 
     document.getElementById("modalName").textContent =
-        product.name || "";
+        product.name || "منتج EL MANS";
 
     document.getElementById("modalDescription").textContent =
         product.description || "";
 
     document.getElementById("modalPrice").textContent =
-        Number(product.price || 0).toLocaleString("ar-EG");
+        Number(product.price || 0)
+        .toLocaleString("ar-EG");
 
     document.getElementById("modalQuantity").textContent =
         modalQuantity;
@@ -1893,8 +1941,10 @@ function changeModalQuantity(amount){
     if(modalQuantity > 20)
         modalQuantity = 20;
 
-    document.getElementById("modalQuantity").textContent =
-        modalQuantity;
+    document
+        .getElementById("modalQuantity")
+        .textContent =
+            modalQuantity;
 
 }
 
@@ -1907,7 +1957,8 @@ function addModalProduct(){
     const existing =
         cart.find(
             item =>
-                Number(item.id) === Number(selectedProduct.id)
+                Number(item.id) ===
+                Number(selectedProduct.id)
         );
 
     if(existing){
@@ -1940,7 +1991,8 @@ function addProduct(id){
 
     const product =
         products.find(
-            item => Number(item.id) === Number(id)
+            item =>
+                Number(item.id) === Number(id)
         );
 
     if(!product)
@@ -1948,7 +2000,8 @@ function addProduct(id){
 
     const existing =
         cart.find(
-            item => Number(item.id) === Number(id)
+            item =>
+                Number(item.id) === Number(id)
         );
 
     if(existing){
@@ -2016,7 +2069,8 @@ function updateCart(){
 
         `;
 
-        totalElement.textContent = "0";
+        totalElement.textContent =
+            "0";
 
         return;
     }
@@ -2029,11 +2083,12 @@ function updateCart(){
                 <div>
 
                     <h4>
-                        ${escapeHtml(item.name || "")}
+                        ${escapeHtml(item.name || "منتج EL MANS")}
                     </h4>
 
                     <div class="cart-item-price">
-                        ${Number(item.price || 0).toLocaleString("ar-EG")}
+                        ${Number(item.price || 0)
+                            .toLocaleString("ar-EG")}
                         جنيه
                     </div>
 
@@ -2058,7 +2113,9 @@ function updateCart(){
     const total =
         cart.reduce(
             (sum,item) =>
-                sum + Number(item.price || 0) * item.quantity,
+                sum +
+                Number(item.price || 0) *
+                item.quantity,
             0
         );
 
@@ -2078,7 +2135,7 @@ function removeProduct(index){
 
 
 /* =========================================
-   CART OPEN CLOSE
+   CART OPEN / CLOSE
 ========================================= */
 
 function openCart(){
@@ -2130,12 +2187,17 @@ function openOrderForm(){
             <div class="summary-row">
 
                 <span>
-                    ${escapeHtml(item.name || "")}
+                    ${escapeHtml(item.name || "منتج")}
                     × ${item.quantity}
                 </span>
 
                 <span>
-                    ${(Number(item.price || 0) * item.quantity).toLocaleString("ar-EG")}
+                    ${
+                        (
+                            Number(item.price || 0) *
+                            item.quantity
+                        ).toLocaleString("ar-EG")
+                    }
                     جنيه
                 </span>
 
@@ -2148,7 +2210,9 @@ function openOrderForm(){
     const total =
         cart.reduce(
             (sum,item) =>
-                sum + Number(item.price || 0) * item.quantity,
+                sum +
+                Number(item.price || 0) *
+                item.quantity,
             0
         );
 
@@ -2168,7 +2232,8 @@ function openOrderForm(){
 
     `;
 
-    summary.innerHTML = html;
+    summary.innerHTML =
+        html;
 
     closeCart();
 
@@ -2195,19 +2260,33 @@ function closeOrderForm(){
 function sendOrderToWhatsApp(){
 
     const name =
-        document.getElementById("customerName").value.trim();
+        document
+            .getElementById("customerName")
+            .value
+            .trim();
 
     const phone =
-        document.getElementById("customerPhone").value.trim();
+        document
+            .getElementById("customerPhone")
+            .value
+            .trim();
 
     const governorate =
-        document.getElementById("customerGovernorate").value;
+        document
+            .getElementById("customerGovernorate")
+            .value;
 
     const address =
-        document.getElementById("customerAddress").value.trim();
+        document
+            .getElementById("customerAddress")
+            .value
+            .trim();
 
     const notes =
-        document.getElementById("customerNotes").value.trim();
+        document
+            .getElementById("customerNotes")
+            .value
+            .trim();
 
     if(!name || !phone || !governorate || !address){
 
@@ -2222,21 +2301,31 @@ function sendOrderToWhatsApp(){
         "🛍️ طلب جديد من EL MANS\n\n";
 
     message +=
-        "الاسم: " + name + "\n";
+        "الاسم: " +
+        name +
+        "\n";
 
     message +=
-        "الموبايل: " + phone + "\n";
+        "الموبايل: " +
+        phone +
+        "\n";
 
     message +=
-        "المحافظة: " + governorate + "\n";
+        "المحافظة: " +
+        governorate +
+        "\n";
 
     message +=
-        "العنوان: " + address + "\n";
+        "العنوان: " +
+        address +
+        "\n";
 
     if(notes){
 
         message +=
-            "ملاحظات: " + notes + "\n";
+            "ملاحظات: " +
+            notes +
+            "\n";
 
     }
 
@@ -2246,7 +2335,7 @@ function sendOrderToWhatsApp(){
     cart.forEach(item=>{
 
         message +=
-            item.name +
+            (item.name || "منتج") +
             " × " +
             item.quantity +
             " = " +
@@ -2295,35 +2384,44 @@ function sendOrderToWhatsApp(){
 
 document
     .getElementById("productModal")
-    .addEventListener("click",function(event){
+    .addEventListener(
+        "click",
+        function(event){
 
-        if(event.target === this){
-            closeProductModal();
+            if(event.target === this){
+                closeProductModal();
+            }
+
         }
-
-    });
+    );
 
 
 document
     .getElementById("orderOverlay")
-    .addEventListener("click",function(event){
+    .addEventListener(
+        "click",
+        function(event){
 
-        if(event.target === this){
-            closeOrderForm();
+            if(event.target === this){
+                closeOrderForm();
+            }
+
         }
-
-    });
+    );
 
 
 document
     .getElementById("cartOverlay")
-    .addEventListener("click",function(event){
+    .addEventListener(
+        "click",
+        function(event){
 
-        if(event.target === this){
-            closeCart();
+            if(event.target === this){
+                closeCart();
+            }
+
         }
-
-    });
+    );
 
 
 /* =========================================
