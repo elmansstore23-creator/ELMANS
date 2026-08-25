@@ -53,16 +53,33 @@ button,input,textarea,select{
     display:flex;
     align-items:center;
     justify-content:center;
+    overflow:hidden;
 
     background:
         radial-gradient(
-            circle at center,
-            rgba(212,175,55,.08),
-            transparent 60%
+            circle at 50% 42%,
+            rgba(212,175,55,.12),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(212,175,55,.05),
+            transparent 50%
         ),
         #030303;
 
     transition:.8s;
+}
+
+.welcome::before{
+    content:"";
+    position:absolute;
+    width:600px;
+    height:600px;
+    border-radius:50%;
+    background:rgba(212,175,55,.035);
+    filter:blur(100px);
+    pointer-events:none;
 }
 
 .welcome.hide{
@@ -72,19 +89,20 @@ button,input,textarea,select{
 }
 
 .welcome-content{
+    position:relative;
+    z-index:2;
     width:94%;
     max-width:700px;
     text-align:center;
     animation:welcomeIn 1.2s ease;
 }
 
-/* LION */
+/* الأسد */
 
 .lion-wrapper{
     width:300px;
     height:300px;
     margin:0 auto -10px;
-
     display:flex;
     align-items:center;
     justify-content:center;
@@ -93,10 +111,8 @@ button,input,textarea,select{
 .lion-wrapper img{
     width:290px;
     height:290px;
-
     object-fit:contain;
     display:block;
-
     transform:scale(1.25);
 
     filter:
@@ -104,20 +120,14 @@ button,input,textarea,select{
         drop-shadow(0 0 22px rgba(212,175,55,.25));
 }
 
-/* BRAND */
+/* اسم EL MANS */
 
 .brand{
     direction:ltr;
-
     font-family:"Playfair Display",serif;
-
     font-size:clamp(45px,8vw,76px);
-
     font-weight:700;
-
-    /* قللنا المسافة */
     letter-spacing:6px;
-
     white-space:nowrap;
 }
 
@@ -125,69 +135,43 @@ button,input,textarea,select{
     color:var(--gold);
 }
 
-.brand .mans{
-    margin-left:8px;
-}
-
-/* GOLD LINE */
-
 .gold-line{
     width:155px;
     height:1px;
-
     margin:23px auto;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold),
-            transparent
-        );
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        transparent
+    );
 }
-
-/* SUBTITLE */
 
 .subtitle{
     color:#ddd;
-
     font-size:18px;
-
     font-weight:600;
-
     letter-spacing:3px;
-
     margin-bottom:32px;
 }
 
-/* ENTER BUTTON */
-
 .enter-btn{
     min-width:225px;
-
     padding:15px 35px;
-
     border:1px solid var(--gold);
-
     background:transparent;
-
     color:var(--gold);
-
     font-weight:700;
-
     letter-spacing:3px;
-
     cursor:pointer;
-
     transition:.35s;
 }
 
 .enter-btn:hover{
     background:var(--gold);
-
     color:#000;
-
     transform:translateY(-3px);
+    box-shadow:0 12px 35px rgba(212,175,55,.15);
 }
 
 /* =========================
@@ -196,7 +180,6 @@ button,input,textarea,select{
 
 .header{
     height:80px;
-
     position:sticky;
     top:0;
     z-index:1000;
@@ -208,7 +191,6 @@ button,input,textarea,select{
     padding:0 6%;
 
     background:rgba(3,3,3,.94);
-
     backdrop-filter:blur(18px);
 
     border-bottom:1px solid rgba(212,175,55,.15);
@@ -216,17 +198,11 @@ button,input,textarea,select{
 
 .logo{
     direction:ltr;
-
     text-decoration:none;
-
     color:white;
-
     font-family:"Playfair Display",serif;
-
     font-size:24px;
-
     font-weight:700;
-
     letter-spacing:5px;
 }
 
@@ -241,11 +217,8 @@ button,input,textarea,select{
 
 .header-nav a{
     color:#999;
-
     text-decoration:none;
-
     font-size:12px;
-
     transition:.3s;
 }
 
@@ -259,44 +232,69 @@ button,input,textarea,select{
 
 .hero{
     min-height:calc(100vh - 80px);
+    position:relative;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
     text-align:center;
+    overflow:hidden;
 
     background:
         radial-gradient(
             circle at 50% 45%,
-            rgba(212,175,55,.065),
-            transparent 60%
-        );
+            rgba(212,175,55,.12),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(212,175,55,.05),
+            transparent 50%
+        ),
+        #030303;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:rgba(212,175,55,.035);
+    filter:blur(80px);
+
+    animation:heroGlow 5s ease-in-out infinite alternate;
 }
 
 .hero-content{
+    position:relative;
+    z-index:2;
+
     width:92%;
     max-width:900px;
 
     padding:70px 20px;
+
+    animation:heroContentIn 1.2s ease;
 }
 
 .hero-label{
     color:var(--gold);
-
     font-size:11px;
-
     letter-spacing:7px;
+    font-weight:600;
 }
 
 .hero h1{
     font-family:"Playfair Display",serif;
-
     font-size:clamp(55px,10vw,105px);
-
     line-height:1;
-
     margin:22px 0;
+    letter-spacing:2px;
 }
 
 .hero h1 span{
@@ -305,36 +303,54 @@ button,input,textarea,select{
 
 .hero p{
     color:#777;
-
     font-size:14px;
-
     line-height:2.5;
 }
 
 .hero-btn{
+    position:relative;
+
     display:inline-block;
 
     margin-top:35px;
-
-    padding:15px 40px;
+    padding:16px 45px;
 
     background:var(--gold);
-
     color:#000;
 
     text-decoration:none;
 
     font-size:13px;
-
     font-weight:800;
 
+    overflow:hidden;
     transition:.35s;
+}
+
+.hero-btn::before{
+    content:"";
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:60%;
+    height:100%;
+
+    background:rgba(255,255,255,.35);
+
+    transform:skewX(-25deg);
+    transition:.6s;
+}
+
+.hero-btn:hover::before{
+    left:130%;
 }
 
 .hero-btn:hover{
     background:var(--gold-light);
-
-    transform:translateY(-3px);
+    transform:translateY(-4px);
+    box-shadow:0 12px 35px rgba(212,175,55,.18);
 }
 
 /* =========================
@@ -343,31 +359,24 @@ button,input,textarea,select{
 
 .collection{
     padding:100px 0;
-
     background:var(--black2);
-
     border-top:1px solid rgba(212,175,55,.12);
 }
 
 .section-title{
     text-align:center;
-
     margin-bottom:40px;
 }
 
 .section-title small{
     color:var(--gold);
-
     font-size:10px;
-
     letter-spacing:6px;
 }
 
 .section-title h2{
     font-family:"Playfair Display",serif;
-
     font-size:clamp(40px,6vw,65px);
-
     margin-top:8px;
 }
 
@@ -375,15 +384,14 @@ button,input,textarea,select{
     color:var(--gold);
 }
 
-/* CATEGORY */
+/* =========================
+   CATEGORY BAR
+========================= */
 
 .category-bar{
     width:100%;
-
     overflow-x:auto;
-
     scrollbar-width:none;
-
     padding:8px 5% 22px;
 }
 
@@ -393,11 +401,8 @@ button,input,textarea,select{
 
 .category-track{
     display:flex;
-
     justify-content:center;
-
     gap:10px;
-
     min-width:max-content;
 }
 
@@ -407,19 +412,15 @@ button,input,textarea,select{
     padding:11px 22px;
 
     border:1px solid rgba(212,175,55,.25);
-
     border-radius:40px;
 
     background:rgba(255,255,255,.015);
-
     color:#aaa;
 
     font-size:11px;
-
     font-weight:600;
 
     cursor:pointer;
-
     white-space:nowrap;
 
     transition:.3s;
@@ -428,9 +429,7 @@ button,input,textarea,select{
 .category:hover,
 .category.active{
     background:var(--gold);
-
     color:#000;
-
     border-color:var(--gold);
 }
 
@@ -440,35 +439,26 @@ button,input,textarea,select{
 
 .products-section{
     width:90%;
-
     max-width:1300px;
-
     margin:45px auto 0;
 }
 
 .products-top{
     display:flex;
-
     justify-content:space-between;
-
     align-items:end;
-
     margin-bottom:25px;
 }
 
 .products-top small{
     color:var(--gold);
-
     font-size:10px;
-
     letter-spacing:4px;
 }
 
 .products-top h3{
     font-family:"Playfair Display",serif;
-
     font-size:30px;
-
     margin-top:5px;
 }
 
@@ -478,61 +468,45 @@ button,input,textarea,select{
 
 .products-count{
     color:#777;
-
     font-size:11px;
 }
 
 .products-count span{
     color:var(--gold);
-
     font-size:18px;
 }
 
 .products-grid{
     display:grid;
-
     grid-template-columns:repeat(4,1fr);
-
     gap:20px;
 }
 
 .product-card{
     background:var(--card);
-
     border:1px solid rgba(212,175,55,.12);
-
     overflow:hidden;
-
     transition:.4s;
 }
 
 .product-card:hover{
     transform:translateY(-7px);
-
     border-color:rgba(212,175,55,.65);
-
     box-shadow:0 20px 45px rgba(0,0,0,.65);
 }
 
 .product-image{
     height:300px;
-
     position:relative;
-
     overflow:hidden;
-
     background:#050505;
 }
 
 .product-image img{
     width:100%;
-
     height:100%;
-
     object-fit:cover;
-
     display:block;
-
     transition:.6s;
 }
 
@@ -542,20 +516,13 @@ button,input,textarea,select{
 
 .product-badge{
     position:absolute;
-
     top:12px;
     right:12px;
-
     padding:5px 10px;
-
     background:var(--gold);
-
     color:#000;
-
     font-size:9px;
-
     font-weight:800;
-
     z-index:2;
 }
 
@@ -565,84 +532,61 @@ button,input,textarea,select{
 
 .product-info small{
     color:var(--gold);
-
     font-size:10px;
 }
 
 .product-info h4{
     font-size:16px;
-
     margin:8px 0;
 }
 
 .product-info p{
     color:#777;
-
     font-size:11px;
-
     line-height:2;
-
     min-height:44px;
 }
 
 .product-bottom{
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
     gap:10px;
-
     margin-top:17px;
-
     padding-top:14px;
-
     border-top:1px solid rgba(255,255,255,.06);
 }
 
 .product-price{
     color:var(--gold);
-
     font-weight:800;
-
     font-size:14px;
 }
 
 .product-actions{
     display:flex;
-
     gap:7px;
 }
 
 .details-btn,
 .add-product{
     padding:8px 11px;
-
     border:1px solid var(--gold);
-
     background:transparent;
-
     color:var(--gold);
-
     font-size:9px;
-
     font-weight:700;
-
     cursor:pointer;
-
     transition:.3s;
 }
 
 .add-product{
     background:var(--gold);
-
     color:#000;
 }
 
 .details-btn:hover{
     background:var(--gold);
-
     color:#000;
 }
 
@@ -656,31 +600,24 @@ button,input,textarea,select{
 
 .story{
     padding:110px 20px;
-
     text-align:center;
-
     border-top:1px solid rgba(212,175,55,.12);
 }
 
 .story-content{
     max-width:750px;
-
     margin:auto;
 }
 
 .story small{
     color:var(--gold);
-
     letter-spacing:6px;
-
     font-size:10px;
 }
 
 .story h2{
     font-family:"Playfair Display",serif;
-
     font-size:clamp(40px,7vw,70px);
-
     margin:15px 0;
 }
 
@@ -690,9 +627,7 @@ button,input,textarea,select{
 
 .story p{
     color:#777;
-
     font-size:14px;
-
     line-height:2.7;
 }
 
@@ -702,21 +637,15 @@ button,input,textarea,select{
 
 .footer{
     padding:65px 20px;
-
     text-align:center;
-
     background:#010101;
-
     border-top:1px solid rgba(212,175,55,.12);
 }
 
 .footer-logo{
     direction:ltr;
-
     font-family:"Playfair Display",serif;
-
     font-size:28px;
-
     letter-spacing:5px;
 }
 
@@ -726,9 +655,7 @@ button,input,textarea,select{
 
 .footer p{
     color:#666;
-
     font-size:11px;
-
     margin-top:10px;
 }
 
@@ -738,33 +665,26 @@ button,input,textarea,select{
 
 .floating-cart{
     position:fixed;
-
     right:24px;
     bottom:24px;
-
     z-index:7000;
 
     width:62px;
     height:62px;
 
     border-radius:50%;
-
     border:1px solid rgba(212,175,55,.85);
 
     background:linear-gradient(145deg,#151515,#050505);
-
     color:var(--gold);
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     cursor:pointer;
 
     box-shadow:0 8px 30px rgba(0,0,0,.7);
-
     transition:.3s;
 }
 
@@ -774,18 +694,15 @@ button,input,textarea,select{
 
 .cart-icon{
     font-size:24px;
-
     line-height:1;
 }
 
 .cart-number{
     position:absolute;
-
     top:-4px;
     right:-3px;
 
     min-width:23px;
-
     height:23px;
 
     padding:0 6px;
@@ -793,17 +710,13 @@ button,input,textarea,select{
     border-radius:50%;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     background:var(--gold);
-
     color:#000;
 
     font-size:10px;
-
     font-weight:900;
 
     border:2px solid #030303;
@@ -811,7 +724,6 @@ button,input,textarea,select{
 
 .floating-cart-label{
     position:absolute;
-
     right:74px;
 
     white-space:nowrap;
@@ -819,25 +731,20 @@ button,input,textarea,select{
     padding:7px 12px;
 
     border:1px solid rgba(212,175,55,.2);
-
     background:#0b0b0b;
-
     color:#aaa;
 
     font-size:10px;
 
     opacity:0;
-
     transform:translateX(10px);
 
     pointer-events:none;
-
     transition:.3s;
 }
 
 .floating-cart:hover .floating-cart-label{
     opacity:1;
-
     transform:translateX(0);
 }
 
@@ -847,15 +754,12 @@ button,input,textarea,select{
 
 .cart-overlay{
     position:fixed;
-
     inset:0;
-
     z-index:8000;
 
     background:rgba(0,0,0,.82);
 
     opacity:0;
-
     visibility:hidden;
 
     transition:.35s;
@@ -863,7 +767,6 @@ button,input,textarea,select{
 
 .cart-overlay.open{
     opacity:1;
-
     visibility:visible;
 }
 
@@ -874,7 +777,6 @@ button,input,textarea,select{
     left:0;
 
     width:min(440px,100%);
-
     height:100%;
 
     background:#090909;
@@ -882,11 +784,9 @@ button,input,textarea,select{
     border-right:1px solid rgba(212,175,55,.2);
 
     display:flex;
-
     flex-direction:column;
 
     transform:translateX(-100%);
-
     transition:.45s;
 }
 
@@ -898,9 +798,7 @@ button,input,textarea,select{
     padding:25px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     border-bottom:1px solid rgba(212,175,55,.15);
@@ -908,9 +806,7 @@ button,input,textarea,select{
 
 .cart-header small{
     color:var(--gold);
-
     font-size:10px;
-
     letter-spacing:4px;
 }
 
@@ -920,17 +816,14 @@ button,input,textarea,select{
 
 .close-cart{
     width:38px;
-
     height:38px;
 
     border-radius:50%;
 
     border:1px solid rgba(212,175,55,.2);
-
     background:transparent;
 
     color:white;
-
     font-size:22px;
 
     cursor:pointer;
@@ -938,9 +831,7 @@ button,input,textarea,select{
 
 .cart-items{
     flex:1;
-
     overflow:auto;
-
     padding:20px;
 }
 
@@ -948,43 +839,33 @@ button,input,textarea,select{
     height:100%;
 
     display:flex;
-
     flex-direction:column;
-
     align-items:center;
-
     justify-content:center;
 
     color:#666;
-
     text-align:center;
 }
 
 .cart-empty span{
     color:var(--gold);
-
     font-size:35px;
 }
 
 .cart-empty strong{
     color:white;
-
     margin-top:8px;
 }
 
 .cart-item{
     padding:15px;
-
     margin-bottom:10px;
 
     background:#101010;
-
     border:1px solid rgba(212,175,55,.12);
 
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 }
 
@@ -994,43 +875,32 @@ button,input,textarea,select{
 
 .cart-item-price{
     color:var(--gold);
-
     font-size:11px;
-
     margin-top:5px;
 }
 
 .cart-item-qty{
     color:#777;
-
     font-size:10px;
-
     margin-top:3px;
 }
 
 .remove-item{
     border:0;
-
     background:none;
-
     color:#777;
-
     font-size:21px;
-
     cursor:pointer;
 }
 
 .cart-footer{
     padding:20px;
-
     border-top:1px solid rgba(212,175,55,.15);
 }
 
 .cart-total{
     display:flex;
-
     justify-content:space-between;
-
     margin-bottom:15px;
 }
 
@@ -1040,17 +910,14 @@ button,input,textarea,select{
 
 .checkout-btn{
     width:100%;
-
     padding:15px;
 
     border:0;
 
     background:var(--gold);
-
     color:#000;
 
     font-weight:800;
-
     cursor:pointer;
 }
 
@@ -1061,13 +928,10 @@ button,input,textarea,select{
 .product-modal,
 .order-overlay{
     position:fixed;
-
     inset:0;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     padding:20px;
@@ -1075,7 +939,6 @@ button,input,textarea,select{
     background:rgba(0,0,0,.88);
 
     opacity:0;
-
     visibility:hidden;
 
     transition:.35s;
@@ -1092,19 +955,15 @@ button,input,textarea,select{
 .product-modal.open,
 .order-overlay.open{
     opacity:1;
-
     visibility:visible;
 }
 
 .product-modal-box{
     width:min(900px,100%);
-
     max-height:90vh;
-
     overflow:auto;
 
     display:grid;
-
     grid-template-columns:1fr 1fr;
 
     background:#0a0a0a;
@@ -1114,29 +973,23 @@ button,input,textarea,select{
 
 .modal-image{
     min-height:500px;
-
     background:#050505;
 }
 
 .modal-image img{
     width:100%;
-
     height:100%;
-
     object-fit:cover;
-
     display:block;
 }
 
 .modal-info{
     padding:45px 35px;
-
     position:relative;
 }
 
 .modal-close{
     position:absolute;
-
     top:18px;
     left:18px;
 
@@ -1146,11 +999,9 @@ button,input,textarea,select{
     border-radius:50%;
 
     border:1px solid rgba(212,175,55,.2);
-
     background:transparent;
 
     color:white;
-
     font-size:21px;
 
     cursor:pointer;
@@ -1158,41 +1009,31 @@ button,input,textarea,select{
 
 .modal-category{
     color:var(--gold);
-
     font-size:10px;
-
     letter-spacing:3px;
 }
 
 .modal-info h2{
     font-family:"Playfair Display",serif;
-
     font-size:38px;
-
     margin:12px 0;
 }
 
 .modal-description{
     color:#777;
-
     font-size:13px;
-
     line-height:2.5;
 }
 
 .modal-price{
     color:var(--gold);
-
     font-size:24px;
-
     font-weight:800;
-
     margin:25px 0;
 }
 
 .quantity-box{
     display:flex;
-
     align-items:center;
 
     width:max-content;
@@ -1202,15 +1043,12 @@ button,input,textarea,select{
 
 .quantity-box button{
     width:42px;
-
     height:42px;
 
     border:0;
-
     background:transparent;
 
     color:var(--gold);
-
     font-size:20px;
 
     cursor:pointer;
@@ -1218,27 +1056,21 @@ button,input,textarea,select{
 
 .quantity-box span{
     width:45px;
-
     text-align:center;
-
     font-weight:700;
 }
 
 .modal-add{
     width:100%;
-
     margin-top:22px;
-
     padding:15px;
 
     border:0;
 
     background:var(--gold);
-
     color:#000;
 
     font-weight:800;
-
     cursor:pointer;
 }
 
@@ -1248,9 +1080,7 @@ button,input,textarea,select{
 
 .order-box{
     width:min(650px,100%);
-
     max-height:90vh;
-
     overflow:auto;
 
     background:#090909;
@@ -1262,53 +1092,42 @@ button,input,textarea,select{
 
 .order-title{
     text-align:center;
-
     margin-bottom:25px;
 }
 
 .order-title small{
     color:var(--gold);
-
     letter-spacing:4px;
-
     font-size:10px;
 }
 
 .order-title h2{
     font-family:"Playfair Display",serif;
-
     font-size:32px;
-
     margin-top:6px;
 }
 
 .order-summary{
     padding:15px;
-
     margin-bottom:20px;
 
     background:#050505;
-
     border:1px solid rgba(212,175,55,.12);
 }
 
 .order-summary-title{
     color:var(--gold);
-
     font-size:11px;
-
     margin-bottom:10px;
 }
 
 .summary-row{
     display:flex;
-
     justify-content:space-between;
 
     gap:15px;
 
     color:#999;
-
     font-size:11px;
 
     padding:5px 0;
@@ -1316,9 +1135,7 @@ button,input,textarea,select{
 
 .summary-total{
     border-top:1px solid rgba(212,175,55,.12);
-
     margin-top:8px;
-
     padding-top:10px;
 }
 
@@ -1334,7 +1151,6 @@ button,input,textarea,select{
     display:block;
 
     color:#aaa;
-
     font-size:11px;
 
     margin-bottom:7px;
@@ -1348,7 +1164,6 @@ button,input,textarea,select{
     border:1px solid rgba(212,175,55,.18);
 
     background:#050505;
-
     color:white;
 
     padding:13px;
@@ -1360,15 +1175,12 @@ button,input,textarea,select{
 
 .form-group textarea{
     min-height:85px;
-
     resize:vertical;
 }
 
 .order-buttons{
     display:flex;
-
     gap:10px;
-
     margin-top:20px;
 }
 
@@ -1380,11 +1192,9 @@ button,input,textarea,select{
     border:0;
 
     background:var(--gold);
-
     color:#000;
 
     font-weight:800;
-
     cursor:pointer;
 }
 
@@ -1394,30 +1204,49 @@ button,input,textarea,select{
     border:1px solid rgba(212,175,55,.3);
 
     background:transparent;
-
     color:#aaa;
 
     cursor:pointer;
 }
 
 /* =========================
-   ANIMATION
+   ANIMATIONS
 ========================= */
 
 @keyframes welcomeIn{
-
     from{
         opacity:0;
-
         transform:translateY(25px);
     }
 
     to{
         opacity:1;
-
         transform:translateY(0);
     }
+}
 
+@keyframes heroGlow{
+    from{
+        transform:scale(.9);
+        opacity:.5;
+    }
+
+    to{
+        transform:scale(1.15);
+        opacity:1;
+    }
+}
+
+@keyframes heroContentIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 /* =========================
@@ -1429,7 +1258,6 @@ button,input,textarea,select{
     .products-grid{
         grid-template-columns:repeat(2,1fr);
     }
-
 }
 
 @media(max-width:700px){
@@ -1458,13 +1286,7 @@ button,input,textarea,select{
 
     .brand{
         font-size:39px;
-
-        /* بدل 9px */
-        letter-spacing:4px;
-    }
-
-    .brand .mans{
-        margin-left:5px;
+        letter-spacing:3px;
     }
 
     .subtitle{
@@ -1489,7 +1311,6 @@ button,input,textarea,select{
 
     .modal-image{
         min-height:320px;
-
         height:320px;
     }
 
@@ -1512,7 +1333,6 @@ button,input,textarea,select{
     .floating-cart{
         right:18px;
         bottom:18px;
-
         width:58px;
         height:58px;
     }
@@ -1520,19 +1340,13 @@ button,input,textarea,select{
     .floating-cart-label{
         display:none;
     }
-
 }
 
 @media(max-width:390px){
 
     .brand{
         font-size:33px;
-
-        letter-spacing:3px;
-    }
-
-    .brand .mans{
-        margin-left:4px;
+        letter-spacing:2px;
     }
 
     .lion-wrapper{
@@ -1544,7 +1358,6 @@ button,input,textarea,select{
         width:210px;
         height:210px;
     }
-
 }
 </style>
 </head>
@@ -1569,11 +1382,8 @@ button,input,textarea,select{
         </div>
 
         <div class="brand">
-
             <span class="gold">EL</span>
-
-            <span class="mans">MANS</span>
-
+            &nbsp;MANS
         </div>
 
         <div class="gold-line"></div>
@@ -1582,10 +1392,7 @@ button,input,textarea,select{
             انت الآن في عالمي الخاص
         </p>
 
-        <button
-            class="enter-btn"
-            onclick="enterStore()"
-        >
+        <button class="enter-btn" onclick="enterStore()">
             اكتشف عالمك
         </button>
 
@@ -1634,30 +1441,19 @@ button,input,textarea,select{
         </div>
 
         <h1>
-
             عالمك
-
             <br>
-
             <span>اختيارك</span>
-
         </h1>
 
         <p>
-
             اكتشف عالمًا من الاختيارات الفاخرة،
             حيث كل قطعة لها حضورها الخاص.
-
             <br>
-
             إكسسوارات • عطور • هدايا • مناسبات
-
         </p>
 
-        <a
-            href="#collection"
-            class="hero-btn"
-        >
+        <a href="#collection" class="hero-btn">
             اكتشف المجموعة
         </a>
 
@@ -1669,10 +1465,7 @@ button,input,textarea,select{
      COLLECTION
 ========================= -->
 
-<section
-    class="collection"
-    id="collection"
->
+<section class="collection" id="collection">
 
     <div class="section-title">
 
@@ -1681,18 +1474,11 @@ button,input,textarea,select{
         </small>
 
         <h2>
-
             اختر
-
-            <span>
-                عالمك
-            </span>
-
+            <span>عالمك</span>
         </h2>
 
     </div>
-
-    <!-- CATEGORIES -->
 
     <div class="category-bar">
 
@@ -1700,107 +1486,91 @@ button,input,textarea,select{
 
             <button
                 class="category active"
-                onclick="filterCategory('all',this)"
-            >
+                onclick="filterCategory('all',this)">
                 الكل
             </button>
 
             <button
                 class="category"
-                onclick="filterCategory('men-accessories',this)"
-            >
+                onclick="filterCategory('men-accessories',this)">
                 اكسسورات رجالي
             </button>
 
             <button
                 class="category"
-                onclick="filterCategory('women-accessories',this)"
-            >
+                onclick="filterCategory('women-accessories',this)">
                 اكسسورات حريمي
             </button>
 
             <button
                 class="category"
-                onclick="filterCategory('men-chains',this)"
-            >
+                onclick="filterCategory('men-chains',this)">
                 سلاسل رجالي
             </button>
 
             <button
                 class="category"
-                onclick="filterCategory('women-chains',this)"
-            >
+                onclick="filterCategory('women-chains',this)">
                 سلاسل حريمي
             </button>
 
             <button
                 class="category"
-                onclick="filterCategory('gifts',this)"
-            >
+                onclick="filterCategory('gifts',this)">
                 هدايا
             </button>
 
             <button
                 class="category"
-                onclick="filterCategory('teddy',this)"
-            >
+                onclick="filterCategory('teddy',this)">
                 دباديب
             </button>
 
             <button
                 class="category"
-                onclick="filterCategory('men-perfume',this)"
-            >
+                onclick="filterCategory('men-perfume',this)">
                 برفانات رجالي
             </button>
 
             <button
                 class="category"
-                onclick="filterCategory('women-perfume',this)"
-            >
+                onclick="filterCategory('women-perfume',this)">
                 برفانات حريمي
             </button>
 
             <button
                 class="category"
-                onclick="filterCategory('men-body-splash',this)"
-            >
+                onclick="filterCategory('men-body-splash',this)">
                 بادي سبلاش رجالي
             </button>
 
             <button
                 class="category"
-                onclick="filterCategory('women-body-splash',this)"
-            >
+                onclick="filterCategory('women-body-splash',this)">
                 بادي سبلاش حريمي
             </button>
 
             <button
                 class="category"
-                onclick="filterCategory('parties',this)"
-            >
+                onclick="filterCategory('parties',this)">
                 حفلات
             </button>
 
             <button
                 class="category"
-                onclick="filterCategory('watches',this)"
-            >
+                onclick="filterCategory('watches',this)">
                 ساعات
             </button>
 
             <button
                 class="category"
-                onclick="filterCategory('engagement',this)"
-            >
+                onclick="filterCategory('engagement',this)">
                 دبل خطوبة
             </button>
 
         </div>
 
     </div>
-
-    <!-- PRODUCTS -->
 
     <div class="products-section">
 
@@ -1813,13 +1583,8 @@ button,input,textarea,select{
                 </small>
 
                 <h3>
-
                     مختارات
-
-                    <span>
-                        الفخامة
-                    </span>
-
+                    <span>الفخامة</span>
                 </h3>
 
             </div>
@@ -1838,8 +1603,8 @@ button,input,textarea,select{
 
         <div
             class="products-grid"
-            id="productsGrid"
-        ></div>
+            id="productsGrid">
+        </div>
 
     </div>
 
@@ -1849,10 +1614,7 @@ button,input,textarea,select{
      STORY
 ========================= -->
 
-<section
-    class="story"
-    id="story"
->
+<section class="story" id="story">
 
     <div class="story-content">
 
@@ -1861,24 +1623,15 @@ button,input,textarea,select{
         </small>
 
         <h2>
-
             انت الآن في
-
-            <span>
-                عالمنا
-            </span>
-
+            <span>عالمنا</span>
         </h2>
 
         <p>
-
             EL MANS مش مجرد متجر.
-
             <br>
-
             دي تجربة مختلفة تجمع بين الفخامة،
             الذوق، والتفاصيل اللي بتفرق.
-
         </p>
 
     </div>
@@ -1892,9 +1645,7 @@ button,input,textarea,select{
 <footer class="footer">
 
     <div class="footer-logo">
-
         EL <span>MANS</span>
-
     </div>
 
     <p>
@@ -1914,8 +1665,7 @@ button,input,textarea,select{
 <button
     class="floating-cart"
     onclick="openCart()"
-    aria-label="فتح السلة"
->
+    aria-label="فتح السلة">
 
     <span class="cart-icon">
         🛍
@@ -1923,8 +1673,7 @@ button,input,textarea,select{
 
     <span
         class="cart-number"
-        id="cartCount"
-    >
+        id="cartCount">
         0
     </span>
 
@@ -1940,8 +1689,7 @@ button,input,textarea,select{
 
 <div
     class="cart-overlay"
-    id="cartOverlay"
->
+    id="cartOverlay">
 
     <aside class="cart-panel">
 
@@ -1961,8 +1709,7 @@ button,input,textarea,select{
 
             <button
                 class="close-cart"
-                onclick="closeCart()"
-            >
+                onclick="closeCart()">
                 ×
             </button>
 
@@ -1970,8 +1717,8 @@ button,input,textarea,select{
 
         <div
             class="cart-items"
-            id="cartItems"
-        ></div>
+            id="cartItems">
+        </div>
 
         <div class="cart-footer">
 
@@ -1995,9 +1742,10 @@ button,input,textarea,select{
 
             <button
                 class="checkout-btn"
-                onclick="openOrderForm()"
-            >
+                onclick="openOrderForm()">
+
                 إتمام الطلب
+
             </button>
 
         </div>
@@ -2012,8 +1760,7 @@ button,input,textarea,select{
 
 <div
     class="product-modal"
-    id="productModal"
->
+    id="productModal">
 
     <div class="product-modal-box">
 
@@ -2022,8 +1769,7 @@ button,input,textarea,select{
             <img
                 id="modalImage"
                 src=""
-                alt=""
-            >
+                alt="">
 
         </div>
 
@@ -2031,26 +1777,26 @@ button,input,textarea,select{
 
             <button
                 class="modal-close"
-                onclick="closeProductModal()"
-            >
+                onclick="closeProductModal()">
                 ×
             </button>
 
             <div
                 class="modal-category"
-                id="modalCategory"
-            ></div>
+                id="modalCategory">
+            </div>
 
             <h2 id="modalName"></h2>
 
             <p
                 class="modal-description"
-                id="modalDescription"
-            ></p>
+                id="modalDescription">
+            </p>
 
             <div class="modal-price">
 
-                <span id="modalPrice"></span>
+                <span id="modalPrice">
+                </span>
 
                 جنيه
 
@@ -2059,8 +1805,7 @@ button,input,textarea,select{
             <div class="quantity-box">
 
                 <button
-                    onclick="changeModalQuantity(-1)"
-                >
+                    onclick="changeModalQuantity(-1)">
                     −
                 </button>
 
@@ -2069,8 +1814,7 @@ button,input,textarea,select{
                 </span>
 
                 <button
-                    onclick="changeModalQuantity(1)"
-                >
+                    onclick="changeModalQuantity(1)">
                     +
                 </button>
 
@@ -2078,9 +1822,10 @@ button,input,textarea,select{
 
             <button
                 class="modal-add"
-                onclick="addModalProduct()"
-            >
+                onclick="addModalProduct()">
+
                 أضف للسلة
+
             </button>
 
         </div>
@@ -2095,8 +1840,7 @@ button,input,textarea,select{
 
 <div
     class="order-overlay"
-    id="orderOverlay"
->
+    id="orderOverlay">
 
     <div class="order-box">
 
@@ -2114,8 +1858,8 @@ button,input,textarea,select{
 
         <div
             class="order-summary"
-            id="orderSummary"
-        ></div>
+            id="orderSummary">
+        </div>
 
         <div class="form-group">
 
@@ -2126,8 +1870,7 @@ button,input,textarea,select{
             <input
                 type="text"
                 id="customerName"
-                placeholder="اكتب اسمك بالكامل"
-            >
+                placeholder="اكتب اسمك بالكامل">
 
         </div>
 
@@ -2140,8 +1883,7 @@ button,input,textarea,select{
             <input
                 type="tel"
                 id="customerPhone"
-                placeholder="01xxxxxxxxx"
-            >
+                placeholder="01xxxxxxxxx">
 
         </div>
 
@@ -2192,8 +1934,8 @@ button,input,textarea,select{
 
             <textarea
                 id="customerAddress"
-                placeholder="المنطقة، الشارع، رقم العمارة، الدور..."
-            ></textarea>
+                placeholder="المنطقة، الشارع، رقم العمارة، الدور...">
+            </textarea>
 
         </div>
 
@@ -2205,8 +1947,8 @@ button,input,textarea,select{
 
             <textarea
                 id="customerNotes"
-                placeholder="أي ملاحظات على الطلب..."
-            ></textarea>
+                placeholder="أي ملاحظات على الطلب...">
+            </textarea>
 
         </div>
 
@@ -2214,16 +1956,18 @@ button,input,textarea,select{
 
             <button
                 class="send-whatsapp"
-                onclick="sendOrderToWhatsApp()"
-            >
+                onclick="sendOrderToWhatsApp()">
+
                 إرسال الطلب على واتساب
+
             </button>
 
             <button
                 class="cancel-order"
-                onclick="closeOrderForm()"
-            >
+                onclick="closeOrderForm()">
+
                 رجوع
+
             </button>
 
         </div>
@@ -2373,13 +2117,11 @@ image:"https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&
 ];
 
 /* =========================
-   CART
+   VARIABLES
 ========================= */
 
 let cart=[];
-
 let selectedProduct=null;
-
 let modalQuantity=1;
 
 /* =========================
@@ -2409,7 +2151,6 @@ function filterCategory(category,button){
     button.classList.add("active");
 
     renderProducts(category);
-
 }
 
 /* =========================
@@ -2433,7 +2174,8 @@ function renderProducts(category="all"){
 
     count.textContent=filtered.length;
 
-    grid.innerHTML=filtered.map(product=>`
+    grid.innerHTML=
+        filtered.map(product=>`
 
         <article class="product-card">
 
@@ -2446,8 +2188,7 @@ function renderProducts(category="all"){
                 <img
                     src="${product.image}"
                     alt="${product.name}"
-                    loading="lazy"
-                >
+                    loading="lazy">
 
             </div>
 
@@ -2468,24 +2209,25 @@ function renderProducts(category="all"){
                 <div class="product-bottom">
 
                     <div class="product-price">
-                        ${product.price.toLocaleString("ar-EG")}
-                        جنيه
+                        ${product.price.toLocaleString("ar-EG")} جنيه
                     </div>
 
                     <div class="product-actions">
 
                         <button
                             class="details-btn"
-                            onclick="openProductModal(${product.id})"
-                        >
+                            onclick="openProductModal(${product.id})">
+
                             التفاصيل
+
                         </button>
 
                         <button
                             class="add-product"
-                            onclick="addProduct(${product.id})"
-                        >
+                            onclick="addProduct(${product.id})">
+
                             + سلة
+
                         </button>
 
                     </div>
@@ -2512,7 +2254,6 @@ function openProductModal(id){
     if(!product)return;
 
     selectedProduct=product;
-
     modalQuantity=1;
 
     document.getElementById("modalImage").src=
@@ -2539,7 +2280,6 @@ function openProductModal(id){
     document
         .getElementById("productModal")
         .classList.add("open");
-
 }
 
 function closeProductModal(){
@@ -2549,7 +2289,6 @@ function closeProductModal(){
         .classList.remove("open");
 
     selectedProduct=null;
-
 }
 
 function changeModalQuantity(amount){
@@ -2564,12 +2303,7 @@ function changeModalQuantity(amount){
 
     document.getElementById("modalQuantity").textContent=
         modalQuantity;
-
 }
-
-/* =========================
-   ADD MODAL PRODUCT
-========================= */
 
 function addModalProduct(){
 
@@ -2598,7 +2332,6 @@ function addModalProduct(){
     closeProductModal();
 
     openCart();
-
 }
 
 /* =========================
@@ -2631,7 +2364,6 @@ function addProduct(id){
     updateCart();
 
     openCart();
-
 }
 
 /* =========================
@@ -2655,7 +2387,8 @@ function updateCart(){
             0
         );
 
-    countElement.textContent=quantity;
+    countElement.textContent=
+        quantity;
 
     if(cart.length===0){
 
@@ -2680,11 +2413,10 @@ function updateCart(){
         totalElement.textContent="0";
 
         return;
-
     }
 
-    container.innerHTML=cart.map(
-        (item,index)=>`
+    container.innerHTML=
+        cart.map((item,index)=>`
 
         <div class="cart-item">
 
@@ -2695,32 +2427,26 @@ function updateCart(){
                 </h4>
 
                 <div class="cart-item-price">
-
-                    ${item.price.toLocaleString("ar-EG")}
-                    جنيه
-
+                    ${item.price.toLocaleString("ar-EG")} جنيه
                 </div>
 
                 <div class="cart-item-qty">
-
-                    الكمية:
-                    ${item.quantity}
-
+                    الكمية: ${item.quantity}
                 </div>
 
             </div>
 
             <button
                 class="remove-item"
-                onclick="removeProduct(${index})"
-            >
+                onclick="removeProduct(${index})">
+
                 ×
+
             </button>
 
         </div>
 
-    `
-    ).join("");
+    `).join("");
 
     const total=
         cart.reduce(
@@ -2731,7 +2457,6 @@ function updateCart(){
 
     totalElement.textContent=
         total.toLocaleString("ar-EG");
-
 }
 
 /* =========================
@@ -2743,7 +2468,6 @@ function removeProduct(index){
     cart.splice(index,1);
 
     updateCart();
-
 }
 
 /* =========================
@@ -2755,7 +2479,6 @@ function openCart(){
     document
         .getElementById("cartOverlay")
         .classList.add("open");
-
 }
 
 function closeCart(){
@@ -2763,7 +2486,6 @@ function closeCart(){
     document
         .getElementById("cartOverlay")
         .classList.remove("open");
-
 }
 
 /* =========================
@@ -2779,7 +2501,6 @@ function openOrderForm(){
         );
 
         return;
-
     }
 
     const summary=
@@ -2802,8 +2523,7 @@ function openOrderForm(){
                 </span>
 
                 <span>
-                    ${(item.price*item.quantity)
-                        .toLocaleString("ar-EG")}
+                    ${(item.price*item.quantity).toLocaleString("ar-EG")}
                     جنيه
                 </span>
 
@@ -2829,8 +2549,7 @@ function openOrderForm(){
             </span>
 
             <strong>
-                ${total.toLocaleString("ar-EG")}
-                جنيه
+                ${total.toLocaleString("ar-EG")} جنيه
             </strong>
 
         </div>
@@ -2844,7 +2563,6 @@ function openOrderForm(){
     document
         .getElementById("orderOverlay")
         .classList.add("open");
-
 }
 
 function closeOrderForm(){
@@ -2852,7 +2570,6 @@ function closeOrderForm(){
     document
         .getElementById("orderOverlay")
         .classList.remove("open");
-
 }
 
 /* =========================
@@ -2863,32 +2580,32 @@ function sendOrderToWhatsApp(){
 
     const name=
         document
-        .getElementById("customerName")
-        .value
-        .trim();
+            .getElementById("customerName")
+            .value
+            .trim();
 
     const phone=
         document
-        .getElementById("customerPhone")
-        .value
-        .trim();
+            .getElementById("customerPhone")
+            .value
+            .trim();
 
     const governorate=
         document
-        .getElementById("customerGovernorate")
-        .value;
+            .getElementById("customerGovernorate")
+            .value;
 
     const address=
         document
-        .getElementById("customerAddress")
-        .value
-        .trim();
+            .getElementById("customerAddress")
+            .value
+            .trim();
 
     const notes=
         document
-        .getElementById("customerNotes")
-        .value
-        .trim();
+            .getElementById("customerNotes")
+            .value
+            .trim();
 
     if(
         !name ||
@@ -2902,7 +2619,6 @@ function sendOrderToWhatsApp(){
         );
 
         return;
-
     }
 
     let message=
@@ -2967,7 +2683,6 @@ function sendOrderToWhatsApp(){
         url,
         "_blank"
     );
-
 }
 
 /* =========================
@@ -2975,56 +2690,49 @@ function sendOrderToWhatsApp(){
 ========================= */
 
 document
-.getElementById("productModal")
-.addEventListener(
-    "click",
-    function(event){
+    .getElementById("productModal")
+    .addEventListener(
+        "click",
+        function(event){
 
-        if(event.target===this){
-
-            closeProductModal();
+            if(event.target===this){
+                closeProductModal();
+            }
 
         }
-
-    }
-);
+    );
 
 document
-.getElementById("orderOverlay")
-.addEventListener(
-    "click",
-    function(event){
+    .getElementById("orderOverlay")
+    .addEventListener(
+        "click",
+        function(event){
 
-        if(event.target===this){
-
-            closeOrderForm();
+            if(event.target===this){
+                closeOrderForm();
+            }
 
         }
-
-    }
-);
+    );
 
 document
-.getElementById("cartOverlay")
-.addEventListener(
-    "click",
-    function(event){
+    .getElementById("cartOverlay")
+    .addEventListener(
+        "click",
+        function(event){
 
-        if(event.target===this){
-
-            closeCart();
+            if(event.target===this){
+                closeCart();
+            }
 
         }
-
-    }
-);
+    );
 
 /* =========================
    START
 ========================= */
 
 renderProducts();
-
 updateCart();
 
 </script>
