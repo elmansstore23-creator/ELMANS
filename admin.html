@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>EL MANS — Luxury Admin</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
+<style>
 *{
     margin:0;
     padding:0;
@@ -28,11 +25,10 @@
     --card:#0d0d0d;
     --card2:#111;
     --gold:#D4AF37;
-    --gold2:#F5DD87;
+    --gold-light:#F5DD87;
     --white:#f7f7f7;
     --gray:#858585;
-    --green:#62d17a;
-    --red:#ff6868;
+    --border:rgba(212,175,55,.16);
 }
 
 html{
@@ -42,49 +38,33 @@ html{
 body{
     min-height:100vh;
     background:
-        radial-gradient(
-            circle at 50% -10%,
-            rgba(212,175,55,.09),
-            transparent 35%
-        ),
+        radial-gradient(circle at 50% -10%,rgba(212,175,55,.09),transparent 35%),
         var(--black);
     color:var(--white);
     font-family:"Cairo",sans-serif;
-    overflow-x:hidden;
+}
+
+button,
+input,
+textarea,
+select{
+    font-family:"Cairo",sans-serif;
+}
+
+button{
+    cursor:pointer;
+}
+
+button:disabled{
+    opacity:.55;
+    cursor:not-allowed;
 }
 
 /* =========================
-   BACKGROUND
+   TOP BAR
 ========================= */
 
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    background:
-        linear-gradient(
-            rgba(255,255,255,.012) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.012) 1px,
-            transparent 1px
-        );
-    background-size:45px 45px;
-    mask-image:linear-gradient(
-        to bottom,
-        black,
-        transparent 85%
-    );
-}
-
-/* =========================
-   HEADER
-========================= */
-
-.header{
+.topbar{
     position:sticky;
     top:0;
     z-index:1000;
@@ -100,27 +80,25 @@ body::before{
     background:rgba(3,3,3,.88);
     backdrop-filter:blur(20px);
 
-    border-bottom:1px solid rgba(212,175,55,.15);
+    border-bottom:1px solid var(--border);
 }
 
-.brand-box{
+.brand{
     display:flex;
     align-items:center;
     gap:13px;
 }
 
 .brand-logo{
-    width:47px;
-    height:47px;
-
+    width:52px;
+    height:52px;
     object-fit:contain;
-
     filter:
-        drop-shadow(0 0 7px rgba(212,175,55,.65))
-        drop-shadow(0 0 18px rgba(212,175,55,.2));
+        drop-shadow(0 0 6px rgba(212,175,55,.65))
+        drop-shadow(0 0 18px rgba(212,175,55,.18));
 }
 
-.brand-text{
+.brand-name{
     direction:ltr;
     font-family:"Playfair Display",serif;
     font-size:25px;
@@ -128,59 +106,78 @@ body::before{
     letter-spacing:4px;
 }
 
-.brand-text span{
+.brand-name span{
     color:var(--gold);
 }
 
 .admin-badge{
-    padding:5px 10px;
-    border:1px solid rgba(212,175,55,.3);
+    padding:6px 12px;
+    border:1px solid rgba(212,175,55,.25);
     color:var(--gold);
     font-size:9px;
     letter-spacing:2px;
 }
 
 /* =========================
-   MAIN
+   CONTAINER
 ========================= */
 
 .container{
-    width:92%;
-    max-width:1400px;
+    width:min(1250px,92%);
     margin:0 auto;
-    padding:55px 0 80px;
+    padding:45px 0 80px;
 }
 
 /* =========================
    HERO
 ========================= */
 
-.dashboard-title{
+.admin-hero{
     position:relative;
-    margin-bottom:40px;
+    overflow:hidden;
+
+    padding:42px;
+
+    margin-bottom:25px;
+
+    background:
+        radial-gradient(circle at 80% 30%,rgba(212,175,55,.09),transparent 35%),
+        linear-gradient(145deg,#111,#070707);
+
+    border:1px solid var(--border);
 }
 
-.dashboard-title small{
+.admin-hero::after{
+    content:"";
+    position:absolute;
+    width:240px;
+    height:240px;
+    border-radius:50%;
+    left:-80px;
+    bottom:-120px;
+    background:rgba(212,175,55,.04);
+    filter:blur(50px);
+}
+
+.hero-small{
     color:var(--gold);
     font-size:10px;
-    letter-spacing:6px;
+    letter-spacing:5px;
 }
 
-.dashboard-title h1{
+.admin-hero h1{
     font-family:"Playfair Display",serif;
-    font-size:clamp(38px,6vw,68px);
-    line-height:1.1;
-    margin-top:8px;
+    font-size:clamp(35px,6vw,60px);
+    margin:8px 0;
 }
 
-.dashboard-title h1 span{
+.admin-hero h1 span{
     color:var(--gold);
 }
 
-.dashboard-title p{
-    color:#666;
+.admin-hero p{
+    color:#777;
     font-size:12px;
-    margin-top:10px;
 }
 
 /* =========================
@@ -190,117 +187,97 @@ body::before{
 .stats{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    margin-bottom:30px;
+    gap:15px;
+    margin-bottom:25px;
 }
 
-.stat-card{
+.stat{
+    padding:22px;
+    background:linear-gradient(145deg,#111,#090909);
+    border:1px solid var(--border);
     position:relative;
     overflow:hidden;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.035),
-            rgba(255,255,255,.008)
-        );
-
-    border:1px solid rgba(212,175,55,.14);
-
-    padding:24px;
-
-    transition:.35s;
 }
 
-.stat-card:hover{
-    transform:translateY(-4px);
-    border-color:rgba(212,175,55,.4);
-}
-
-.stat-card::after{
+.stat::before{
     content:"";
     position:absolute;
-    width:100px;
-    height:100px;
-    border-radius:50%;
-    background:rgba(212,175,55,.05);
-    filter:blur(30px);
-    left:-35px;
-    bottom:-35px;
-}
-
-.stat-icon{
-    color:var(--gold);
-    font-size:22px;
-    margin-bottom:13px;
+    top:0;
+    right:0;
+    width:70px;
+    height:2px;
+    background:var(--gold);
 }
 
 .stat-label{
     color:#777;
-    font-size:11px;
+    font-size:10px;
 }
 
 .stat-value{
+    display:block;
+    color:var(--gold);
     font-family:"Playfair Display",serif;
-    font-size:32px;
-    color:white;
-    margin-top:3px;
+    font-size:30px;
+    margin-top:5px;
 }
 
 /* =========================
-   GRID
+   MAIN GRID
 ========================= */
 
-.dashboard-grid{
+.main-grid{
     display:grid;
-    grid-template-columns:390px 1fr;
+    grid-template-columns:1fr 1.25fr;
     gap:25px;
     align-items:start;
 }
 
-/* =========================
-   CARD
-========================= */
-
-.panel{
+.card{
     background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.025),
-            rgba(255,255,255,.008)
-        );
+        linear-gradient(145deg,rgba(255,255,255,.025),transparent),
+        var(--card);
 
-    border:1px solid rgba(212,175,55,.15);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.35);
-
-    overflow:hidden;
+    border:1px solid var(--border);
+    padding:28px;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
 
-.panel-header{
-    padding:24px 25px;
-
-    border-bottom:1px solid rgba(212,175,55,.1);
-
+.card-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
+    gap:15px;
+
+    margin-bottom:25px;
+    padding-bottom:18px;
+
+    border-bottom:1px solid rgba(255,255,255,.06);
 }
 
-.panel-header h2{
-    font-family:"Playfair Display",serif;
-    font-size:24px;
-}
-
-.panel-header small{
+.card-title small{
     color:var(--gold);
     font-size:9px;
     letter-spacing:3px;
 }
 
-.panel-body{
-    padding:25px;
+.card-title h2{
+    font-family:"Playfair Display",serif;
+    font-size:27px;
+    margin-top:3px;
+}
+
+.card-icon{
+    width:45px;
+    height:45px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid rgba(212,175,55,.25);
+    color:var(--gold);
+    font-size:19px;
 }
 
 /* =========================
@@ -313,7 +290,7 @@ body::before{
 
 label{
     display:block;
-    color:#999;
+    color:#aaa;
     font-size:11px;
     margin-bottom:7px;
 }
@@ -321,150 +298,116 @@ label{
 input,
 textarea,
 select{
-
     width:100%;
 
     padding:13px 14px;
 
     background:#050505;
-
     color:white;
 
     border:1px solid rgba(212,175,55,.15);
 
     outline:none;
 
-    font-family:"Cairo",sans-serif;
     font-size:12px;
 
-    transition:.3s;
+    transition:.25s;
+}
+
+input::placeholder,
+textarea::placeholder{
+    color:#555;
 }
 
 input:focus,
 textarea:focus,
 select:focus{
-    border-color:var(--gold);
-    box-shadow:
-        0 0 0 3px rgba(212,175,55,.05);
+    border-color:rgba(212,175,55,.75);
+    box-shadow:0 0 0 3px rgba(212,175,55,.045);
 }
 
 textarea{
-    min-height:90px;
+    min-height:95px;
     resize:vertical;
 }
 
 select{
+    appearance:auto;
+}
+
+.file-box{
+    position:relative;
+}
+
+input[type="file"]{
+    padding:11px;
+    color:#888;
+}
+
+input[type="file"]::file-selector-button{
+    margin-left:10px;
+    padding:8px 13px;
+
+    border:1px solid rgba(212,175,55,.35);
+
+    background:#111;
+    color:var(--gold);
+
     cursor:pointer;
 }
 
 /* =========================
-   IMAGE UPLOAD
+   IMAGE PREVIEW
 ========================= */
 
-.upload-box{
-    position:relative;
-
-    border:1px dashed rgba(212,175,55,.3);
-
+.preview-wrap{
+    display:none;
+    margin-top:12px;
+    padding:10px;
     background:#050505;
-
-    min-height:150px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    overflow:hidden;
-
-    transition:.3s;
+    border:1px solid rgba(212,175,55,.2);
 }
 
-.upload-box:hover{
-    border-color:var(--gold);
-}
-
-.upload-content{
-    pointer-events:none;
-}
-
-.upload-icon{
-    font-size:28px;
-    color:var(--gold);
-}
-
-.upload-content strong{
+.preview-wrap.show{
     display:block;
-    margin-top:7px;
-    font-size:12px;
-}
-
-.upload-content span{
-    display:block;
-    color:#666;
-    font-size:9px;
-    margin-top:4px;
-}
-
-#imageFile{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    opacity:0;
-    cursor:pointer;
 }
 
 .preview{
-    display:none;
     width:100%;
-    height:210px;
-    object-fit:cover;
+    max-height:250px;
+    object-fit:contain;
+    display:block;
 }
 
 /* =========================
-   BUTTON
+   ADD BUTTON
 ========================= */
 
 .add-button{
     width:100%;
-
+    margin-top:8px;
     padding:15px;
 
-    border:0;
+    border:1px solid var(--gold);
 
-    background:
-        linear-gradient(
-            135deg,
-            var(--gold2),
-            var(--gold)
-        );
+    background:linear-gradient(
+        135deg,
+        var(--gold),
+        #b89220
+    );
 
     color:#000;
 
+    font-size:13px;
     font-weight:800;
 
-    font-family:"Cairo",sans-serif;
-
-    cursor:pointer;
-
-    transition:.35s;
-
-    box-shadow:
-        0 10px 30px rgba(212,175,55,.08);
+    transition:.3s;
 }
 
 .add-button:hover{
+    background:var(--gold-light);
     transform:translateY(-2px);
-    box-shadow:
-        0 15px 35px rgba(212,175,55,.18);
-}
-
-.add-button:disabled{
-    opacity:.5;
-    cursor:not-allowed;
-    transform:none;
+    box-shadow:0 12px 35px rgba(212,175,55,.15);
 }
 
 /* =========================
@@ -474,94 +417,66 @@ select{
 .status{
     display:none;
     margin-top:15px;
-    padding:12px;
-    text-align:center;
+    padding:12px 14px;
     font-size:11px;
+    text-align:center;
 }
 
 .status.success{
     display:block;
-    color:var(--green);
-    background:rgba(40,120,55,.1);
-    border:1px solid rgba(80,190,100,.25);
+    color:#82df82;
+    background:#0d1c0d;
+    border:1px solid #285c28;
 }
 
 .status.error{
     display:block;
-    color:var(--red);
-    background:rgba(150,30,30,.1);
-    border:1px solid rgba(255,80,80,.2);
+    color:#ff8585;
+    background:#200d0d;
+    border:1px solid #662828;
 }
 
 /* =========================
    PRODUCTS
 ========================= */
 
-.products-tools{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.search{
-    width:220px;
-}
-
-.refresh-btn{
-    width:42px;
-    height:42px;
-
-    border:1px solid rgba(212,175,55,.2);
-
-    background:#050505;
-
-    color:var(--gold);
-
-    cursor:pointer;
-
-    font-size:17px;
-}
-
-.refresh-btn:hover{
-    border-color:var(--gold);
-}
-
 .products-list{
-    padding:20px;
+    max-height:650px;
+    overflow:auto;
+    padding-left:4px;
+}
+
+.products-list::-webkit-scrollbar{
+    width:4px;
+}
+
+.products-list::-webkit-scrollbar-thumb{
+    background:rgba(212,175,55,.35);
 }
 
 .product-row{
-    display:grid;
-    grid-template-columns:82px 1fr auto;
-
-    gap:18px;
-
+    display:flex;
     align-items:center;
+    gap:14px;
 
-    padding:14px;
-
+    padding:13px;
     margin-bottom:10px;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.025),
-            rgba(255,255,255,.008)
-        );
-
-    border:1px solid rgba(212,175,55,.1);
+    background:#090909;
+    border:1px solid rgba(255,255,255,.055);
 
     transition:.3s;
 }
 
 .product-row:hover{
-    border-color:rgba(212,175,55,.35);
+    border-color:rgba(212,175,55,.3);
     transform:translateX(-3px);
 }
 
 .product-image{
-    width:82px;
-    height:82px;
+    width:72px;
+    height:72px;
+    flex:none;
 
     object-fit:cover;
 
@@ -570,93 +485,57 @@ select{
     border:1px solid rgba(212,175,55,.15);
 }
 
-.product-info strong{
+.product-data{
+    min-width:0;
+    flex:1;
+}
+
+.product-data strong{
     display:block;
-    font-size:14px;
-    margin-bottom:5px;
-}
 
-.product-category{
-    display:inline-block;
-    color:var(--gold);
-    font-size:9px;
-    margin-bottom:7px;
-}
-
-.product-description{
-    color:#666;
-    font-size:10px;
-
-    max-width:550px;
+    color:#eee;
+    font-size:13px;
 
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
 }
 
-.product-price{
+.product-category{
+    display:block;
     color:var(--gold);
-    font-size:14px;
-    font-weight:800;
+    font-size:9px;
+    margin-top:3px;
+}
 
-    white-space:nowrap;
+.product-price{
+    display:block;
+    color:#aaa;
+    font-size:10px;
+    margin-top:4px;
+}
+
+.product-id{
+    color:#555;
+    font-size:9px;
 }
 
 /* =========================
-   EMPTY
+   EMPTY / LOADING
 ========================= */
 
 .empty{
-    padding:70px 20px;
-    text-align:center;
-    color:#555;
-}
-
-.empty-icon{
-    color:var(--gold);
-    font-size:35px;
-    margin-bottom:10px;
-}
-
-.empty strong{
-    display:block;
-    color:#ddd;
-    font-size:14px;
-}
-
-.empty p{
-    font-size:10px;
-    margin-top:5px;
-}
-
-/* =========================
-   LOADING
-========================= */
-
-.loading{
-    padding:50px;
+    padding:50px 20px;
     text-align:center;
     color:#666;
+
+    border:1px dashed rgba(212,175,55,.15);
 }
 
-.loader{
-    width:28px;
-    height:28px;
-
-    border:2px solid rgba(212,175,55,.15);
-    border-top-color:var(--gold);
-
-    border-radius:50%;
-
-    margin:0 auto 12px;
-
-    animation:spin .8s linear infinite;
-}
-
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
-    }
+.empty-symbol{
+    color:var(--gold);
+    font-size:30px;
+    margin-bottom:8px;
 }
 
 /* =========================
@@ -665,45 +544,56 @@ select{
 
 .footer{
     text-align:center;
-    padding:30px;
-    border-top:1px solid rgba(212,175,55,.1);
-    color:#555;
-    font-size:10px;
+    margin-top:45px;
+    padding-top:25px;
+    border-top:1px solid rgba(255,255,255,.06);
 }
 
-.footer strong{
+.footer-brand{
+    direction:ltr;
+    font-family:"Playfair Display",serif;
+    font-size:20px;
+    letter-spacing:4px;
+}
+
+.footer-brand span{
     color:var(--gold);
+}
+
+.footer p{
+    color:#555;
+    font-size:9px;
+    margin-top:7px;
 }
 
 /* =========================
    RESPONSIVE
 ========================= */
 
-@media(max-width:1050px){
+@media(max-width:900px){
 
-    .dashboard-grid{
+    .main-grid{
         grid-template-columns:1fr;
     }
 
-    .form-panel{
-        max-width:none;
+    .products-list{
+        max-height:none;
     }
-
 }
 
-@media(max-width:700px){
+@media(max-width:650px){
 
-    .header{
-        height:72px;
+    .topbar{
+        height:70px;
         padding:0 4%;
     }
 
     .brand-logo{
-        width:40px;
-        height:40px;
+        width:43px;
+        height:43px;
     }
 
-    .brand-text{
+    .brand-name{
         font-size:20px;
         letter-spacing:3px;
     }
@@ -714,15 +604,11 @@ select{
 
     .container{
         width:94%;
-        padding-top:35px;
+        padding-top:25px;
     }
 
-    .dashboard-title{
-        margin-bottom:25px;
-    }
-
-    .dashboard-title h1{
-        font-size:42px;
+    .admin-hero{
+        padding:28px 22px;
     }
 
     .stats{
@@ -730,98 +616,68 @@ select{
         gap:10px;
     }
 
-    .stat-card{
-        padding:18px;
+    .stat{
+        padding:16px;
     }
 
     .stat-value{
-        font-size:27px;
+        font-size:25px;
     }
 
-    .panel-header{
-        padding:20px;
+    .card{
+        padding:20px 16px;
     }
 
-    .panel-body{
-        padding:18px;
-    }
-
-    .products-tools{
-        width:100%;
-    }
-
-    .search{
-        width:100%;
-    }
-
-    .products-tools{
-        flex:1;
-    }
-
-    .products-list{
-        padding:12px;
+    .card-title h2{
+        font-size:23px;
     }
 
     .product-row{
-        grid-template-columns:65px 1fr;
-        gap:12px;
+        padding:10px;
     }
 
     .product-image{
-        width:65px;
-        height:65px;
+        width:62px;
+        height:62px;
     }
-
-    .product-price{
-        grid-column:2;
-        margin-top:-5px;
-    }
-
-    .product-description{
-        max-width:100%;
-    }
-
 }
 
 @media(max-width:390px){
 
-    .dashboard-title h1{
-        font-size:36px;
+    .brand-name{
+        font-size:18px;
     }
 
-    .panel-header h2{
-        font-size:20px;
+    .admin-hero h1{
+        font-size:35px;
     }
-
 }
-
 </style>
-
 </head>
 
 <body>
 
 <!-- =========================
-     HEADER
+     TOP BAR
 ========================= -->
 
-<header class="header">
+<header class="topbar">
 
-    <div class="brand-box">
+    <div class="brand">
 
         <img
-            class="brand-logo"
             src="logo.png.jpeg"
+            class="brand-logo"
             alt="EL MANS">
 
-        <div class="brand-text">
+        <div class="brand-name">
             <span>EL</span> MANS
         </div>
 
     </div>
 
     <div class="admin-badge">
-        LUXURY ADMIN
+        LUXURY ADMIN PANEL
     </div>
 
 </header>
@@ -830,21 +686,21 @@ select{
 <main class="container">
 
     <!-- =========================
-         TITLE
+         HERO
     ========================= -->
 
-    <section class="dashboard-title">
+    <section class="admin-hero">
 
-        <small>
-            EL MANS CONTROL CENTER
-        </small>
+        <div class="hero-small">
+            EL MANS MANAGEMENT
+        </div>
 
         <h1>
-            لوحة <span>الإدارة</span>
+            لوحة <span>التحكم</span>
         </h1>
 
         <p>
-            إدارة المنتجات والمجموعة الخاصة بـ EL MANS
+            إدارة منتجات EL MANS بكل سهولة وفخامة.
         </p>
 
     </section>
@@ -856,59 +712,45 @@ select{
 
     <section class="stats">
 
-        <div class="stat-card">
+        <div class="stat">
 
-            <div class="stat-icon">
-                ✦
-            </div>
-
-            <div class="stat-label">
+            <span class="stat-label">
                 إجمالي المنتجات
-            </div>
+            </span>
 
-            <div
+            <strong
                 class="stat-value"
-                id="totalProducts">
+                id="productsCount">
                 0
-            </div>
+            </strong>
 
         </div>
 
+        <div class="stat">
 
-        <div class="stat-card">
+            <span class="stat-label">
+                حالة النظام
+            </span>
 
-            <div class="stat-icon">
-                ◈
-            </div>
-
-            <div class="stat-label">
-                المنتجات المعروضة
-            </div>
-
-            <div
+            <strong
                 class="stat-value"
-                id="visibleProducts">
-                0
-            </div>
+                style="font-size:20px;">
+                ONLINE
+            </strong>
 
         </div>
 
+        <div class="stat">
 
-        <div class="stat-card">
+            <span class="stat-label">
+                المتجر
+            </span>
 
-            <div class="stat-icon">
-                ◆
-            </div>
-
-            <div class="stat-label">
-                التصنيفات
-            </div>
-
-            <div
+            <strong
                 class="stat-value"
-                id="totalCategories">
-                0
-            </div>
+                style="font-size:20px;">
+                EL MANS
+            </strong>
 
         </div>
 
@@ -916,257 +758,229 @@ select{
 
 
     <!-- =========================
-         DASHBOARD
+         MAIN
     ========================= -->
 
-    <section class="dashboard-grid">
+    <section class="main-grid">
 
 
-        <!-- =====================
+        <!-- =========================
              ADD PRODUCT
-        ===================== -->
+        ========================= -->
 
-        <div class="panel form-panel">
+        <div class="card">
 
-            <div class="panel-header">
+            <div class="card-header">
 
-                <div>
-                    <small>NEW EDITION</small>
-                    <h2>إضافة منتج</h2>
+                <div class="card-title">
+
+                    <small>
+                        NEW EDITION
+                    </small>
+
+                    <h2>
+                        إضافة منتج
+                    </h2>
+
                 </div>
 
-                <div style="color:#D4AF37;font-size:22px;">
+                <div class="card-icon">
                     +
                 </div>
 
             </div>
 
 
-            <div class="panel-body">
+            <div class="form-group">
 
-                <div class="form-group">
+                <label>
+                    اسم المنتج
+                </label>
 
-                    <label>
-                        اسم المنتج
-                    </label>
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="مثال: اسورة ذهبية">
 
-                    <input
-                        type="text"
-                        id="name"
-                        placeholder="مثال: اسورة ذهبية">
-
-                </div>
+            </div>
 
 
-                <div class="form-group">
+            <div class="form-group">
 
-                    <label>
-                        السعر بالجنيه
-                    </label>
+                <label>
+                    السعر بالجنيه
+                </label>
 
-                    <input
-                        type="number"
-                        id="price"
-                        placeholder="250"
-                        min="0">
+                <input
+                    type="number"
+                    id="price"
+                    placeholder="250"
+                    min="0">
 
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        التصنيف
-                    </label>
-
-                    <select id="category">
-
-                        <option value="">
-                            اختر التصنيف
-                        </option>
-
-                        <option value="men-accessories">
-                            اكسسوارات رجالي
-                        </option>
-
-                        <option value="women-accessories">
-                            اكسسوارات حريمي
-                        </option>
-
-                        <option value="men-chains">
-                            سلاسل رجالي
-                        </option>
-
-                        <option value="women-chains">
-                            سلاسل حريمي
-                        </option>
-
-                        <option value="gifts">
-                            هدايا
-                        </option>
-
-                        <option value="teddy">
-                            دباديب
-                        </option>
-
-                        <option value="men-perfume">
-                            برفانات رجالي
-                        </option>
-
-                        <option value="women-perfume">
-                            برفانات حريمي
-                        </option>
-
-                        <option value="men-body-splash">
-                            بادي سبلاش رجالي
-                        </option>
-
-                        <option value="women-body-splash">
-                            بادي سبلاش حريمي
-                        </option>
-
-                        <option value="parties">
-                            حفلات
-                        </option>
-
-                        <option value="watches">
-                            ساعات
-                        </option>
-
-                        <option value="engagement">
-                            دبل خطوبة
-                        </option>
-
-                    </select>
-
-                </div>
+            </div>
 
 
-                <div class="form-group">
+            <div class="form-group">
 
-                    <label>
-                        اسم التصنيف بالعربي
-                    </label>
+                <label>
+                    التصنيف
+                </label>
 
-                    <input
-                        type="text"
-                        id="categoryName"
-                        placeholder="اكسسوارات حريمي">
+                <select id="category">
 
-                </div>
+                    <option value="">
+                        اختر التصنيف
+                    </option>
+
+                    <option value="men-accessories">
+                        اكسسوارات رجالي
+                    </option>
+
+                    <option value="women-accessories">
+                        اكسسوارات حريمي
+                    </option>
+
+                    <option value="men-chains">
+                        سلاسل رجالي
+                    </option>
+
+                    <option value="women-chains">
+                        سلاسل حريمي
+                    </option>
+
+                    <option value="gifts">
+                        هدايا
+                    </option>
+
+                    <option value="teddy">
+                        دباديب
+                    </option>
+
+                    <option value="men-perfume">
+                        برفانات رجالي
+                    </option>
+
+                    <option value="women-perfume">
+                        برفانات حريمي
+                    </option>
+
+                    <option value="men-body-splash">
+                        بادي سبلاش رجالي
+                    </option>
+
+                    <option value="women-body-splash">
+                        بادي سبلاش حريمي
+                    </option>
+
+                    <option value="parties">
+                        حفلات
+                    </option>
+
+                    <option value="watches">
+                        ساعات
+                    </option>
+
+                    <option value="engagement">
+                        دبل خطوبة
+                    </option>
+
+                </select>
+
+            </div>
 
 
-                <div class="form-group">
+            <div class="form-group">
 
-                    <label>
-                        وصف المنتج
-                    </label>
+                <label>
+                    اسم التصنيف بالعربي
+                </label>
 
-                    <textarea
-                        id="description"
-                        placeholder="اكتب وصف المنتج..."></textarea>
+                <input
+                    type="text"
+                    id="categoryName"
+                    placeholder="اكسسوارات حريمي">
 
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        صورة المنتج
-                    </label>
-
-                    <div class="upload-box">
-
-                        <div
-                            class="upload-content"
-                            id="uploadContent">
-
-                            <div class="upload-icon">
-                                ↑
-                            </div>
-
-                            <strong>
-                                اختر صورة المنتج
-                            </strong>
-
-                            <span>
-                                JPG / PNG / WEBP
-                            </span>
-
-                        </div>
-
-                        <img
-                            id="preview"
-                            class="preview"
-                            alt="Preview">
-
-                        <input
-                            type="file"
-                            id="imageFile"
-                            accept="image/*">
-
-                    </div>
-
-                </div>
+            </div>
 
 
-                <button
-                    class="add-button"
-                    id="addButton"
-                    onclick="addProduct()">
+            <div class="form-group">
 
-                    إضافة المنتج إلى EL MANS
+                <label>
+                    وصف المنتج
+                </label>
 
-                </button>
+                <textarea
+                    id="description"
+                    placeholder="اكتب وصف المنتج..."></textarea>
 
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    صورة المنتج
+                </label>
+
+                <input
+                    type="file"
+                    id="imageFile"
+                    accept="image/*">
 
                 <div
-                    id="status"
-                    class="status">
+                    class="preview-wrap"
+                    id="previewWrap">
+
+                    <img
+                        id="preview"
+                        class="preview"
+                        alt="معاينة الصورة">
+
                 </div>
 
+            </div>
+
+
+            <button
+                class="add-button"
+                id="addButton"
+                onclick="addProduct()">
+
+                إضافة المنتج
+
+            </button>
+
+
+            <div
+                id="status"
+                class="status">
             </div>
 
         </div>
 
 
-        <!-- =====================
+        <!-- =========================
              PRODUCTS
-        ===================== -->
+        ========================= -->
 
-        <div class="panel">
+        <div class="card">
 
-            <div class="panel-header">
+            <div class="card-header">
 
-                <div>
+                <div class="card-title">
 
                     <small>
-                        COLLECTION
+                        EL MANS COLLECTION
                     </small>
 
                     <h2>
-                        المنتجات
+                        المنتجات الحالية
                     </h2>
 
                 </div>
 
-                <div class="products-tools">
-
-                    <input
-                        class="search"
-                        type="text"
-                        id="search"
-                        placeholder="ابحث عن منتج...">
-
-                    <button
-                        class="refresh-btn"
-                        onclick="loadProducts()"
-                        title="تحديث">
-
-                        ↻
-
-                    </button>
-
+                <div class="card-icon">
+                    ✦
                 </div>
 
             </div>
@@ -1176,24 +990,40 @@ select{
                 class="products-list"
                 id="productsList">
 
+                <div class="empty">
+
+                    <div class="empty-symbol">
+                        ✦
+                    </div>
+
+                    جاري تحميل المنتجات...
+
+                </div>
+
             </div>
 
         </div>
 
     </section>
 
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+        <div class="footer-brand">
+            <span>EL</span> MANS
+        </div>
+
+        <p>
+            Luxury Management System © 2026
+        </p>
+
+    </footer>
+
 </main>
-
-
-<footer class="footer">
-
-    <strong>
-        EL MANS
-    </strong>
-
-    — Luxury Admin Dashboard © 2026
-
-</footer>
 
 
 <script>
@@ -1216,47 +1046,41 @@ const supabaseClient =
 
 
 /* =========================================
-   VARIABLES
-========================================= */
-
-let allProducts = [];
-
-
-/* =========================================
    IMAGE PREVIEW
 ========================================= */
 
 document
     .getElementById("imageFile")
-    .addEventListener("change", function(){
+    .addEventListener(
+        "change",
+        function(){
 
-        const file = this.files[0];
+            const file =
+                this.files[0];
 
-        const preview =
-            document.getElementById("preview");
+            const preview =
+                document.getElementById("preview");
 
-        const uploadContent =
-            document.getElementById("uploadContent");
+            const wrap =
+                document.getElementById("previewWrap");
 
-        if(!file){
+            if(!file){
 
-            preview.style.display = "none";
+                wrap.classList.remove("show");
 
-            uploadContent.style.display = "block";
+                preview.src = "";
 
-            preview.src = "";
+                return;
 
-            return;
+            }
+
+            preview.src =
+                URL.createObjectURL(file);
+
+            wrap.classList.add("show");
+
         }
-
-        preview.src =
-            URL.createObjectURL(file);
-
-        preview.style.display = "block";
-
-        uploadContent.style.display = "none";
-
-    });
+    );
 
 
 /* =========================================
@@ -1332,9 +1156,11 @@ async function addProduct(){
         );
 
         return;
+
     }
 
-    if(!price || price < 0){
+
+    if(!Number.isFinite(price) || price <= 0){
 
         showStatus(
             "اكتب سعر صحيح.",
@@ -1342,7 +1168,9 @@ async function addProduct(){
         );
 
         return;
+
     }
+
 
     if(!category){
 
@@ -1352,7 +1180,9 @@ async function addProduct(){
         );
 
         return;
+
     }
+
 
     if(!categoryName){
 
@@ -1362,7 +1192,9 @@ async function addProduct(){
         );
 
         return;
+
     }
+
 
     if(!file){
 
@@ -1372,6 +1204,7 @@ async function addProduct(){
         );
 
         return;
+
     }
 
 
@@ -1407,7 +1240,9 @@ async function addProduct(){
 
         /* UPLOAD */
 
-        const { error: uploadError } =
+        const {
+            error:uploadError
+        } =
             await supabaseClient
                 .storage
                 .from("product-images")
@@ -1434,13 +1269,13 @@ async function addProduct(){
 
         /* PUBLIC URL */
 
-        const { data: publicData } =
+        const {
+            data:publicData
+        } =
             supabaseClient
                 .storage
                 .from("product-images")
-                .getPublicUrl(
-                    filePath
-                );
+                .getPublicUrl(filePath);
 
 
         const imageUrl =
@@ -1449,7 +1284,9 @@ async function addProduct(){
 
         /* INSERT */
 
-        const { error } =
+        const {
+            error
+        } =
             await supabaseClient
                 .from("elmansstore23")
                 .insert({
@@ -1471,6 +1308,8 @@ async function addProduct(){
 
         if(error){
 
+            /* DELETE IMAGE IF INSERT FAILS */
+
             await supabaseClient
                 .storage
                 .from("product-images")
@@ -1484,12 +1323,45 @@ async function addProduct(){
 
 
         showStatus(
-            "تم إضافة المنتج بنجاح ✦",
+            "تم إضافة المنتج بنجاح ✅",
             "success"
         );
 
 
-        resetForm();
+        /* RESET */
+
+        document
+            .getElementById("name")
+            .value = "";
+
+        document
+            .getElementById("price")
+            .value = "";
+
+        document
+            .getElementById("category")
+            .value = "";
+
+        document
+            .getElementById("categoryName")
+            .value = "";
+
+        document
+            .getElementById("description")
+            .value = "";
+
+        document
+            .getElementById("imageFile")
+            .value = "";
+
+        document
+            .getElementById("preview")
+            .src = "";
+
+        document
+            .getElementById("previewWrap")
+            .classList.remove("show");
+
 
         await loadProducts();
 
@@ -1515,55 +1387,9 @@ async function addProduct(){
         button.disabled = false;
 
         button.textContent =
-            "إضافة المنتج إلى EL MANS";
+            "إضافة المنتج";
 
     }
-
-}
-
-
-/* =========================================
-   RESET FORM
-========================================= */
-
-function resetForm(){
-
-    document
-        .getElementById("name")
-        .value = "";
-
-    document
-        .getElementById("price")
-        .value = "";
-
-    document
-        .getElementById("category")
-        .value = "";
-
-    document
-        .getElementById("categoryName")
-        .value = "";
-
-    document
-        .getElementById("description")
-        .value = "";
-
-    document
-        .getElementById("imageFile")
-        .value = "";
-
-    const preview =
-        document.getElementById("preview");
-
-    preview.src = "";
-
-    preview.style.display =
-        "none";
-
-    document
-        .getElementById("uploadContent")
-        .style.display =
-        "block";
 
 }
 
@@ -1577,15 +1403,29 @@ async function loadProducts(){
     const container =
         document.getElementById("productsList");
 
+    const counter =
+        document.getElementById("productsCount");
+
+
     container.innerHTML = `
-        <div class="loading">
-            <div class="loader"></div>
-            جاري تحميل المجموعة...
+
+        <div class="empty">
+
+            <div class="empty-symbol">
+                ✦
+            </div>
+
+            جاري تحميل المنتجات...
+
         </div>
+
     `;
 
 
-    const { data, error } =
+    const {
+        data,
+        error
+    } =
         await supabaseClient
             .from("elmansstore23")
             .select("*")
@@ -1599,24 +1439,23 @@ async function loadProducts(){
 
     if(error){
 
-        console.error(error);
+        console.error(
+            "LOAD PRODUCTS ERROR:",
+            error
+        );
 
         container.innerHTML = `
+
             <div class="empty">
 
-                <div class="empty-icon">
+                <div class="empty-symbol">
                     !
                 </div>
 
-                <strong>
-                    تعذر تحميل المنتجات
-                </strong>
-
-                <p>
-                    تأكد من اتصال Supabase
-                </p>
+                تعذر تحميل المنتجات.
 
             </div>
+
         `;
 
         return;
@@ -1624,84 +1463,30 @@ async function loadProducts(){
     }
 
 
-    allProducts =
+    const products =
         Array.isArray(data)
-        ? data
-        : [];
+            ? data
+            : [];
 
 
-    updateStats();
-
-    renderProducts(
-        allProducts
-    );
-
-}
+    counter.textContent =
+        products.length;
 
 
-/* =========================================
-   STATS
-========================================= */
-
-function updateStats(){
-
-    document
-        .getElementById("totalProducts")
-        .textContent =
-            allProducts.length;
-
-
-    document
-        .getElementById("visibleProducts")
-        .textContent =
-            allProducts.length;
-
-
-    const categories =
-        new Set(
-            allProducts.map(
-                product =>
-                    product.category
-            ).filter(Boolean)
-        );
-
-
-    document
-        .getElementById("totalCategories")
-        .textContent =
-            categories.size;
-
-}
-
-
-/* =========================================
-   RENDER
-========================================= */
-
-function renderProducts(products){
-
-    const container =
-        document.getElementById("productsList");
-
-
-    if(!products.length){
+    if(products.length === 0){
 
         container.innerHTML = `
+
             <div class="empty">
 
-                <div class="empty-icon">
+                <div class="empty-symbol">
                     ✦
                 </div>
 
-                <strong>
-                    لا توجد منتجات
-                </strong>
-
-                <p>
-                    أضف أول منتج إلى المجموعة
-                </p>
+                لا توجد منتجات حاليًا.
 
             </div>
+
         `;
 
         return;
@@ -1710,183 +1495,92 @@ function renderProducts(products){
 
 
     container.innerHTML =
-        products.map(
-            product => `
+        products
+            .map(product => {
 
-                <div class="product-row">
+                const image =
+                    product.image || "";
 
-                    <img
-                        class="product-image"
-                        src="${escapeHtml(
-                            product.image || ""
-                        )}"
-                        alt=""
-                        onerror="
-                            this.style.opacity='.2'
-                        ">
+                const name =
+                    product.name ||
+                    "بدون اسم";
+
+                const category =
+                    product.category_name ||
+                    product.category ||
+                    "بدون تصنيف";
+
+                const price =
+                    Number(
+                        product.price || 0
+                    );
 
 
-                    <div class="product-info">
+                return `
 
-                        <span
-                            class="product-category">
+                    <div class="product-row">
 
-                            ${escapeHtml(
-                                product.category_name ||
-                                product.category ||
-                                "EL MANS"
-                            )}
+                        <img
+                            class="product-image"
+                            src="${escapeHtml(image)}"
+                            alt="${escapeHtml(name)}"
+                            loading="lazy"
+                            onerror="this.style.opacity='.25';">
 
-                        </span>
+                        <div class="product-data">
 
-                        <strong>
+                            <strong>
+                                ${escapeHtml(name)}
+                            </strong>
 
-                            ${escapeHtml(
-                                product.name ||
-                                "بدون اسم"
-                            )}
+                            <span class="product-category">
+                                ${escapeHtml(category)}
+                            </span>
 
-                        </strong>
-
-                        <div
-                            class="product-description">
-
-                            ${escapeHtml(
-                                product.description ||
-                                "لا يوجد وصف"
-                            )}
+                            <span class="product-price">
+                                ${price.toLocaleString("ar-EG")}
+                                جنيه
+                            </span>
 
                         </div>
 
-                    </div>
-
-
-                    <div class="product-price">
-
-                        ${Number(
-                            product.price || 0
-                        ).toLocaleString("ar-EG")}
-
-                        جنيه
+                        <span class="product-id">
+                            #${Number(product.id)}
+                        </span>
 
                     </div>
 
-                </div>
+                `;
 
-            `
-        ).join("");
+            })
+            .join("");
 
 }
 
 
 /* =========================================
-   SEARCH
-========================================= */
-
-document
-    .getElementById("search")
-    .addEventListener(
-        "input",
-        function(){
-
-            const query =
-                this.value
-                    .trim()
-                    .toLowerCase();
-
-
-            if(!query){
-
-                renderProducts(
-                    allProducts
-                );
-
-                document
-                    .getElementById(
-                        "visibleProducts"
-                    )
-                    .textContent =
-                        allProducts.length;
-
-                return;
-
-            }
-
-
-            const filtered =
-                allProducts.filter(
-                    product => {
-
-                        const name =
-                            String(
-                                product.name || ""
-                            ).toLowerCase();
-
-                        const category =
-                            String(
-                                product.category_name || ""
-                            ).toLowerCase();
-
-                        const description =
-                            String(
-                                product.description || ""
-                            ).toLowerCase();
-
-
-                        return (
-                            name.includes(query) ||
-                            category.includes(query) ||
-                            description.includes(query)
-                        );
-
-                    }
-                );
-
-
-            renderProducts(
-                filtered
-            );
-
-
-            document
-                .getElementById(
-                    "visibleProducts"
-                )
-                .textContent =
-                    filtered.length;
-
-        }
-    );
-
-
-/* =========================================
-   ESCAPE
+   ESCAPE HTML
 ========================================= */
 
 function escapeHtml(value){
 
     return String(value)
-
         .replaceAll(
             "&",
             "&amp;"
         )
-
         .replaceAll(
             "<",
             "&lt;"
         )
-
         .replaceAll(
             ">",
             "&gt;"
         )
-
         .replaceAll(
             '"',
             "&quot;"
         )
-
         .replaceAll(
             "'",
             "&#039;"
