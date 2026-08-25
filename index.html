@@ -44,10 +44,6 @@ button,input,textarea,select{
     font-family:"Cairo",sans-serif;
 }
 
-/* =========================
-   WELCOME
-========================= */
-
 .welcome{
     position:fixed;
     inset:0;
@@ -56,12 +52,10 @@ button,input,textarea,select{
     align-items:center;
     justify-content:center;
     overflow:hidden;
-
     background:
         radial-gradient(circle at 50% 42%,rgba(212,175,55,.12),transparent 38%),
         radial-gradient(circle at 50% 100%,rgba(212,175,55,.05),transparent 50%),
         #030303;
-
     transition:.8s;
 }
 
@@ -105,7 +99,6 @@ button,input,textarea,select{
     object-fit:contain;
     display:block;
     transform:scale(1.25);
-
     filter:
         drop-shadow(0 0 7px rgba(212,175,55,.7))
         drop-shadow(0 0 22px rgba(212,175,55,.25));
@@ -158,25 +151,17 @@ button,input,textarea,select{
     box-shadow:0 12px 35px rgba(212,175,55,.15);
 }
 
-/* =========================
-   HEADER
-========================= */
-
 .header{
     height:80px;
     position:sticky;
     top:0;
     z-index:1000;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     padding:0 6%;
-
     background:rgba(3,3,3,.94);
     backdrop-filter:blur(18px);
-
     border-bottom:1px solid rgba(212,175,55,.15);
 }
 
@@ -210,21 +195,14 @@ button,input,textarea,select{
     color:var(--gold);
 }
 
-/* =========================
-   HERO
-========================= */
-
 .hero{
     min-height:calc(100vh - 80px);
     position:relative;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     text-align:center;
     overflow:hidden;
-
     background:
         radial-gradient(circle at 50% 45%,rgba(212,175,55,.12),transparent 38%),
         radial-gradient(circle at 50% 100%,rgba(212,175,55,.05),transparent 50%),
@@ -295,10 +273,6 @@ button,input,textarea,select{
     transform:translateY(-4px);
 }
 
-/* =========================
-   COLLECTION
-========================= */
-
 .collection{
     padding:100px 0;
     background:var(--black2);
@@ -325,10 +299,6 @@ button,input,textarea,select{
 .section-title h2 span{
     color:var(--gold);
 }
-
-/* =========================
-   CATEGORY
-========================= */
 
 .category-bar{
     width:100%;
@@ -368,10 +338,6 @@ button,input,textarea,select{
     color:#000;
     border-color:var(--gold);
 }
-
-/* =========================
-   PRODUCTS
-========================= */
 
 .products-section{
     width:90%;
@@ -547,10 +513,6 @@ button,input,textarea,select{
     color:#000;
 }
 
-/* =========================
-   STORY
-========================= */
-
 .story{
     padding:110px 20px;
     text-align:center;
@@ -584,10 +546,6 @@ button,input,textarea,select{
     line-height:2.7;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
 .footer{
     padding:65px 20px;
     text-align:center;
@@ -611,10 +569,6 @@ button,input,textarea,select{
     font-size:11px;
     margin-top:10px;
 }
-
-/* =========================
-   CART
-========================= */
 
 .floating-cart{
     position:fixed;
@@ -671,10 +625,6 @@ button,input,textarea,select{
 .floating-cart:hover .floating-cart-label{
     opacity:1;
 }
-
-/* =========================
-   CART PANEL
-========================= */
 
 .cart-overlay,
 .product-modal,
@@ -843,10 +793,6 @@ button,input,textarea,select{
     cursor:pointer;
 }
 
-/* =========================
-   MODAL
-========================= */
-
 .product-modal-box{
     width:min(900px,100%);
     max-height:90vh;
@@ -937,10 +883,6 @@ button,input,textarea,select{
     cursor:pointer;
 }
 
-/* =========================
-   ORDER
-========================= */
-
 .order-box{
     width:min(650px,100%);
     max-height:90vh;
@@ -999,6 +941,18 @@ button,input,textarea,select{
     color:var(--gold);
 }
 
+.shipping-row{
+    color:#ddd;
+}
+
+.shipping-row strong{
+    color:var(--gold);
+}
+
+.final-total{
+    font-size:13px;
+}
+
 .form-group{
     margin-bottom:15px;
 }
@@ -1051,10 +1005,6 @@ button,input,textarea,select{
     cursor:pointer;
 }
 
-/* =========================
-   ANIMATIONS
-========================= */
-
 @keyframes welcomeIn{
     from{
         opacity:0;
@@ -1087,10 +1037,6 @@ button,input,textarea,select{
         transform:translateY(0);
     }
 }
-
-/* =========================
-   RESPONSIVE
-========================= */
 
 @media(max-width:950px){
 
@@ -1356,7 +1302,7 @@ button,input,textarea,select{
     </p>
 
     <p>
-        © 2026 EL MANS — جميع الحقوق محفوظة
+        ©️ 2026 EL MANS — جميع الحقوق محفوظة
     </p>
 
 </footer>
@@ -1398,7 +1344,7 @@ button,input,textarea,select{
 
             <div class="cart-total">
 
-                <span>الإجمالي</span>
+                <span>إجمالي المنتجات</span>
 
                 <strong>
                     <span id="cartTotal">0</span>
@@ -1512,7 +1458,7 @@ button,input,textarea,select{
 
             <label>المحافظة</label>
 
-            <select id="customerGovernorate">
+            <select id="customerGovernorate" onchange="updateShippingPreview()">
 
                 <option value="">
                     اختر المحافظة
@@ -1609,6 +1555,53 @@ let cart = [];
 let selectedProduct = null;
 let modalQuantity = 1;
 let currentCategory = "all";
+
+
+/* =========================================
+   SHIPPING
+========================================= */
+
+const shippingPrices = {
+
+    "الغربية": 50,
+
+    "الجيزة": 70,
+
+    "القاهرة": 80,
+
+    "الإسكندرية": 90,
+
+    "الدقهلية": 110,
+    "الشرقية": 110,
+    "المنوفية": 110,
+    "البحيرة": 110,
+    "كفر الشيخ": 110,
+    "دمياط": 110,
+
+    "بورسعيد": 120,
+    "الإسماعيلية": 120,
+    "السويس": 120,
+
+    "مطروح": 130,
+    "الفيوم": 130,
+    "بني سويف": 130,
+
+    "المنيا": 140,
+    "أسيوط": 140,
+
+    "سوهاج": 150,
+    "قنا": 150,
+    "الأقصر": 150,
+    "أسوان": 150
+
+};
+
+
+function getShippingCost(governorate){
+
+    return shippingPrices[governorate] || 150;
+
+}
 
 
 /* =========================================
@@ -2157,19 +2150,44 @@ function closeCart(){
 
 
 /* =========================================
-   ORDER
+   ORDER TOTAL
 ========================================= */
 
-function openOrderForm(){
+function getProductsTotal(){
 
-    if(cart.length === 0){
+    return cart.reduce(
+        (sum,item) =>
+            sum +
+            Number(item.price || 0) *
+            item.quantity,
+        0
+    );
 
-        alert(
-            "السلة فاضية، اختار منتج الأول."
-        );
+}
 
+
+/* =========================================
+   SHIPPING PREVIEW
+========================================= */
+
+function updateShippingPreview(){
+
+    const governorate =
+        document
+            .getElementById("customerGovernorate")
+            .value;
+
+    if(!governorate)
         return;
-    }
+
+    const shipping =
+        getShippingCost(governorate);
+
+    const productsTotal =
+        getProductsTotal();
+
+    const finalTotal =
+        productsTotal + shipping;
 
     const summary =
         document.getElementById("orderSummary");
@@ -2207,25 +2225,132 @@ function openOrderForm(){
 
     });
 
-    const total =
-        cart.reduce(
-            (sum,item) =>
-                sum +
-                Number(item.price || 0) *
-                item.quantity,
-            0
+    html += `
+
+        <div class="summary-row">
+
+            <span>
+                إجمالي المنتجات
+            </span>
+
+            <span>
+                ${productsTotal.toLocaleString("ar-EG")}
+                جنيه
+            </span>
+
+        </div>
+
+        <div class="summary-row shipping-row">
+
+            <span>
+                🚚 الشحن - ${escapeHtml(governorate)}
+            </span>
+
+            <strong>
+                ${shipping.toLocaleString("ar-EG")}
+                جنيه
+            </strong>
+
+        </div>
+
+        <div class="summary-row summary-total final-total">
+
+            <span>
+                الإجمالي النهائي
+            </span>
+
+            <strong>
+                ${finalTotal.toLocaleString("ar-EG")}
+                جنيه
+            </strong>
+
+        </div>
+
+    `;
+
+    summary.innerHTML =
+        html;
+
+}
+
+
+/* =========================================
+   ORDER
+========================================= */
+
+function openOrderForm(){
+
+    if(cart.length === 0){
+
+        alert(
+            "السلة فاضية، اختار منتج الأول."
         );
+
+        return;
+    }
+
+    const summary =
+        document.getElementById("orderSummary");
+
+    const productsTotal =
+        getProductsTotal();
+
+    let html = `
+        <div class="order-summary-title">
+            ملخص الطلب
+        </div>
+    `;
+
+    cart.forEach(item=>{
+
+        html += `
+
+            <div class="summary-row">
+
+                <span>
+                    ${escapeHtml(item.name || "منتج")}
+                    × ${item.quantity}
+                </span>
+
+                <span>
+                    ${
+                        (
+                            Number(item.price || 0) *
+                            item.quantity
+                        ).toLocaleString("ar-EG")
+                    }
+                    جنيه
+                </span>
+
+            </div>
+
+        `;
+
+    });
 
     html += `
 
         <div class="summary-row summary-total">
 
             <span>
-                الإجمالي
+                إجمالي المنتجات
             </span>
 
             <strong>
-                ${total.toLocaleString("ar-EG")} جنيه
+                ${productsTotal.toLocaleString("ar-EG")}
+                جنيه
+            </strong>
+
+        </div>
+
+        <div class="summary-row shipping-row">
+
+            <span>
+                🚚 الشحن
+            </span>
+
+            <strong>
+                اختر المحافظة
             </strong>
 
         </div>
@@ -2243,6 +2368,10 @@ function openOrderForm(){
 
 }
 
+
+/* =========================================
+   CLOSE ORDER
+========================================= */
 
 function closeOrderForm(){
 
@@ -2288,6 +2417,7 @@ function sendOrderToWhatsApp(){
             .value
             .trim();
 
+
     if(!name || !phone || !governorate || !address){
 
         alert(
@@ -2297,78 +2427,114 @@ function sendOrderToWhatsApp(){
         return;
     }
 
+
+    const productsTotal =
+        getProductsTotal();
+
+
+    const shipping =
+        getShippingCost(governorate);
+
+
+    const finalTotal =
+        productsTotal + shipping;
+
+
     let message =
         "🛍️ طلب جديد من EL MANS\n\n";
 
+
     message +=
-        "الاسم: " +
+        "👤 الاسم: " +
         name +
         "\n";
 
+
     message +=
-        "الموبايل: " +
+        "📱 الموبايل: " +
         phone +
         "\n";
 
+
     message +=
-        "المحافظة: " +
+        "📍 المحافظة: " +
         governorate +
         "\n";
 
+
     message +=
-        "العنوان: " +
+        "🏠 العنوان: " +
         address +
         "\n";
+
 
     if(notes){
 
         message +=
-            "ملاحظات: " +
+            "📝 ملاحظات: " +
             notes +
             "\n";
 
     }
 
+
     message +=
-        "\nالمنتجات:\n";
+        "\n🛒 المنتجات:\n";
+
 
     cart.forEach(item=>{
 
+        const itemTotal =
+            Number(item.price || 0) *
+            item.quantity;
+
+
         message +=
+            "• " +
             (item.name || "منتج") +
             " × " +
             item.quantity +
             " = " +
-            (
-                Number(item.price || 0) *
-                item.quantity
-            ) +
+            itemTotal.toLocaleString("ar-EG") +
             " جنيه\n";
 
     });
 
-    const total =
-        cart.reduce(
-            (sum,item) =>
-                sum +
-                Number(item.price || 0) *
-                item.quantity,
-            0
-        );
 
     message +=
-        "\nالإجمالي: " +
-        total +
+        "\n💰 إجمالي المنتجات: " +
+        productsTotal.toLocaleString("ar-EG") +
         " جنيه";
+
+
+    message +=
+        "\n🚚 سعر الشحن (" +
+        governorate +
+        "): " +
+        shipping.toLocaleString("ar-EG") +
+        " جنيه";
+
+
+    message +=
+        "\n━━━━━━━━━━━━━━";
+
+
+    message +=
+        "\n💵 الإجمالي النهائي: " +
+        finalTotal.toLocaleString("ar-EG") +
+        " جنيه";
+
 
     const whatsappNumber =
         "201501140025";
+
 
     const url =
         "https://wa.me/" +
         whatsappNumber +
         "?text=" +
         encodeURIComponent(message);
+
 
     window.open(
         url,
