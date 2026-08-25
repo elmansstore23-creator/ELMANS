@@ -867,6 +867,8 @@ RESPONSIVE
             <option value="parties">حفلات</option>
             <option value="watches">ساعات</option>
             <option value="engagement">دبل خطوبة</option>
+            <option value="vape">فيب (Vape)</option>
+            <option value="liquid">ليكود (E-Liquid)</option>
 
         </select>
 
@@ -1077,7 +1079,9 @@ const categoryNames = {
     "women-body-splash":"بادي سبلاش حريمي",
     "parties":"حفلات",
     "watches":"ساعات",
-    "engagement":"دبل خطوبة"
+    "engagement":"دبل خطوبة",
+    "vape":"فيب",
+    "liquid":"ليكود"
 
 };
 
@@ -1355,13 +1359,6 @@ async function loadOrders(){
     const container =
         document.getElementById("ordersList");
 
-
-    /*
-      اسم جدول الطلبات:
-      orders
-
-      لو جدولك اسمه مختلف غير السطر التالي فقط.
-    */
 
     const {
         data,
@@ -1800,10 +1797,6 @@ CHANGE ORDER STATUS
 
 async function changeOrderStatus(id,status){
 
-    /*
-      سيتم تحديث العمود status في جدول orders
-    */
-
     const {
         error
     } =
@@ -2008,10 +2001,6 @@ async function saveProduct(){
 
     try{
 
-        /* =========================
-        ADD
-        ========================= */
-
         if(editingId === null){
 
             button.textContent =
@@ -2126,11 +2115,6 @@ async function saveProduct(){
 
         }
 
-
-        /* =========================
-        EDIT
-        ========================= */
-
         else{
 
             button.textContent =
@@ -2163,13 +2147,6 @@ async function saveProduct(){
 
             let newFilePath = null;
 
-
-            /*
-              لو اختار صورة جديدة:
-              1. نرفع الجديدة
-              2. نحدث المنتج
-              3. نحذف القديمة
-            */
 
             if(file){
 
@@ -2264,12 +2241,6 @@ async function saveProduct(){
 
             if(error){
 
-                /*
-                  لو تحديث قاعدة البيانات فشل،
-                  نحذف الصورة الجديدة حتى لا تفضل
-                  موجودة بدون استخدام.
-                */
-
                 if(newFilePath){
 
                     await supabaseClient
@@ -2285,10 +2256,6 @@ async function saveProduct(){
 
             }
 
-
-            /*
-              حذف الصورة القديمة بعد نجاح التحديث
-            */
 
             if(
                 file &&
@@ -2653,11 +2620,6 @@ async function deleteProduct(id){
         if(error)
             throw error;
 
-
-        /*
-          تنظيف صورة المنتج من Storage
-          بعد حذف المنتج.
-        */
 
         const filePath =
             getStoragePathFromUrl(
