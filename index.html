@@ -9,7 +9,6 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -42,7 +41,9 @@ body{
 }
 
 
-/* ================= WELCOME ================= */
+/* =========================
+WELCOME
+========================= */
 
 .welcome{
     position:fixed;
@@ -56,7 +57,7 @@ body{
     background:
         radial-gradient(
             circle at center,
-            rgba(212,175,55,.07),
+            rgba(212,175,55,.08),
             transparent 58%
         ),
         #030303;
@@ -78,17 +79,19 @@ body{
 }
 
 
-/* ================= LION ================= */
+/* =========================
+LION
+========================= */
 
 .lion-wrapper{
     width:300px;
     height:300px;
-
     margin:0 auto -8px;
 
     display:flex;
     align-items:center;
     justify-content:center;
+
     position:relative;
 }
 
@@ -135,14 +138,14 @@ body{
 }
 
 
-/* ================= BRAND ================= */
+/* =========================
+BRAND
+========================= */
 
 .brand{
     direction:ltr;
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family:"Playfair Display",serif;
 
     font-size:
         clamp(45px,8vw,76px);
@@ -174,9 +177,9 @@ body{
 .subtitle{
     color:#ddd;
 
-    font-size:18px;
+    font-size:20px;
 
-    font-weight:600;
+    font-weight:700;
 
     letter-spacing:3px;
 
@@ -212,7 +215,9 @@ body{
 }
 
 
-/* ================= HEADER ================= */
+/* =========================
+HEADER
+========================= */
 
 .header{
     height:80px;
@@ -227,8 +232,7 @@ body{
 
     padding:0 6%;
 
-    background:
-        rgba(3,3,3,.94);
+    background:rgba(3,3,3,.94);
 
     backdrop-filter:blur(18px);
 
@@ -244,9 +248,7 @@ body{
 
     color:white;
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family:"Playfair Display",serif;
 
     font-size:24px;
 
@@ -276,11 +278,12 @@ body{
 }
 
 
-/* ================= HERO ================= */
+/* =========================
+HERO
+========================= */
 
 .hero{
-    min-height:
-        calc(100vh - 80px);
+    min-height:calc(100vh - 80px);
 
     display:flex;
     align-items:center;
@@ -309,9 +312,7 @@ body{
 }
 
 .hero h1{
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family:"Playfair Display",serif;
 
     font-size:
         clamp(55px,10vw,105px);
@@ -357,7 +358,9 @@ body{
 }
 
 
-/* ================= COLLECTION ================= */
+/* =========================
+COLLECTION
+========================= */
 
 .collection{
     padding:100px 0;
@@ -381,9 +384,7 @@ body{
 }
 
 .section-title h2{
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family:"Playfair Display",serif;
 
     font-size:
         clamp(40px,6vw,65px);
@@ -396,13 +397,19 @@ body{
 }
 
 
-/* ================= CATEGORY BAR ================= */
+/* =========================
+CATEGORY BAR
+========================= */
 
 .category-bar{
     width:100%;
+
     overflow-x:auto;
+
     scrollbar-width:none;
-    padding:8px 5% 22px;
+
+    padding:
+        8px 5% 22px;
 }
 
 .category-bar::-webkit-scrollbar{
@@ -411,8 +418,11 @@ body{
 
 .category-track{
     display:flex;
+
     justify-content:center;
+
     gap:10px;
+
     min-width:max-content;
 }
 
@@ -453,7 +463,9 @@ body{
 }
 
 
-/* ================= PRODUCTS ================= */
+/* =========================
+PRODUCTS
+========================= */
 
 .products-section{
     width:90%;
@@ -475,10 +487,7 @@ body{
 }
 
 .products-top h3{
-    font-family:
-        "Playfair Display",
-        serif;
-
+    font-family:"Playfair Display",serif;
     font-size:30px;
     margin-top:5px;
 }
@@ -499,7 +508,10 @@ body{
 
 .products-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap:20px;
 }
 
@@ -530,7 +542,6 @@ body{
     height:300px;
 
     position:relative;
-
     overflow:hidden;
 
     background:
@@ -544,8 +555,11 @@ body{
 .product-image img{
     width:100%;
     height:100%;
+
     object-fit:cover;
+
     display:block;
+
     transition:.6s;
 }
 
@@ -589,15 +603,20 @@ body{
 
 .product-info p{
     color:#777;
+
     font-size:11px;
+
     line-height:2;
+
     min-height:44px;
 }
 
 .product-bottom{
     display:flex;
+
     align-items:center;
     justify-content:space-between;
+
     gap:10px;
 
     margin-top:17px;
@@ -610,7 +629,9 @@ body{
 
 .product-price{
     color:var(--gold);
+
     font-weight:800;
+
     font-size:14px;
 }
 
@@ -657,10 +678,13 @@ body{
 }
 
 
-/* ================= STORY ================= */
+/* =========================
+STORY
+========================= */
 
 .story{
     padding:110px 20px;
+
     text-align:center;
 
     border-top:
@@ -680,9 +704,7 @@ body{
 }
 
 .story h2{
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family:"Playfair Display",serif;
 
     font-size:
         clamp(40px,7vw,70px);
@@ -696,12 +718,16 @@ body{
 
 .story p{
     color:#777;
+
     font-size:14px;
+
     line-height:2.7;
 }
 
 
-/* ================= FOOTER ================= */
+/* =========================
+FOOTER
+========================= */
 
 .footer{
     padding:65px 20px;
@@ -718,11 +744,10 @@ body{
 .footer-logo{
     direction:ltr;
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family:"Playfair Display",serif;
 
     font-size:28px;
+
     letter-spacing:5px;
 }
 
@@ -737,7 +762,9 @@ body{
 }
 
 
-/* ================= CART ================= */
+/* =========================
+FLOATING CART
+========================= */
 
 .floating-cart{
     position:fixed;
@@ -789,7 +816,6 @@ body{
 
 .cart-icon{
     font-size:24px;
-    line-height:1;
 }
 
 .cart-number{
@@ -854,7 +880,9 @@ body{
 }
 
 
-/* ================= CART PANEL ================= */
+/* =========================
+CART PANEL
+========================= */
 
 .cart-overlay{
     position:fixed;
@@ -862,8 +890,7 @@ body{
 
     z-index:8000;
 
-    background:
-        rgba(0,0,0,.82);
+    background:rgba(0,0,0,.82);
 
     opacity:0;
     visibility:hidden;
@@ -918,7 +945,9 @@ body{
 
 .cart-header small{
     color:var(--gold);
+
     font-size:10px;
+
     letter-spacing:4px;
 }
 
@@ -947,7 +976,9 @@ body{
 
 .cart-items{
     flex:1;
+
     overflow:auto;
+
     padding:20px;
 }
 
@@ -955,11 +986,14 @@ body{
     height:100%;
 
     display:flex;
+
     flex-direction:column;
+
     align-items:center;
     justify-content:center;
 
     color:#666;
+
     text-align:center;
 }
 
@@ -975,6 +1009,7 @@ body{
 
 .cart-item{
     padding:15px;
+
     margin-bottom:10px;
 
     background:#101010;
@@ -984,6 +1019,7 @@ body{
         rgba(212,175,55,.12);
 
     display:flex;
+
     justify-content:space-between;
     align-items:center;
 }
@@ -994,21 +1030,28 @@ body{
 
 .cart-item-price{
     color:var(--gold);
+
     font-size:11px;
+
     margin-top:5px;
 }
 
 .cart-item-qty{
     color:#777;
+
     font-size:10px;
+
     margin-top:3px;
 }
 
 .remove-item{
     border:0;
     background:none;
+
     color:#777;
+
     font-size:21px;
+
     cursor:pointer;
 }
 
@@ -1022,7 +1065,9 @@ body{
 
 .cart-total{
     display:flex;
+
     justify-content:space-between;
+
     margin-bottom:15px;
 }
 
@@ -1032,6 +1077,7 @@ body{
 
 .checkout-btn{
     width:100%;
+
     padding:15px;
 
     border:0;
@@ -1048,7 +1094,9 @@ body{
 }
 
 
-/* ================= MODAL ================= */
+/* =========================
+PRODUCT MODAL
+========================= */
 
 .product-modal{
     position:fixed;
@@ -1062,8 +1110,7 @@ body{
 
     padding:20px;
 
-    background:
-        rgba(0,0,0,.88);
+    background:rgba(0,0,0,.88);
 
     opacity:0;
     visibility:hidden;
@@ -1078,10 +1125,13 @@ body{
 
 .product-modal-box{
     width:min(900px,100%);
+
     max-height:90vh;
+
     overflow:auto;
 
     display:grid;
+
     grid-template-columns:1fr 1fr;
 
     background:#0a0a0a;
@@ -1112,7 +1162,9 @@ body{
 .modal-image img{
     width:100%;
     height:100%;
+
     object-fit:cover;
+
     display:block;
 }
 
@@ -1147,34 +1199,41 @@ body{
 
 .modal-category{
     color:var(--gold);
+
     font-size:10px;
+
     letter-spacing:3px;
 }
 
 .modal-info h2{
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family:"Playfair Display",serif;
 
     font-size:38px;
+
     margin:12px 0;
 }
 
 .modal-description{
     color:#777;
+
     font-size:13px;
+
     line-height:2.5;
 }
 
 .modal-price{
     color:var(--gold);
+
     font-size:24px;
+
     font-weight:800;
+
     margin:25px 0;
 }
 
 .quantity-box{
     display:flex;
+
     align-items:center;
 
     width:max-content;
@@ -1201,13 +1260,17 @@ body{
 
 .quantity-box span{
     width:45px;
+
     text-align:center;
+
     font-weight:700;
 }
 
 .modal-add{
     width:100%;
+
     margin-top:22px;
+
     padding:15px;
 
     border:0;
@@ -1224,7 +1287,9 @@ body{
 }
 
 
-/* ================= ORDER ================= */
+/* =========================
+ORDER
+========================= */
 
 .order-overlay{
     position:fixed;
@@ -1232,10 +1297,10 @@ body{
 
     z-index:9000;
 
-    background:
-        rgba(0,0,0,.9);
+    background:rgba(0,0,0,.9);
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
@@ -1254,7 +1319,9 @@ body{
 
 .order-box{
     width:min(650px,100%);
+
     max-height:90vh;
+
     overflow:auto;
 
     background:#090909;
@@ -1273,21 +1340,23 @@ body{
 
 .order-title small{
     color:var(--gold);
+
     letter-spacing:4px;
+
     font-size:10px;
 }
 
 .order-title h2{
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family:"Playfair Display",serif;
 
     font-size:32px;
+
     margin-top:6px;
 }
 
 .order-summary{
     padding:15px;
+
     margin-bottom:20px;
 
     background:#050505;
@@ -1299,13 +1368,17 @@ body{
 
 .order-summary-title{
     color:var(--gold);
+
     font-size:11px;
+
     margin-bottom:10px;
 }
 
 .summary-row{
     display:flex;
+
     justify-content:space-between;
+
     gap:15px;
 
     color:#999;
@@ -1321,6 +1394,7 @@ body{
         rgba(212,175,55,.12);
 
     margin-top:8px;
+
     padding-top:10px;
 }
 
@@ -1334,8 +1408,11 @@ body{
 
 .form-group label{
     display:block;
+
     color:#aaa;
+
     font-size:11px;
+
     margin-bottom:7px;
 }
 
@@ -1407,9 +1484,12 @@ body{
 }
 
 
-/* ================= ANIMATION ================= */
+/* =========================
+ANIMATION
+========================= */
 
 @keyframes welcomeIn{
+
     from{
         opacity:0;
         transform:translateY(25px);
@@ -1419,10 +1499,13 @@ body{
         opacity:1;
         transform:translateY(0);
     }
+
 }
 
 
-/* ================= RESPONSIVE ================= */
+/* =========================
+RESPONSIVE
+========================= */
 
 @media(max-width:950px){
 
@@ -1462,7 +1545,7 @@ body{
     }
 
     .subtitle{
-        font-size:14px;
+        font-size:16px;
     }
 
     .category-track{
@@ -1505,6 +1588,7 @@ body{
     .floating-cart{
         right:18px;
         bottom:18px;
+
         width:58px;
         height:58px;
     }
@@ -1534,13 +1618,24 @@ body{
 
 }
 
+
+/* =========================
+ERROR IMAGE FALLBACK
+========================= */
+
+img{
+    max-width:100%;
+}
+
 </style>
 </head>
 
 <body>
 
 
-<!-- ================= WELCOME ================= -->
+<!-- =========================
+WELCOME
+========================= -->
 
 <section class="welcome" id="welcome">
 
@@ -1548,9 +1643,12 @@ body{
 
         <div class="lion-wrapper">
 
+            <!-- الصورة لازم تكون جنب index.html -->
+
             <img
                 src="logo.png.jpeg"
                 alt="EL MANS Lion Logo"
+                onerror="this.style.display='none'"
             >
 
         </div>
@@ -1581,7 +1679,9 @@ body{
 </section>
 
 
-<!-- ================= HEADER ================= -->
+<!-- =========================
+HEADER
+========================= -->
 
 <header class="header">
 
@@ -1602,7 +1702,9 @@ body{
 </header>
 
 
-<!-- ================= HERO ================= -->
+<!-- =========================
+HERO
+========================= -->
 
 <section class="hero" id="home">
 
@@ -1641,12 +1743,11 @@ body{
 </section>
 
 
-<!-- ================= COLLECTION ================= -->
+<!-- =========================
+COLLECTION
+========================= -->
 
-<section
-    class="collection"
-    id="collection"
->
+<section class="collection" id="collection">
 
     <div class="section-title">
 
@@ -1655,8 +1756,7 @@ body{
         </small>
 
         <h2>
-            اختر
-            <span>عالمك</span>
+            اختر <span>عالمك</span>
         </h2>
 
     </div>
@@ -1808,12 +1908,11 @@ body{
 </section>
 
 
-<!-- ================= STORY ================= -->
+<!-- =========================
+STORY
+========================= -->
 
-<section
-    class="story"
-    id="story"
->
+<section class="story" id="story">
 
     <div class="story-content">
 
@@ -1842,7 +1941,9 @@ body{
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =========================
+FOOTER
+========================= -->
 
 <footer class="footer">
 
@@ -1861,7 +1962,9 @@ body{
 </footer>
 
 
-<!-- ================= FLOATING CART ================= -->
+<!-- =========================
+FLOATING CART
+========================= -->
 
 <button
     class="floating-cart"
@@ -1887,7 +1990,9 @@ body{
 </button>
 
 
-<!-- ================= CART ================= -->
+<!-- =========================
+CART
+========================= -->
 
 <div
     class="cart-overlay"
@@ -1958,7 +2063,9 @@ body{
 </div>
 
 
-<!-- ================= PRODUCT MODAL ================= -->
+<!-- =========================
+PRODUCT MODAL
+========================= -->
 
 <div
     class="product-modal"
@@ -2008,9 +2115,7 @@ body{
 
             <div class="quantity-box">
 
-                <button
-                    onclick="changeModalQuantity(-1)"
-                >
+                <button onclick="changeModalQuantity(-1)">
                     −
                 </button>
 
@@ -2018,9 +2123,7 @@ body{
                     1
                 </span>
 
-                <button
-                    onclick="changeModalQuantity(1)"
-                >
+                <button onclick="changeModalQuantity(1)">
                     +
                 </button>
 
@@ -2040,7 +2143,9 @@ body{
 </div>
 
 
-<!-- ================= ORDER ================= -->
+<!-- =========================
+ORDER
+========================= -->
 
 <div
     class="order-overlay"
@@ -2184,169 +2289,176 @@ body{
 
 <script>
 
-/* ================= PRODUCTS ================= */
+
+/* =========================
+PRODUCTS
+========================= */
 
 const products = [
 
-    {
-        id:1,
-        name:"ساعة رجالي كلاسيك",
-        category:"watches",
-        categoryName:"ساعات",
-        price:650,
-        description:"ساعة رجالي بتصميم كلاسيك أنيق.",
-        image:"https://pixelus.io/blog/ai-product-videos-ecommerce/hero.png"
-    },
+{
+    id:1,
+    name:"ساعة رجالي كلاسيك",
+    category:"watches",
+    categoryName:"ساعات",
+    price:650,
+    description:"ساعة رجالي بتصميم كلاسيك أنيق.",
+    image:"https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=900&q=80"
+},
 
-    {
-        id:2,
-        name:"إكسسوار رجالي ستايل",
-        category:"men-accessories",
-        categoryName:"اكسسورات رجالي",
-        price:350,
-        description:"اختيار أنيق لإطلالة رجالي مميزة.",
-        image:"https://i5.walmartimages.com/seo/Men-s-Bracelet-Watch-Set-4-Pcs-Wrist-Set-With-Military-Nylon-Strap-Quartz-and-Black-Leather-Bracelets_421c9da7-dc78-46f6-a36d-e6549a083617.7d722416ba4a57e46b715806dd3c281a.jpeg"
-    },
+{
+    id:2,
+    name:"إكسسوار رجالي ستايل",
+    category:"men-accessories",
+    categoryName:"اكسسورات رجالي",
+    price:350,
+    description:"اختيار أنيق لإطلالة رجالي مميزة.",
+    image:"https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=900&q=80"
+},
 
-    {
-        id:3,
-        name:"إكسسوار حريمي جولد",
-        category:"women-accessories",
-        categoryName:"اكسسورات حريمي",
-        price:450,
-        description:"تصميم حريمي أنيق بلمسة فخامة.",
-        image:"https://joyeriabella.com/cdn/shop/files/pexels-maryami-19288658.jpg?v=1764824950&width=5760"
-    },
+{
+    id:3,
+    name:"إكسسوار حريمي جولد",
+    category:"women-accessories",
+    categoryName:"اكسسورات حريمي",
+    price:450,
+    description:"تصميم حريمي أنيق بلمسة فخامة.",
+    image:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=900&q=80"
+},
 
-    {
-        id:4,
-        name:"سلسلة رجالي كلاسيك",
-        category:"men-chains",
-        categoryName:"سلاسل رجالي",
-        price:500,
-        description:"سلسلة رجالي بتصميم عصري.",
-        image:"https://preciouspulsejewelry.com/cdn/shop/articles/Men_s_Jewelry_Gift_Ideas.png?v=1769703129"
-    },
+{
+    id:4,
+    name:"سلسلة رجالي كلاسيك",
+    category:"men-chains",
+    categoryName:"سلاسل رجالي",
+    price:500,
+    description:"سلسلة رجالي بتصميم عصري.",
+    image:"https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=900&q=80"
+},
 
-    {
-        id:5,
-        name:"سلسلة حريمي جولد",
-        category:"women-chains",
-        categoryName:"سلاسل حريمي",
-        price:550,
-        description:"سلسلة حريمي بتصميم ناعم وفخم.",
-        image:"https://assets.myntassets.com/h_200%2Cw_200%2Cc_fill%2Cg_auto/h_1440%2Cq_100%2Cw_1080/v1/assets/images/19354794/2022/8/2/7c855980-0d43-4eff-92d8-e21f09c8cf0f1659448788905NecklaceandChains1.jpg"
-    },
+{
+    id:5,
+    name:"سلسلة حريمي جولد",
+    category:"women-chains",
+    categoryName:"سلاسل حريمي",
+    price:550,
+    description:"سلسلة حريمي بتصميم ناعم وفخم.",
+    image:"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=900&q=80"
+},
 
-    {
-        id:6,
-        name:"بوكس هدايا فاخر",
-        category:"gifts",
-        categoryName:"هدايا",
-        price:400,
-        description:"بوكس هدايا أنيق للمناسبات الخاصة.",
-        image:"https://static.wixstatic.com/media/aae073_b5837b7da5eb499f82fcec8be8ac7ad0~mv2.jpg/v1/fill/w_480%2Ch_534%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/aae073_b5837b7da5eb499f82fcec8be8ac7ad0~mv2.jpg"
-    },
+{
+    id:6,
+    name:"بوكس هدايا فاخر",
+    category:"gifts",
+    categoryName:"هدايا",
+    price:400,
+    description:"بوكس هدايا أنيق للمناسبات الخاصة.",
+    image:"https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=900&q=80"
+},
 
-    {
-        id:7,
-        name:"دبدوب هدايا",
-        category:"teddy",
-        categoryName:"دباديب",
-        price:450,
-        description:"دبدوب لطيف مناسب للهدايا والمناسبات.",
-        image:"https://static.semrush.com/contentshake/articles/ai-images/7e8038ec-ae92-4feb-ad57-5ad02103d156/5fc2439b-4f69-4ba6-b6d1-29a0fd8a990f"
-    },
+{
+    id:7,
+    name:"دبدوب هدايا",
+    category:"teddy",
+    categoryName:"دباديب",
+    price:450,
+    description:"دبدوب لطيف مناسب للهدايا والمناسبات.",
+    image:"https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=900&q=80"
+},
 
-    {
-        id:8,
-        name:"عطر رجالي كلاسيك",
-        category:"men-perfume",
-        categoryName:"برفانات رجالي",
-        price:750,
-        description:"عطر رجالي بزجاجة سوداء بتصميم فاخر.",
-        image:"https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/97/MTA-92525730/oem_oem_full02.jpg"
-    },
+{
+    id:8,
+    name:"عطر رجالي كلاسيك",
+    category:"men-perfume",
+    categoryName:"برفانات رجالي",
+    price:750,
+    description:"عطر رجالي بزجاجة سوداء بتصميم فاخر.",
+    image:"https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=900&q=80"
+},
 
-    {
-        id:9,
-        name:"عطر حريمي فاخر",
-        category:"women-perfume",
-        categoryName:"برفانات حريمي",
-        price:800,
-        description:"عطر حريمي بزجاجة أنيقة ولمسة فاخرة.",
-        image:"https://cdn.shopify.com/s/files/1/0604/1151/1030/files/133528706-2-Pieces_20_20Edp_20_20100Ml.jpg?v=1775128493"
-    },
+{
+    id:9,
+    name:"عطر حريمي فاخر",
+    category:"women-perfume",
+    categoryName:"برفانات حريمي",
+    price:800,
+    description:"عطر حريمي بزجاجة أنيقة ولمسة فاخرة.",
+    image:"https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=900&q=80"
+},
 
-    {
-        id:10,
-        name:"بادي سبلاش رجالي",
-        category:"men-body-splash",
-        categoryName:"بادي سبلاش رجالي",
-        price:300,
-        description:"بادي سبلاش رجالي بتصميم عصري.",
-        image:"https://unlock.com.ar/cdn/shop/files/POLO_BLUE2048.png?v=1743507518&width=1445"
-    },
+{
+    id:10,
+    name:"بادي سبلاش رجالي",
+    category:"men-body-splash",
+    categoryName:"بادي سبلاش رجالي",
+    price:300,
+    description:"بادي سبلاش رجالي بتصميم عصري.",
+    image:"https://images.unsplash.com/photo-1620916566398-39f1143ab7ba?auto=format&fit=crop&w=900&q=80"
+},
 
-    {
-        id:11,
-        name:"بادي سبلاش حريمي",
-        category:"women-body-splash",
-        categoryName:"بادي سبلاش حريمي",
-        price:320,
-        description:"بادي سبلاش حريمي برائحة منعشة.",
-        image:"https://images.pexels.com/photos/1961786/pexels-photo-1961786.jpeg?auto=compress&cs=tinysrgb&w=900"
-    },
+{
+    id:11,
+    name:"بادي سبلاش حريمي",
+    category:"women-body-splash",
+    categoryName:"بادي سبلاش حريمي",
+    price:320,
+    description:"بادي سبلاش حريمي برائحة منعشة.",
+    image:"https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=900&q=80"
+},
 
-    {
-        id:12,
-        name:"ساعة فاخرة",
-        category:"watches",
-        categoryName:"ساعات",
-        price:900,
-        description:"ساعة بتصميم فاخر مناسبة للإطلالات المختلفة.",
-        image:"https://pixelus.io/blog/ai-product-videos-ecommerce/hero.png"
-    },
+{
+    id:12,
+    name:"ساعة فاخرة",
+    category:"watches",
+    categoryName:"ساعات",
+    price:900,
+    description:"ساعة بتصميم فاخر مناسبة للإطلالات المختلفة.",
+    image:"https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=900&q=80"
+},
 
-    {
-        id:13,
-        name:"دبل خطوبة",
-        category:"engagement",
-        categoryName:"دبل خطوبة",
-        price:1200,
-        description:"دبل خطوبة بتصميم كلاسيكي أنيق.",
-        image:"https://images.unsplash.com/photo-1666278885974-cb4ffbb2c606?auto=format&fit=crop&fm=jpg&q=80&w=1200"
-    }
+{
+    id:13,
+    name:"دبل خطوبة",
+    category:"engagement",
+    categoryName:"دبل خطوبة",
+    price:1200,
+    description:"دبل خطوبة بتصميم كلاسيكي أنيق.",
+    image:"https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=900&q=80"
+}
 
 ];
 
 
-let cart = [];
-let selectedProduct = null;
-let modalQuantity = 1;
+let cart=[];
+let selectedProduct=null;
+let modalQuantity=1;
 
 
-/* ================= ENTER ================= */
+/* =========================
+ENTER
+========================= */
 
 function enterStore(){
 
     document
-        .getElementById("welcome")
-        .classList.add("hide");
+    .getElementById("welcome")
+    .classList.add("hide");
 
 }
 
 
-/* ================= FILTER ================= */
+/* =========================
+FILTER
+========================= */
 
 function filterCategory(category,button){
 
     document
-        .querySelectorAll(".category")
-        .forEach(
-            item =>
-            item.classList.remove("active")
-        );
+    .querySelectorAll(".category")
+    .forEach(
+        item =>
+        item.classList.remove("active")
+    );
 
     button.classList.add("active");
 
@@ -2355,7 +2467,9 @@ function filterCategory(category,button){
 }
 
 
-/* ================= RENDER ================= */
+/* =========================
+RENDER
+========================= */
 
 function renderProducts(category="all"){
 
@@ -2366,21 +2480,20 @@ function renderProducts(category="all"){
         document.getElementById("productsCount");
 
     const filtered =
-        category === "all"
+        category==="all"
         ?
         products
         :
         products.filter(
             product =>
-            product.category === category
+            product.category===category
         );
 
-    count.textContent =
-        filtered.length;
+    count.textContent=filtered.length;
 
-    grid.innerHTML =
+    grid.innerHTML=
 
-        filtered.map(product => `
+        filtered.map(product=>`
 
             <article class="product-card">
 
@@ -2415,11 +2528,8 @@ function renderProducts(category="all"){
                     <div class="product-bottom">
 
                         <div class="product-price">
-
                             ${product.price.toLocaleString("ar-EG")}
-
                             جنيه
-
                         </div>
 
                         <div class="product-actions">
@@ -2451,64 +2561,34 @@ function renderProducts(category="all"){
 }
 
 
-/* ================= MODAL ================= */
+/* =========================
+MODAL
+========================= */
 
 function openProductModal(id){
 
     const product =
         products.find(
             item =>
-            item.id === id
+            item.id===id
         );
 
-    if(!product){
-        return;
-    }
+    if(!product) return;
 
-    selectedProduct =
-        product;
+    selectedProduct=product;
+    modalQuantity=1;
 
-    modalQuantity =
-        1;
-
-    document
-        .getElementById("modalImage")
-        .src =
-        product.image;
+    document.getElementById("modalImage").src=product.image;
+    document.getElementById("modalImage").alt=product.name;
+    document.getElementById("modalCategory").textContent=product.categoryName;
+    document.getElementById("modalName").textContent=product.name;
+    document.getElementById("modalDescription").textContent=product.description;
+    document.getElementById("modalPrice").textContent=product.price.toLocaleString("ar-EG");
+    document.getElementById("modalQuantity").textContent=modalQuantity;
 
     document
-        .getElementById("modalImage")
-        .alt =
-        product.name;
-
-    document
-        .getElementById("modalCategory")
-        .textContent =
-        product.categoryName;
-
-    document
-        .getElementById("modalName")
-        .textContent =
-        product.name;
-
-    document
-        .getElementById("modalDescription")
-        .textContent =
-        product.description;
-
-    document
-        .getElementById("modalPrice")
-        .textContent =
-        product.price.toLocaleString("ar-EG");
-
-    document
-        .getElementById("modalQuantity")
-        .textContent =
-        modalQuantity;
-
-    document
-        .getElementById("productModal")
-        .classList.add("open");
+    .getElementById("productModal")
+    .classList.add("open");
 
 }
 
@@ -2516,64 +2596,54 @@ function openProductModal(id){
 function closeProductModal(){
 
     document
-        .getElementById("productModal")
-        .classList.remove("open");
+    .getElementById("productModal")
+    .classList.remove("open");
 
-    selectedProduct =
-        null;
+    selectedProduct=null;
 
 }
 
 
 function changeModalQuantity(amount){
 
-    modalQuantity += amount;
+    modalQuantity+=amount;
 
-    if(modalQuantity < 1){
-        modalQuantity = 1;
-    }
+    if(modalQuantity<1)
+        modalQuantity=1;
 
-    if(modalQuantity > 20){
-        modalQuantity = 20;
-    }
+    if(modalQuantity>20)
+        modalQuantity=20;
 
     document
-        .getElementById("modalQuantity")
-        .textContent =
-        modalQuantity;
+    .getElementById("modalQuantity")
+    .textContent=modalQuantity;
 
 }
 
 
-/* ================= ADD MODAL ================= */
+/* =========================
+ADD FROM MODAL
+========================= */
 
 function addModalProduct(){
 
-    if(!selectedProduct){
-        return;
-    }
+    if(!selectedProduct) return;
 
     const existing =
         cart.find(
             item =>
-            item.id ===
-            selectedProduct.id
+            item.id===selectedProduct.id
         );
 
     if(existing){
 
-        existing.quantity +=
-            modalQuantity;
+        existing.quantity+=modalQuantity;
 
     }else{
 
         cart.push({
-
             ...selectedProduct,
-
-            quantity:
-                modalQuantity
-
+            quantity:modalQuantity
         });
 
     }
@@ -2587,24 +2657,24 @@ function addModalProduct(){
 }
 
 
-/* ================= ADD ================= */
+/* =========================
+ADD
+========================= */
 
 function addProduct(id){
 
     const product =
         products.find(
             item =>
-            item.id === id
+            item.id===id
         );
 
-    if(!product){
-        return;
-    }
+    if(!product) return;
 
     const existing =
         cart.find(
             item =>
-            item.id === id
+            item.id===id
         );
 
     if(existing){
@@ -2614,11 +2684,8 @@ function addProduct(id){
     }else{
 
         cart.push({
-
             ...product,
-
             quantity:1
-
         });
 
     }
@@ -2630,7 +2697,9 @@ function addProduct(id){
 }
 
 
-/* ================= UPDATE CART ================= */
+/* =========================
+UPDATE CART
+========================= */
 
 function updateCart(){
 
@@ -2645,23 +2714,20 @@ function updateCart(){
 
     const quantity =
         cart.reduce(
-            (sum,item) =>
-            sum + item.quantity,
+            (sum,item)=>
+            sum+item.quantity,
             0
         );
 
-    countElement.textContent =
-        quantity;
+    countElement.textContent=quantity;
 
-    if(cart.length === 0){
+    if(cart.length===0){
 
-        container.innerHTML = `
+        container.innerHTML=`
 
             <div class="cart-empty">
 
-                <span>
-                    ✦
-                </span>
+                <span>✦</span>
 
                 <strong>
                     السلة فاضية
@@ -2675,17 +2741,16 @@ function updateCart(){
 
         `;
 
-        totalElement.textContent =
-            "0";
+        totalElement.textContent="0";
 
         return;
 
     }
 
-    container.innerHTML =
+    container.innerHTML=
 
         cart.map(
-            (item,index) => `
+            (item,index)=>`
 
                 <div class="cart-item">
 
@@ -2698,7 +2763,6 @@ function updateCart(){
                         <div class="cart-item-price">
 
                             ${item.price.toLocaleString("ar-EG")}
-
                             جنيه
 
                         </div>
@@ -2726,20 +2790,22 @@ function updateCart(){
 
     const total =
         cart.reduce(
-            (sum,item) =>
-            sum +
-            item.price *
+            (sum,item)=>
+            sum+
+            item.price*
             item.quantity,
             0
         );
 
-    totalElement.textContent =
+    totalElement.textContent=
         total.toLocaleString("ar-EG");
 
 }
 
 
-/* ================= REMOVE ================= */
+/* =========================
+REMOVE
+========================= */
 
 function removeProduct(index){
 
@@ -2750,34 +2816,36 @@ function removeProduct(index){
 }
 
 
-/* ================= CART ================= */
+/* =========================
+CART
+========================= */
 
 function openCart(){
 
     document
-        .getElementById("cartOverlay")
-        .classList.add("open");
+    .getElementById("cartOverlay")
+    .classList.add("open");
 
 }
 
 function closeCart(){
 
     document
-        .getElementById("cartOverlay")
-        .classList.remove("open");
+    .getElementById("cartOverlay")
+    .classList.remove("open");
 
 }
 
 
-/* ================= ORDER ================= */
+/* =========================
+ORDER
+========================= */
 
 function openOrderForm(){
 
-    if(cart.length === 0){
+    if(cart.length===0){
 
-        alert(
-            "السلة فاضية، اختار منتج الأول."
-        );
+        alert("السلة فاضية، اختار منتج الأول.");
 
         return;
 
@@ -2786,7 +2854,7 @@ function openOrderForm(){
     const summary =
         document.getElementById("orderSummary");
 
-    let html = `
+    let html=`
 
         <div class="order-summary-title">
             ملخص الطلب
@@ -2794,27 +2862,23 @@ function openOrderForm(){
 
     `;
 
-    cart.forEach(item => {
+    cart.forEach(item=>{
 
-        html += `
+        html+=`
 
             <div class="summary-row">
 
                 <span>
-
                     ${item.name}
-
                     ×
-
                     ${item.quantity}
-
                 </span>
 
                 <span>
 
                     ${
                         (
-                            item.price *
+                            item.price*
                             item.quantity
                         ).toLocaleString("ar-EG")
                     }
@@ -2831,18 +2895,16 @@ function openOrderForm(){
 
     const total =
         cart.reduce(
-            (sum,item) =>
-            sum +
-            item.price *
+            (sum,item)=>
+            sum+
+            item.price*
             item.quantity,
             0
         );
 
-    html += `
+    html+=`
 
-        <div
-            class="summary-row summary-total"
-        >
+        <div class="summary-row summary-total">
 
             <span>
                 الإجمالي
@@ -2851,7 +2913,6 @@ function openOrderForm(){
             <strong>
 
                 ${total.toLocaleString("ar-EG")}
-
                 جنيه
 
             </strong>
@@ -2860,14 +2921,13 @@ function openOrderForm(){
 
     `;
 
-    summary.innerHTML =
-        html;
+    summary.innerHTML=html;
 
     closeCart();
 
     document
-        .getElementById("orderOverlay")
-        .classList.add("open");
+    .getElementById("orderOverlay")
+    .classList.add("open");
 
 }
 
@@ -2875,13 +2935,15 @@ function openOrderForm(){
 function closeOrderForm(){
 
     document
-        .getElementById("orderOverlay")
-        .classList.remove("open");
+    .getElementById("orderOverlay")
+    .classList.remove("open");
 
 }
 
 
-/* ================= WHATSAPP ================= */
+/* =========================
+WHATSAPP
+========================= */
 
 function sendOrderToWhatsApp(){
 
@@ -2915,9 +2977,9 @@ function sendOrderToWhatsApp(){
         .trim();
 
     if(
-        !name ||
-        !phone ||
-        !governorate ||
+        !name||
+        !phone||
+        !governorate||
         !address
     ){
 
@@ -2929,84 +2991,76 @@ function sendOrderToWhatsApp(){
 
     }
 
-    let message =
+    let message=
         "🛍️ طلب جديد من EL MANS%0A%0A";
 
-    message +=
-        "الاسم: " +
-        encodeURIComponent(name) +
+    message+=
+        "الاسم: "+
+        encodeURIComponent(name)+
         "%0A";
 
-    message +=
-        "الموبايل: " +
-        encodeURIComponent(phone) +
+    message+=
+        "الموبايل: "+
+        encodeURIComponent(phone)+
         "%0A";
 
-    message +=
-        "المحافظة: " +
-        encodeURIComponent(governorate) +
+    message+=
+        "المحافظة: "+
+        encodeURIComponent(governorate)+
         "%0A";
 
-    message +=
-        "العنوان: " +
-        encodeURIComponent(address) +
+    message+=
+        "العنوان: "+
+        encodeURIComponent(address)+
         "%0A";
 
     if(notes){
 
-        message +=
-            "ملاحظات: " +
-            encodeURIComponent(notes) +
+        message+=
+            "ملاحظات: "+
+            encodeURIComponent(notes)+
             "%0A";
 
     }
 
-    message +=
-        "%0Aالمنتجات:%0A";
+    message+="%0Aالمنتجات:%0A";
 
-    cart.forEach(item => {
+    cart.forEach(item=>{
 
-        message +=
-            encodeURIComponent(
-                item.name
-            ) +
-
-            " × " +
-
-            item.quantity +
-
-            " = " +
-
+        message+=
+            encodeURIComponent(item.name)+
+            " × "+
+            item.quantity+
+            " = "+
             (
-                item.price *
+                item.price*
                 item.quantity
-            ) +
-
+            )+
             " جنيه%0A";
 
     });
 
     const total =
         cart.reduce(
-            (sum,item) =>
-            sum +
-            item.price *
+            (sum,item)=>
+            sum+
+            item.price*
             item.quantity,
             0
         );
 
-    message +=
-        "%0Aالإجمالي: " +
-        total +
+    message+=
+        "%0Aالإجمالي: "+
+        total+
         " جنيه";
 
-    const whatsappNumber =
+    const whatsappNumber=
         "201501140025";
 
-    const url =
-        "https://wa.me/" +
-        whatsappNumber +
-        "?text=" +
+    const url=
+        "https://wa.me/"+
+        whatsappNumber+
+        "?text="+
         message;
 
     window.open(
@@ -3017,54 +3071,52 @@ function sendOrderToWhatsApp(){
 }
 
 
-/* ================= OUTSIDE CLICK ================= */
+/* =========================
+OUTSIDE CLICK
+========================= */
 
 document
-    .getElementById("productModal")
-    .addEventListener(
-        "click",
-        function(event){
+.getElementById("productModal")
+.addEventListener(
+    "click",
+    function(event){
 
-            if(event.target === this){
-                closeProductModal();
-            }
+        if(event.target===this)
+            closeProductModal();
 
-        }
-    );
-
+    }
+);
 
 document
-    .getElementById("orderOverlay")
-    .addEventListener(
-        "click",
-        function(event){
+.getElementById("orderOverlay")
+.addEventListener(
+    "click",
+    function(event){
 
-            if(event.target === this){
-                closeOrderForm();
-            }
+        if(event.target===this)
+            closeOrderForm();
 
-        }
-    );
-
+    }
+);
 
 document
-    .getElementById("cartOverlay")
-    .addEventListener(
-        "click",
-        function(event){
+.getElementById("cartOverlay")
+.addEventListener(
+    "click",
+    function(event){
 
-            if(event.target === this){
-                closeCart();
-            }
+        if(event.target===this)
+            closeCart();
 
-        }
-    );
+    }
+);
 
 
-/* ================= START ================= */
+/* =========================
+START
+========================= */
 
 renderProducts();
-
 updateCart();
 
 </script>
