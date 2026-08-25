@@ -168,9 +168,29 @@ button:disabled{
     color:#D4AF37;
 }
 
+.delete-btn{
+    width:auto;
+    padding:10px 16px;
+    background:#8b1e1e;
+    color:#fff;
+    font-size:13px;
+}
+
+.delete-btn:hover{
+    background:#b52a2a;
+}
+
 @media(max-width:500px){
     .card{
         padding:18px;
+    }
+
+    .product-row{
+        flex-wrap:wrap;
+    }
+
+    .delete-btn{
+        width:100%;
     }
 }
 </style>
@@ -361,9 +381,9 @@ button:disabled{
 
 <script>
 
-/* ================================
+/* =========================================
    SUPABASE
-================================ */
+========================================= */
 
 const SUPABASE_URL =
     "https://bwqtsedackwpyllbtdxl.supabase.co";
@@ -378,9 +398,9 @@ const supabaseClient =
     );
 
 
-/* ================================
+/* =========================================
    IMAGE PREVIEW
-================================ */
+========================================= */
 
 document
     .getElementById("imageFile")
@@ -407,9 +427,9 @@ document
     });
 
 
-/* ================================
+/* =========================================
    STATUS
-================================ */
+========================================= */
 
 function showStatus(message,type){
 
@@ -425,9 +445,9 @@ function showStatus(message,type){
 }
 
 
-/* ================================
+/* =========================================
    ADD PRODUCT
-================================ */
+========================================= */
 
 async function addProduct(){
 
@@ -463,8 +483,6 @@ async function addProduct(){
         document.getElementById("imageFile")
         .files[0];
 
-
-    /* VALIDATION */
 
     if(!name){
 
@@ -525,15 +543,12 @@ async function addProduct(){
             "جاري رفع الصورة...";
 
 
-        /* ================================
-           FILE NAME
-        ================================= */
-
         const extension =
             file.name
                 .split(".")
                 .pop()
                 .toLowerCase();
+
 
         const fileName =
             Date.now() +
@@ -549,10 +564,6 @@ async function addProduct(){
             "products/" +
             fileName;
 
-
-        /* ================================
-           UPLOAD IMAGE
-        ================================= */
 
         const { error: uploadError } =
             await supabaseClient
@@ -579,10 +590,6 @@ async function addProduct(){
             "جاري حفظ المنتج...";
 
 
-        /* ================================
-           PUBLIC IMAGE URL
-        ================================= */
-
         const { data: publicData } =
             supabaseClient
                 .storage
@@ -594,34 +601,22 @@ async function addProduct(){
             publicData.publicUrl;
 
 
-        /* ================================
-           INSERT PRODUCT
-        ================================= */
-
-        const { data, error } =
+        const { error } =
             await supabaseClient
                 .from("elmansstore23")
                 .insert({
 
                     name:name,
-
                     price:price,
-
                     category:category,
-
                     category_name:categoryName,
-
                     description:description,
-
                     image:imageUrl
 
-                })
-                .select();
+                });
 
 
         if(error){
-
-            /* حاول حذف الصورة لو حفظ المنتج فشل */
 
             await supabaseClient
                 .storage
@@ -638,10 +633,6 @@ async function addProduct(){
             "success"
         );
 
-
-        /* ================================
-           RESET
-        ================================= */
 
         document
             .getElementById("name")
@@ -697,9 +688,9 @@ async function addProduct(){
 }
 
 
-/* ================================
+/* =========================================
    LOAD PRODUCTS
-================================ */
+========================================= */
 
 async function loadProducts(){
 
@@ -747,7 +738,7 @@ async function loadProducts(){
             <div class="product-row">
 
                 <img
-                    src="${product.image || ""}"
+                    src="${escapeHtml(product.image || "")}"
                     alt="">
 
                 <div class="product-data">
@@ -768,6 +759,14 @@ async function loadProducts(){
 
                 </div>
 
+                <button
+                    class="delete-btn"
+                    onclick="deleteProduct(${Number(product.id)})">
+
+                    حذف
+
+                </button>
+
             </div>
 
         `).join("");
@@ -775,9 +774,135 @@ async function loadProducts(){
 }
 
 
-/* ================================
+/* =========================================
+   DELETE PRODUCT
+========================================= */
+
+async function deleteProduct(id){
+
+    const product =
+        await getProduct(id);
+
+    if(!product){
+
+        showStatus(
+            "المنتج غير موجود.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const confirmed =
+        confirm(
+            "هل أنت متأكد من حذف المنتج؟\n\n" +
+            (product.name || "منتج EL MANS")
+        );
+
+
+    if(!confirmed)
+        return;
+
+
+    try{
+
+        /* حذف الصورة من Storage */
+
+        if(product.image){
+
+            const marker =
+                "/storage/v1/object/public/product-images/";
+
+            const position =
+                product.image.indexOf(marker);
+
+            if(position !== -1){
+
+                const filePath =
+                    product.image.substring(
+                        position + marker.length
+                    );
+
+                await supabaseClient
+                    .storage
+                    .from("product-images")
+                    .remove([filePath]);
+
+            }
+
+        }
+
+
+        /* حذف المنتج من الجدول */
+
+        const { error } =
+            await supabaseClient
+                .from("elmansstore23")
+                .delete()
+                .eq("id",id);
+
+
+        if(error)
+            throw error;
+
+
+        showStatus(
+            "تم حذف المنتج بنجاح ✅",
+            "success"
+        );
+
+
+        loadProducts();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        showStatus(
+            "تعذر حذف المنتج: " +
+            (error.message || "خطأ غير معروف"),
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   GET PRODUCT
+========================================= */
+
+async function getProduct(id){
+
+    const { data, error } =
+        await supabaseClient
+            .from("elmansstore23")
+            .select("*")
+            .eq("id",id)
+            .single();
+
+
+    if(error){
+
+        console.error(error);
+
+        return null;
+
+    }
+
+
+    return data;
+
+}
+
+
+/* =========================================
    ESCAPE
-================================ */
+========================================= */
 
 function escapeHtml(value){
 
@@ -791,9 +916,9 @@ function escapeHtml(value){
 }
 
 
-/* ================================
+/* =========================================
    START
-================================ */
+========================================= */
 
 loadProducts();
 
