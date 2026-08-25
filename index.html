@@ -68,21 +68,36 @@ button,input,textarea,select{
     animation:welcomeIn 1.2s ease;
 }
 
+/* الأسد مدموج مع الخلفية */
+
 .lion-wrapper{
-    width:300px;
-    height:300px;
+    width:330px;
+    height:330px;
     margin:0 auto -10px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
+    background:transparent;
+    border:none;
+    box-shadow:none;
+    overflow:visible;
 }
 
 .lion-wrapper img{
-    width:290px;
-    height:290px;
+    width:330px;
+    height:330px;
+
     object-fit:contain;
     display:block;
-    transform:scale(1.25);
+
+    background:transparent;
+    border:none;
+    box-shadow:none;
+
+    transform:scale(1.15);
+
     filter:
         drop-shadow(0 0 7px rgba(212,175,55,.7))
         drop-shadow(0 0 22px rgba(212,175,55,.25));
@@ -987,11 +1002,17 @@ button,input,textarea,select{
     .lion-wrapper{
         width:240px;
         height:240px;
+        background:transparent;
+        border:none;
+        box-shadow:none;
     }
 
     .lion-wrapper img{
-        width:235px;
-        height:235px;
+        width:240px;
+        height:240px;
+        background:transparent;
+        border:none;
+        box-shadow:none;
     }
 
     .brand{
@@ -1062,11 +1083,17 @@ button,input,textarea,select{
     .lion-wrapper{
         width:215px;
         height:215px;
+        background:transparent;
+        border:none;
+        box-shadow:none;
     }
 
     .lion-wrapper img{
         width:210px;
         height:210px;
+        background:transparent;
+        border:none;
+        box-shadow:none;
     }
 }
 </style>
@@ -1075,6 +1102,7 @@ button,input,textarea,select{
 <body>
 
 <section class="welcome" id="welcome">
+
     <div class="welcome-content">
 
         <div class="lion-wrapper">
@@ -1098,6 +1126,7 @@ button,input,textarea,select{
         </button>
 
     </div>
+
 </section>
 
 <header class="header">
