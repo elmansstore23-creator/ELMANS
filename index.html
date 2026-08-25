@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -27,7 +28,9 @@
     --gray:#8f8f8f;
 }
 
-html{scroll-behavior:smooth}
+html{
+    scroll-behavior:smooth;
+}
 
 body{
     background:var(--black);
@@ -40,7 +43,9 @@ button,input,textarea,select{
     font-family:"Cairo",sans-serif;
 }
 
-/* WELCOME */
+/* =========================
+   WELCOME
+========================= */
 
 .welcome{
     position:fixed;
@@ -49,9 +54,21 @@ button,input,textarea,select{
     display:flex;
     align-items:center;
     justify-content:center;
+
+    /* الخلفية مدموجة مع الأسد */
     background:
-        radial-gradient(circle at center,rgba(212,175,55,.08),transparent 60%),
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(212,175,55,.12),
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(255,255,255,.025),
+            transparent 65%
+        ),
         #030303;
+
     transition:.8s;
 }
 
@@ -68,11 +85,11 @@ button,input,textarea,select{
     animation:welcomeIn 1.2s ease;
 }
 
-/* الأسد مدموج مع الخلفية */
+/* الأسد */
 
 .lion-wrapper{
-    width:330px;
-    height:330px;
+    width:300px;
+    height:300px;
     margin:0 auto -10px;
 
     display:flex;
@@ -80,23 +97,24 @@ button,input,textarea,select{
     justify-content:center;
 
     background:transparent;
-    border:none;
-    box-shadow:none;
     overflow:visible;
 }
 
 .lion-wrapper img{
-    width:330px;
-    height:330px;
+    width:290px;
+    height:290px;
 
     object-fit:contain;
     display:block;
 
-    background:transparent;
-    border:none;
-    box-shadow:none;
+    transform:scale(1.25);
 
-    transform:scale(1.15);
+    /*
+       دمج الصورة مع الخلفية
+       بحيث الأسود الموجود حول الأسد
+       لا يظهر كمربع منفصل
+    */
+    mix-blend-mode:screen;
 
     filter:
         drop-shadow(0 0 7px rgba(212,175,55,.7))
@@ -111,13 +129,20 @@ button,input,textarea,select{
     letter-spacing:14px;
 }
 
-.gold{color:var(--gold)}
+.gold{
+    color:var(--gold);
+}
 
 .gold-line{
     width:155px;
     height:1px;
     margin:23px auto;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        transparent
+    );
 }
 
 .subtitle{
@@ -131,11 +156,14 @@ button,input,textarea,select{
 .enter-btn{
     min-width:225px;
     padding:15px 35px;
+
     border:1px solid var(--gold);
     background:transparent;
+
     color:var(--gold);
     font-weight:700;
     letter-spacing:3px;
+
     cursor:pointer;
     transition:.35s;
 }
@@ -146,19 +174,25 @@ button,input,textarea,select{
     transform:translateY(-3px);
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 .header{
     height:80px;
     position:sticky;
     top:0;
     z-index:1000;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:0 6%;
+
     background:rgba(3,3,3,.94);
     backdrop-filter:blur(18px);
+
     border-bottom:1px solid rgba(212,175,55,.15);
 }
 
@@ -166,13 +200,16 @@ button,input,textarea,select{
     direction:ltr;
     text-decoration:none;
     color:white;
+
     font-family:"Playfair Display",serif;
     font-size:24px;
     font-weight:700;
     letter-spacing:5px;
 }
 
-.logo span{color:var(--gold)}
+.logo span{
+    color:var(--gold);
+}
 
 .header-nav{
     display:flex;
@@ -186,18 +223,29 @@ button,input,textarea,select{
     transition:.3s;
 }
 
-.header-nav a:hover{color:var(--gold)}
+.header-nav a:hover{
+    color:var(--gold);
+}
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
     min-height:calc(100vh - 80px);
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     text-align:center;
+
     background:
-        radial-gradient(circle at 50% 45%,rgba(212,175,55,.065),transparent 60%);
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(212,175,55,.065),
+            transparent 60%
+        );
 }
 
 .hero-content{
@@ -219,7 +267,9 @@ button,input,textarea,select{
     margin:22px 0;
 }
 
-.hero h1 span{color:var(--gold)}
+.hero h1 span{
+    color:var(--gold);
+}
 
 .hero p{
     color:#777;
@@ -231,11 +281,14 @@ button,input,textarea,select{
     display:inline-block;
     margin-top:35px;
     padding:15px 40px;
+
     background:var(--gold);
     color:#000;
+
     text-decoration:none;
     font-size:13px;
     font-weight:800;
+
     transition:.35s;
 }
 
@@ -244,7 +297,9 @@ button,input,textarea,select{
     transform:translateY(-3px);
 }
 
-/* COLLECTION */
+/* =========================
+   COLLECTION
+========================= */
 
 .collection{
     padding:100px 0;
@@ -269,9 +324,11 @@ button,input,textarea,select{
     margin-top:8px;
 }
 
-.section-title h2 span{color:var(--gold)}
+.section-title h2 span{
+    color:var(--gold);
+}
 
-/* CATEGORY BAR */
+/* CATEGORY */
 
 .category-bar{
     width:100%;
@@ -280,7 +337,9 @@ button,input,textarea,select{
     padding:8px 5% 22px;
 }
 
-.category-bar::-webkit-scrollbar{display:none}
+.category-bar::-webkit-scrollbar{
+    display:none;
+}
 
 .category-track{
     display:flex;
@@ -291,15 +350,21 @@ button,input,textarea,select{
 
 .category{
     flex:none;
+
     padding:11px 22px;
+
     border:1px solid rgba(212,175,55,.25);
     border-radius:40px;
+
     background:rgba(255,255,255,.015);
     color:#aaa;
+
     font-size:11px;
     font-weight:600;
+
     cursor:pointer;
     white-space:nowrap;
+
     transition:.3s;
 }
 
@@ -337,7 +402,9 @@ button,input,textarea,select{
     margin-top:5px;
 }
 
-.products-top h3 span{color:var(--gold)}
+.products-top h3 span{
+    color:var(--gold);
+}
 
 .products-count{
     color:#777;
@@ -391,15 +458,21 @@ button,input,textarea,select{
     position:absolute;
     top:12px;
     right:12px;
+
     padding:5px 10px;
+
     background:var(--gold);
     color:#000;
+
     font-size:9px;
     font-weight:800;
+
     z-index:2;
 }
 
-.product-info{padding:19px}
+.product-info{
+    padding:19px;
+}
 
 .product-info small{
     color:var(--gold);
@@ -423,8 +496,10 @@ button,input,textarea,select{
     align-items:center;
     justify-content:space-between;
     gap:10px;
+
     margin-top:17px;
     padding-top:14px;
+
     border-top:1px solid rgba(255,255,255,.06);
 }
 
@@ -442,11 +517,15 @@ button,input,textarea,select{
 .details-btn,
 .add-product{
     padding:8px 11px;
+
     border:1px solid var(--gold);
     background:transparent;
+
     color:var(--gold);
+
     font-size:9px;
     font-weight:700;
+
     cursor:pointer;
     transition:.3s;
 }
@@ -461,13 +540,16 @@ button,input,textarea,select{
     color:#000;
 }
 
-.add-product:hover{background:var(--gold-light)}
+.add-product:hover{
+    background:var(--gold-light);
+}
 
 /* STORY */
 
 .story{
     padding:110px 20px;
     text-align:center;
+
     border-top:1px solid rgba(212,175,55,.12);
 }
 
@@ -488,7 +570,9 @@ button,input,textarea,select{
     margin:15px 0;
 }
 
-.story h2 span{color:var(--gold)}
+.story h2 span{
+    color:var(--gold);
+}
 
 .story p{
     color:#777;
@@ -501,18 +585,22 @@ button,input,textarea,select{
 .footer{
     padding:65px 20px;
     text-align:center;
+
     background:#010101;
     border-top:1px solid rgba(212,175,55,.12);
 }
 
 .footer-logo{
     direction:ltr;
+
     font-family:"Playfair Display",serif;
     font-size:28px;
     letter-spacing:5px;
 }
 
-.footer-logo span{color:var(--gold)}
+.footer-logo span{
+    color:var(--gold);
+}
 
 .footer p{
     color:#666;
@@ -527,17 +615,25 @@ button,input,textarea,select{
     right:24px;
     bottom:24px;
     z-index:7000;
+
     width:62px;
     height:62px;
+
     border-radius:50%;
     border:1px solid rgba(212,175,55,.85);
+
     background:linear-gradient(145deg,#151515,#050505);
+
     color:var(--gold);
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     cursor:pointer;
+
     box-shadow:0 8px 30px rgba(0,0,0,.7);
+
     transition:.3s;
 }
 
@@ -554,32 +650,47 @@ button,input,textarea,select{
     position:absolute;
     top:-4px;
     right:-3px;
+
     min-width:23px;
     height:23px;
+
     padding:0 6px;
+
     border-radius:50%;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     background:var(--gold);
     color:#000;
+
     font-size:10px;
     font-weight:900;
+
     border:2px solid #030303;
 }
 
 .floating-cart-label{
     position:absolute;
     right:74px;
+
     white-space:nowrap;
+
     padding:7px 12px;
+
     border:1px solid rgba(212,175,55,.2);
+
     background:#0b0b0b;
     color:#aaa;
+
     font-size:10px;
+
     opacity:0;
     transform:translateX(10px);
+
     pointer-events:none;
+
     transition:.3s;
 }
 
@@ -594,9 +705,12 @@ button,input,textarea,select{
     position:fixed;
     inset:0;
     z-index:8000;
+
     background:rgba(0,0,0,.82);
+
     opacity:0;
     visibility:hidden;
+
     transition:.35s;
 }
 
@@ -609,12 +723,17 @@ button,input,textarea,select{
     position:absolute;
     top:0;
     left:0;
+
     width:min(440px,100%);
     height:100%;
+
     background:#090909;
+
     border-right:1px solid rgba(212,175,55,.2);
+
     display:flex;
     flex-direction:column;
+
     transform:translateX(-100%);
     transition:.45s;
 }
@@ -625,9 +744,11 @@ button,input,textarea,select{
 
 .cart-header{
     padding:25px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     border-bottom:1px solid rgba(212,175,55,.15);
 }
 
@@ -637,15 +758,21 @@ button,input,textarea,select{
     letter-spacing:4px;
 }
 
-.cart-header h3{margin-top:4px}
+.cart-header h3{
+    margin-top:4px;
+}
 
 .close-cart{
     width:38px;
     height:38px;
+
     border-radius:50%;
+
     border:1px solid rgba(212,175,55,.2);
+
     background:transparent;
     color:white;
+
     font-size:22px;
     cursor:pointer;
 }
@@ -658,10 +785,12 @@ button,input,textarea,select{
 
 .cart-empty{
     height:100%;
+
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
+
     color:#666;
     text-align:center;
 }
@@ -679,14 +808,19 @@ button,input,textarea,select{
 .cart-item{
     padding:15px;
     margin-bottom:10px;
+
     background:#101010;
+
     border:1px solid rgba(212,175,55,.12);
+
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
-.cart-item h4{font-size:12px}
+.cart-item h4{
+    font-size:12px;
+}
 
 .cart-item-price{
     color:var(--gold);
@@ -710,6 +844,7 @@ button,input,textarea,select{
 
 .cart-footer{
     padding:20px;
+
     border-top:1px solid rgba(212,175,55,.15);
 }
 
@@ -719,15 +854,21 @@ button,input,textarea,select{
     margin-bottom:15px;
 }
 
-.cart-total strong{color:var(--gold)}
+.cart-total strong{
+    color:var(--gold);
+}
 
 .checkout-btn{
     width:100%;
     padding:15px;
+
     border:0;
+
     background:var(--gold);
     color:#000;
+
     font-weight:800;
+
     cursor:pointer;
 }
 
@@ -737,18 +878,28 @@ button,input,textarea,select{
 .order-overlay{
     position:fixed;
     inset:0;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     padding:20px;
+
     background:rgba(0,0,0,.88);
+
     opacity:0;
     visibility:hidden;
+
     transition:.35s;
 }
 
-.product-modal{z-index:8500}
-.order-overlay{z-index:9000}
+.product-modal{
+    z-index:8500;
+}
+
+.order-overlay{
+    z-index:9000;
+}
 
 .product-modal.open,
 .order-overlay.open{
@@ -759,10 +910,14 @@ button,input,textarea,select{
 .product-modal-box{
     width:min(900px,100%);
     max-height:90vh;
+
     overflow:auto;
+
     display:grid;
     grid-template-columns:1fr 1fr;
+
     background:#0a0a0a;
+
     border:1px solid rgba(212,175,55,.3);
 }
 
@@ -774,6 +929,7 @@ button,input,textarea,select{
 .modal-image img{
     width:100%;
     height:100%;
+
     object-fit:cover;
     display:block;
 }
@@ -787,12 +943,17 @@ button,input,textarea,select{
     position:absolute;
     top:18px;
     left:18px;
+
     width:38px;
     height:38px;
+
     border-radius:50%;
+
     border:1px solid rgba(212,175,55,.2);
+
     background:transparent;
     color:white;
+
     font-size:21px;
     cursor:pointer;
 }
@@ -825,17 +986,23 @@ button,input,textarea,select{
 .quantity-box{
     display:flex;
     align-items:center;
+
     width:max-content;
+
     border:1px solid rgba(212,175,55,.3);
 }
 
 .quantity-box button{
     width:42px;
     height:42px;
+
     border:0;
+
     background:transparent;
     color:var(--gold);
+
     font-size:20px;
+
     cursor:pointer;
 }
 
@@ -847,12 +1014,17 @@ button,input,textarea,select{
 
 .modal-add{
     width:100%;
+
     margin-top:22px;
     padding:15px;
+
     border:0;
+
     background:var(--gold);
     color:#000;
+
     font-weight:800;
+
     cursor:pointer;
 }
 
@@ -861,9 +1033,13 @@ button,input,textarea,select{
 .order-box{
     width:min(650px,100%);
     max-height:90vh;
+
     overflow:auto;
+
     background:#090909;
+
     border:1px solid rgba(212,175,55,.25);
+
     padding:35px;
 }
 
@@ -887,7 +1063,9 @@ button,input,textarea,select{
 .order-summary{
     padding:15px;
     margin-bottom:20px;
+
     background:#050505;
+
     border:1px solid rgba(212,175,55,.12);
 }
 
@@ -901,25 +1079,36 @@ button,input,textarea,select{
     display:flex;
     justify-content:space-between;
     gap:15px;
+
     color:#999;
+
     font-size:11px;
+
     padding:5px 0;
 }
 
 .summary-total{
     border-top:1px solid rgba(212,175,55,.12);
+
     margin-top:8px;
     padding-top:10px;
 }
 
-.summary-total strong{color:var(--gold)}
+.summary-total strong{
+    color:var(--gold);
+}
 
-.form-group{margin-bottom:15px}
+.form-group{
+    margin-bottom:15px;
+}
 
 .form-group label{
     display:block;
+
     color:#aaa;
+
     font-size:11px;
+
     margin-bottom:7px;
 }
 
@@ -927,11 +1116,16 @@ button,input,textarea,select{
 .form-group textarea,
 .form-group select{
     width:100%;
+
     border:1px solid rgba(212,175,55,.18);
+
     background:#050505;
     color:white;
+
     padding:13px;
+
     outline:none;
+
     font-size:12px;
 }
 
@@ -948,41 +1142,54 @@ button,input,textarea,select{
 
 .send-whatsapp{
     flex:1;
+
     padding:15px;
+
     border:0;
+
     background:var(--gold);
     color:#000;
+
     font-weight:800;
+
     cursor:pointer;
 }
 
 .cancel-order{
     padding:15px 25px;
+
     border:1px solid rgba(212,175,55,.3);
+
     background:transparent;
     color:#aaa;
+
     cursor:pointer;
 }
 
 /* ANIMATION */
 
 @keyframes welcomeIn{
+
     from{
         opacity:0;
         transform:translateY(25px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
     }
+
 }
 
 /* RESPONSIVE */
 
 @media(max-width:950px){
+
     .products-grid{
         grid-template-columns:repeat(2,1fr);
     }
+
 }
 
 @media(max-width:700px){
@@ -1002,17 +1209,11 @@ button,input,textarea,select{
     .lion-wrapper{
         width:240px;
         height:240px;
-        background:transparent;
-        border:none;
-        box-shadow:none;
     }
 
     .lion-wrapper img{
-        width:240px;
-        height:240px;
-        background:transparent;
-        border:none;
-        box-shadow:none;
+        width:235px;
+        height:235px;
     }
 
     .brand{
@@ -1064,6 +1265,7 @@ button,input,textarea,select{
     .floating-cart{
         right:18px;
         bottom:18px;
+
         width:58px;
         height:58px;
     }
@@ -1071,6 +1273,7 @@ button,input,textarea,select{
     .floating-cart-label{
         display:none;
     }
+
 }
 
 @media(max-width:390px){
@@ -1083,36 +1286,41 @@ button,input,textarea,select{
     .lion-wrapper{
         width:215px;
         height:215px;
-        background:transparent;
-        border:none;
-        box-shadow:none;
     }
 
     .lion-wrapper img{
         width:210px;
         height:210px;
-        background:transparent;
-        border:none;
-        box-shadow:none;
     }
+
 }
+
 </style>
 </head>
 
 <body>
+
+<!-- WELCOME -->
 
 <section class="welcome" id="welcome">
 
     <div class="welcome-content">
 
         <div class="lion-wrapper">
-            <img src="logo.png.jpeg" alt="EL MANS Lion Logo">
+
+            <img
+                src="logo.png.jpeg"
+                alt="EL MANS Lion Logo"
+            >
+
         </div>
 
         <div class="brand">
+
             <span class="gold">E</span>L
             &nbsp;&nbsp;
             M A N S
+
         </div>
 
         <div class="gold-line"></div>
@@ -1129,6 +1337,8 @@ button,input,textarea,select{
 
 </section>
 
+<!-- HEADER -->
+
 <header class="header">
 
     <a href="#home" class="logo">
@@ -1136,12 +1346,18 @@ button,input,textarea,select{
     </a>
 
     <nav class="header-nav">
+
         <a href="#home">الرئيسية</a>
+
         <a href="#collection">المجموعة</a>
+
         <a href="#story">عالم EL MANS</a>
+
     </nav>
 
 </header>
+
+<!-- HERO -->
 
 <section class="hero" id="home">
 
@@ -1172,48 +1388,110 @@ button,input,textarea,select{
 
 </section>
 
+<!-- COLLECTION -->
+
 <section class="collection" id="collection">
 
     <div class="section-title">
-        <small>EL MANS COLLECTION</small>
+
+        <small>
+            EL MANS COLLECTION
+        </small>
 
         <h2>
             اختر
             <span>عالمك</span>
         </h2>
+
     </div>
 
     <div class="category-bar">
 
         <div class="category-track">
 
-            <button class="category active" onclick="filterCategory('all',this)">الكل</button>
+            <button
+                class="category active"
+                onclick="filterCategory('all',this)">
+                الكل
+            </button>
 
-            <button class="category" onclick="filterCategory('men-accessories',this)">اكسسورات رجالي</button>
+            <button
+                class="category"
+                onclick="filterCategory('men-accessories',this)">
+                اكسسورات رجالي
+            </button>
 
-            <button class="category" onclick="filterCategory('women-accessories',this)">اكسسورات حريمي</button>
+            <button
+                class="category"
+                onclick="filterCategory('women-accessories',this)">
+                اكسسورات حريمي
+            </button>
 
-            <button class="category" onclick="filterCategory('men-chains',this)">سلاسل رجالي</button>
+            <button
+                class="category"
+                onclick="filterCategory('men-chains',this)">
+                سلاسل رجالي
+            </button>
 
-            <button class="category" onclick="filterCategory('women-chains',this)">سلاسل حريمي</button>
+            <button
+                class="category"
+                onclick="filterCategory('women-chains',this)">
+                سلاسل حريمي
+            </button>
 
-            <button class="category" onclick="filterCategory('gifts',this)">هدايا</button>
+            <button
+                class="category"
+                onclick="filterCategory('gifts',this)">
+                هدايا
+            </button>
 
-            <button class="category" onclick="filterCategory('teddy',this)">دباديب</button>
+            <button
+                class="category"
+                onclick="filterCategory('teddy',this)">
+                دباديب
+            </button>
 
-            <button class="category" onclick="filterCategory('men-perfume',this)">برفانات رجالي</button>
+            <button
+                class="category"
+                onclick="filterCategory('men-perfume',this)">
+                برفانات رجالي
+            </button>
 
-            <button class="category" onclick="filterCategory('women-perfume',this)">برفانات حريمي</button>
+            <button
+                class="category"
+                onclick="filterCategory('women-perfume',this)">
+                برفانات حريمي
+            </button>
 
-            <button class="category" onclick="filterCategory('men-body-splash',this)">بادي سبلاش رجالي</button>
+            <button
+                class="category"
+                onclick="filterCategory('men-body-splash',this)">
+                بادي سبلاش رجالي
+            </button>
 
-            <button class="category" onclick="filterCategory('women-body-splash',this)">بادي سبلاش حريمي</button>
+            <button
+                class="category"
+                onclick="filterCategory('women-body-splash',this)">
+                بادي سبلاش حريمي
+            </button>
 
-            <button class="category" onclick="filterCategory('parties',this)">حفلات</button>
+            <button
+                class="category"
+                onclick="filterCategory('parties',this)">
+                حفلات
+            </button>
 
-            <button class="category" onclick="filterCategory('watches',this)">ساعات</button>
+            <button
+                class="category"
+                onclick="filterCategory('watches',this)">
+                ساعات
+            </button>
 
-            <button class="category" onclick="filterCategory('engagement',this)">دبل خطوبة</button>
+            <button
+                class="category"
+                onclick="filterCategory('engagement',this)">
+                دبل خطوبة
+            </button>
 
         </div>
 
@@ -1224,32 +1502,48 @@ button,input,textarea,select{
         <div class="products-top">
 
             <div>
-                <small>EL MANS EDITION</small>
+
+                <small>
+                    EL MANS EDITION
+                </small>
 
                 <h3>
                     مختارات
                     <span>الفخامة</span>
                 </h3>
+
             </div>
 
             <div class="products-count">
-                <span id="productsCount">0</span>
+
+                <span id="productsCount">
+                    0
+                </span>
+
                 منتج
+
             </div>
 
         </div>
 
-        <div class="products-grid" id="productsGrid"></div>
+        <div
+            class="products-grid"
+            id="productsGrid">
+        </div>
 
     </div>
 
 </section>
 
+<!-- STORY -->
+
 <section class="story" id="story">
 
     <div class="story-content">
 
-        <small>THE EL MANS WORLD</small>
+        <small>
+            THE EL MANS WORLD
+        </small>
 
         <h2>
             انت الآن في
@@ -1267,23 +1561,40 @@ button,input,textarea,select{
 
 </section>
 
+<!-- FOOTER -->
+
 <footer class="footer">
 
     <div class="footer-logo">
         EL <span>MANS</span>
     </div>
 
-    <p>انت الآن في عالمي الخاص</p>
+    <p>
+        انت الآن في عالمي الخاص
+    </p>
 
-    <p>© 2026 EL MANS — جميع الحقوق محفوظة</p>
+    <p>
+        © 2026 EL MANS — جميع الحقوق محفوظة
+    </p>
 
 </footer>
 
-<button class="floating-cart" onclick="openCart()" aria-label="فتح السلة">
+<!-- FLOATING CART -->
 
-    <span class="cart-icon">🛍</span>
+<button
+    class="floating-cart"
+    onclick="openCart()"
+    aria-label="فتح السلة">
 
-    <span class="cart-number" id="cartCount">0</span>
+    <span class="cart-icon">
+        🛍
+    </span>
+
+    <span
+        class="cart-number"
+        id="cartCount">
+        0
+    </span>
 
     <span class="floating-cart-label">
         سلة المشتريات
@@ -1291,36 +1602,67 @@ button,input,textarea,select{
 
 </button>
 
-<div class="cart-overlay" id="cartOverlay">
+<!-- CART -->
+
+<div
+    class="cart-overlay"
+    id="cartOverlay">
 
     <aside class="cart-panel">
 
         <div class="cart-header">
 
             <div>
-                <small>EL MANS</small>
-                <h3>سلة المشتريات</h3>
+
+                <small>
+                    EL MANS
+                </small>
+
+                <h3>
+                    سلة المشتريات
+                </h3>
+
             </div>
 
-            <button class="close-cart" onclick="closeCart()">×</button>
+            <button
+                class="close-cart"
+                onclick="closeCart()">
+                ×
+            </button>
 
         </div>
 
-        <div class="cart-items" id="cartItems"></div>
+        <div
+            class="cart-items"
+            id="cartItems">
+        </div>
 
         <div class="cart-footer">
 
             <div class="cart-total">
-                <span>الإجمالي</span>
+
+                <span>
+                    الإجمالي
+                </span>
 
                 <strong>
-                    <span id="cartTotal">0</span>
+
+                    <span id="cartTotal">
+                        0
+                    </span>
+
                     جنيه
+
                 </strong>
+
             </div>
 
-            <button class="checkout-btn" onclick="openOrderForm()">
+            <button
+                class="checkout-btn"
+                onclick="openOrderForm()">
+
                 إتمام الطلب
+
             </button>
 
         </div>
@@ -1329,41 +1671,75 @@ button,input,textarea,select{
 
 </div>
 
-<div class="product-modal" id="productModal">
+<!-- PRODUCT MODAL -->
+
+<div
+    class="product-modal"
+    id="productModal">
 
     <div class="product-modal-box">
 
         <div class="modal-image">
-            <img id="modalImage" src="" alt="">
+
+            <img
+                id="modalImage"
+                src=""
+                alt=""
+            >
+
         </div>
 
         <div class="modal-info">
 
-            <button class="modal-close" onclick="closeProductModal()">×</button>
+            <button
+                class="modal-close"
+                onclick="closeProductModal()">
+                ×
+            </button>
 
-            <div class="modal-category" id="modalCategory"></div>
+            <div
+                class="modal-category"
+                id="modalCategory">
+            </div>
 
             <h2 id="modalName"></h2>
 
-            <p class="modal-description" id="modalDescription"></p>
+            <p
+                class="modal-description"
+                id="modalDescription">
+            </p>
 
             <div class="modal-price">
+
                 <span id="modalPrice"></span>
                 جنيه
+
             </div>
 
             <div class="quantity-box">
 
-                <button onclick="changeModalQuantity(-1)">−</button>
+                <button
+                    onclick="changeModalQuantity(-1)">
+                    −
+                </button>
 
-                <span id="modalQuantity">1</span>
+                <span id="modalQuantity">
+                    1
+                </span>
 
-                <button onclick="changeModalQuantity(1)">+</button>
+                <button
+                    onclick="changeModalQuantity(1)">
+                    +
+                </button>
 
             </div>
 
-            <button class="modal-add" onclick="addModalProduct()">
+            <button
+                class="modal-add"
+                onclick="addModalProduct()">
+
                 أضف للسلة
+
             </button>
 
         </div>
@@ -1372,37 +1748,70 @@ button,input,textarea,select{
 
 </div>
 
-<div class="order-overlay" id="orderOverlay">
+<!-- ORDER -->
+
+<div
+    class="order-overlay"
+    id="orderOverlay">
 
     <div class="order-box">
 
         <div class="order-title">
 
-            <small>EL MANS CHECKOUT</small>
+            <small>
+                EL MANS CHECKOUT
+            </small>
 
-            <h2>بيانات الطلب</h2>
+            <h2>
+                بيانات الطلب
+            </h2>
 
         </div>
 
-        <div class="order-summary" id="orderSummary"></div>
-
-        <div class="form-group">
-            <label>الاسم بالكامل</label>
-            <input type="text" id="customerName" placeholder="اكتب اسمك بالكامل">
-        </div>
-
-        <div class="form-group">
-            <label>رقم الموبايل</label>
-            <input type="tel" id="customerPhone" placeholder="01xxxxxxxxx">
+        <div
+            class="order-summary"
+            id="orderSummary">
         </div>
 
         <div class="form-group">
 
-            <label>المحافظة</label>
+            <label>
+                الاسم بالكامل
+            </label>
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="اكتب اسمك بالكامل"
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                رقم الموبايل
+            </label>
+
+            <input
+                type="tel"
+                id="customerPhone"
+                placeholder="01xxxxxxxxx"
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                المحافظة
+            </label>
 
             <select id="customerGovernorate">
 
-                <option value="">اختر المحافظة</option>
+                <option value="">
+                    اختر المحافظة
+                </option>
 
                 <option>القاهرة</option>
                 <option>الجيزة</option>
@@ -1433,28 +1842,46 @@ button,input,textarea,select{
 
         <div class="form-group">
 
-            <label>العنوان بالتفصيل</label>
+            <label>
+                العنوان بالتفصيل
+            </label>
 
-            <textarea id="customerAddress" placeholder="المنطقة، الشارع، رقم العمارة، الدور..."></textarea>
+            <textarea
+                id="customerAddress"
+                placeholder="المنطقة، الشارع، رقم العمارة، الدور...">
+            </textarea>
 
         </div>
 
         <div class="form-group">
 
-            <label>ملاحظات إضافية</label>
+            <label>
+                ملاحظات إضافية
+            </label>
 
-            <textarea id="customerNotes" placeholder="أي ملاحظات على الطلب..."></textarea>
+            <textarea
+                id="customerNotes"
+                placeholder="أي ملاحظات على الطلب...">
+            </textarea>
 
         </div>
 
         <div class="order-buttons">
 
-            <button class="send-whatsapp" onclick="sendOrderToWhatsApp()">
+            <button
+                class="send-whatsapp"
+                onclick="sendOrderToWhatsApp()">
+
                 إرسال الطلب على واتساب
+
             </button>
 
-            <button class="cancel-order" onclick="closeOrderForm()">
+            <button
+                class="cancel-order"
+                onclick="closeOrderForm()">
+
                 رجوع
+
             </button>
 
         </div>
@@ -1604,31 +2031,46 @@ let selectedProduct=null;
 let modalQuantity=1;
 
 function enterStore(){
-    document.getElementById("welcome").classList.add("hide");
+
+    document
+        .getElementById("welcome")
+        .classList.add("hide");
+
 }
 
 function filterCategory(category,button){
 
-    document.querySelectorAll(".category")
-    .forEach(item=>item.classList.remove("active"));
+    document
+        .querySelectorAll(".category")
+        .forEach(item=>{
+            item.classList.remove("active");
+        });
 
     button.classList.add("active");
 
     renderProducts(category);
+
 }
 
 function renderProducts(category="all"){
 
-    const grid=document.getElementById("productsGrid");
-    const count=document.getElementById("productsCount");
+    const grid=
+        document.getElementById("productsGrid");
 
-    const filtered=category==="all"
+    const count=
+        document.getElementById("productsCount");
+
+    const filtered=
+        category==="all"
         ?products
-        :products.filter(product=>product.category===category);
+        :products.filter(
+            product=>product.category===category
+        );
 
     count.textContent=filtered.length;
 
-    grid.innerHTML=filtered.map(product=>`
+    grid.innerHTML=
+        filtered.map(product=>`
 
         <article class="product-card">
 
@@ -1648,16 +2090,23 @@ function renderProducts(category="all"){
 
             <div class="product-info">
 
-                <small>${product.categoryName}</small>
+                <small>
+                    ${product.categoryName}
+                </small>
 
-                <h4>${product.name}</h4>
+                <h4>
+                    ${product.name}
+                </h4>
 
-                <p>${product.description}</p>
+                <p>
+                    ${product.description}
+                </p>
 
                 <div class="product-bottom">
 
                     <div class="product-price">
-                        ${product.price.toLocaleString("ar-EG")} جنيه
+                        ${product.price.toLocaleString("ar-EG")}
+                        جنيه
                     </div>
 
                     <div class="product-actions">
@@ -1683,96 +2132,149 @@ function renderProducts(category="all"){
         </article>
 
     `).join("");
+
 }
 
 function openProductModal(id){
 
-    const product=products.find(item=>item.id===id);
+    const product=
+        products.find(
+            item=>item.id===id
+        );
 
     if(!product)return;
 
     selectedProduct=product;
     modalQuantity=1;
 
-    document.getElementById("modalImage").src=product.image;
-    document.getElementById("modalImage").alt=product.name;
-    document.getElementById("modalCategory").textContent=product.categoryName;
-    document.getElementById("modalName").textContent=product.name;
-    document.getElementById("modalDescription").textContent=product.description;
-    document.getElementById("modalPrice").textContent=product.price.toLocaleString("ar-EG");
-    document.getElementById("modalQuantity").textContent=modalQuantity;
+    document.getElementById("modalImage").src=
+        product.image;
 
-    document.getElementById("productModal").classList.add("open");
+    document.getElementById("modalImage").alt=
+        product.name;
+
+    document.getElementById("modalCategory").textContent=
+        product.categoryName;
+
+    document.getElementById("modalName").textContent=
+        product.name;
+
+    document.getElementById("modalDescription").textContent=
+        product.description;
+
+    document.getElementById("modalPrice").textContent=
+        product.price.toLocaleString("ar-EG");
+
+    document.getElementById("modalQuantity").textContent=
+        modalQuantity;
+
+    document
+        .getElementById("productModal")
+        .classList.add("open");
+
 }
 
 function closeProductModal(){
 
-    document.getElementById("productModal").classList.remove("open");
+    document
+        .getElementById("productModal")
+        .classList.remove("open");
 
     selectedProduct=null;
+
 }
 
 function changeModalQuantity(amount){
 
     modalQuantity+=amount;
 
-    if(modalQuantity<1)modalQuantity=1;
-    if(modalQuantity>20)modalQuantity=20;
+    if(modalQuantity<1)
+        modalQuantity=1;
 
-    document.getElementById("modalQuantity").textContent=modalQuantity;
+    if(modalQuantity>20)
+        modalQuantity=20;
+
+    document.getElementById("modalQuantity").textContent=
+        modalQuantity;
+
 }
 
 function addModalProduct(){
 
     if(!selectedProduct)return;
 
-    const existing=cart.find(item=>item.id===selectedProduct.id);
+    const existing=
+        cart.find(
+            item=>item.id===selectedProduct.id
+        );
 
     if(existing){
+
         existing.quantity+=modalQuantity;
+
     }else{
+
         cart.push({
             ...selectedProduct,
             quantity:modalQuantity
         });
+
     }
 
     updateCart();
     closeProductModal();
     openCart();
+
 }
 
 function addProduct(id){
 
-    const product=products.find(item=>item.id===id);
+    const product=
+        products.find(
+            item=>item.id===id
+        );
 
     if(!product)return;
 
-    const existing=cart.find(item=>item.id===id);
+    const existing=
+        cart.find(
+            item=>item.id===id
+        );
 
     if(existing){
+
         existing.quantity++;
+
     }else{
+
         cart.push({
             ...product,
             quantity:1
         });
+
     }
 
     updateCart();
     openCart();
+
 }
 
 function updateCart(){
 
-    const container=document.getElementById("cartItems");
-    const countElement=document.getElementById("cartCount");
-    const totalElement=document.getElementById("cartTotal");
+    const container=
+        document.getElementById("cartItems");
 
-    const quantity=cart.reduce(
-        (sum,item)=>sum+item.quantity,
-        0
-    );
+    const countElement=
+        document.getElementById("cartCount");
+
+    const totalElement=
+        document.getElementById("cartTotal");
+
+    const quantity=
+        cart.reduce(
+            (sum,item)=>sum+item.quantity,
+            0
+        );
 
     countElement.textContent=quantity;
 
@@ -1784,9 +2286,13 @@ function updateCart(){
 
                 <span>✦</span>
 
-                <strong>السلة فاضية</strong>
+                <strong>
+                    السلة فاضية
+                </strong>
 
-                <p>اختار المنتجات اللي عجبتك</p>
+                <p>
+                    اختار المنتجات اللي عجبتك
+                </p>
 
             </div>
 
@@ -1795,18 +2301,24 @@ function updateCart(){
         totalElement.textContent="0";
 
         return;
+
     }
 
-    container.innerHTML=cart.map((item,index)=>`
+    container.innerHTML=
+        cart.map(
+            (item,index)=>`
 
         <div class="cart-item">
 
             <div>
 
-                <h4>${item.name}</h4>
+                <h4>
+                    ${item.name}
+                </h4>
 
                 <div class="cart-item-price">
-                    ${item.price.toLocaleString("ar-EG")} جنيه
+                    ${item.price.toLocaleString("ar-EG")}
+                    جنيه
                 </div>
 
                 <div class="cart-item-qty">
@@ -1825,12 +2337,16 @@ function updateCart(){
 
     `).join("");
 
-    const total=cart.reduce(
-        (sum,item)=>sum+item.price*item.quantity,
-        0
-    );
+    const total=
+        cart.reduce(
+            (sum,item)=>
+                sum+item.price*item.quantity,
+            0
+        );
 
-    totalElement.textContent=total.toLocaleString("ar-EG");
+    totalElement.textContent=
+        total.toLocaleString("ar-EG");
+
 }
 
 function removeProduct(index){
@@ -1838,33 +2354,46 @@ function removeProduct(index){
     cart.splice(index,1);
 
     updateCart();
+
 }
 
 function openCart(){
 
-    document.getElementById("cartOverlay").classList.add("open");
+    document
+        .getElementById("cartOverlay")
+        .classList.add("open");
+
 }
 
 function closeCart(){
 
-    document.getElementById("cartOverlay").classList.remove("open");
+    document
+        .getElementById("cartOverlay")
+        .classList.remove("open");
+
 }
 
 function openOrderForm(){
 
     if(cart.length===0){
 
-        alert("السلة فاضية، اختار منتج الأول.");
+        alert(
+            "السلة فاضية، اختار منتج الأول."
+        );
 
         return;
+
     }
 
-    const summary=document.getElementById("orderSummary");
+    const summary=
+        document.getElementById("orderSummary");
 
     let html=`
+
         <div class="order-summary-title">
             ملخص الطلب
         </div>
+
     `;
 
     cart.forEach(item=>{
@@ -1888,19 +2417,24 @@ function openOrderForm(){
 
     });
 
-    const total=cart.reduce(
-        (sum,item)=>sum+item.price*item.quantity,
-        0
-    );
+    const total=
+        cart.reduce(
+            (sum,item)=>
+                sum+item.price*item.quantity,
+            0
+        );
 
     html+=`
 
         <div class="summary-row summary-total">
 
-            <span>الإجمالي</span>
+            <span>
+                الإجمالي
+            </span>
 
             <strong>
-                ${total.toLocaleString("ar-EG")} جنيه
+                ${total.toLocaleString("ar-EG")}
+                جنيه
             </strong>
 
         </div>
@@ -1911,41 +2445,100 @@ function openOrderForm(){
 
     closeCart();
 
-    document.getElementById("orderOverlay").classList.add("open");
+    document
+        .getElementById("orderOverlay")
+        .classList.add("open");
+
 }
 
 function closeOrderForm(){
 
-    document.getElementById("orderOverlay").classList.remove("open");
+    document
+        .getElementById("orderOverlay")
+        .classList.remove("open");
+
 }
 
 function sendOrderToWhatsApp(){
 
-    const name=document.getElementById("customerName").value.trim();
-    const phone=document.getElementById("customerPhone").value.trim();
-    const governorate=document.getElementById("customerGovernorate").value;
-    const address=document.getElementById("customerAddress").value.trim();
-    const notes=document.getElementById("customerNotes").value.trim();
+    const name=
+        document
+            .getElementById("customerName")
+            .value
+            .trim();
 
-    if(!name || !phone || !governorate || !address){
+    const phone=
+        document
+            .getElementById("customerPhone")
+            .value
+            .trim();
 
-        alert("من فضلك املأ البيانات الأساسية للطلب.");
+    const governorate=
+        document
+            .getElementById("customerGovernorate")
+            .value;
+
+    const address=
+        document
+            .getElementById("customerAddress")
+            .value
+            .trim();
+
+    const notes=
+        document
+            .getElementById("customerNotes")
+            .value
+            .trim();
+
+    if(
+        !name ||
+        !phone ||
+        !governorate ||
+        !address
+    ){
+
+        alert(
+            "من فضلك املأ البيانات الأساسية للطلب."
+        );
 
         return;
+
     }
 
-    let message="🛍️ طلب جديد من EL MANS\n\n";
+    let message=
+        "🛍️ طلب جديد من EL MANS\n\n";
 
-    message+="الاسم: "+name+"\n";
-    message+="الموبايل: "+phone+"\n";
-    message+="المحافظة: "+governorate+"\n";
-    message+="العنوان: "+address+"\n";
+    message+=
+        "الاسم: "+
+        name+
+        "\n";
+
+    message+=
+        "الموبايل: "+
+        phone+
+        "\n";
+
+    message+=
+        "المحافظة: "+
+        governorate+
+        "\n";
+
+    message+=
+        "العنوان: "+
+        address+
+        "\n";
 
     if(notes){
-        message+="ملاحظات: "+notes+"\n";
+
+        message+=
+            "ملاحظات: "+
+            notes+
+            "\n";
+
     }
 
-    message+="\nالمنتجات:\n";
+    message+=
+        "\nالمنتجات:\n";
 
     cart.forEach(item=>{
 
@@ -1959,14 +2552,20 @@ function sendOrderToWhatsApp(){
 
     });
 
-    const total=cart.reduce(
-        (sum,item)=>sum+item.price*item.quantity,
-        0
-    );
+    const total=
+        cart.reduce(
+            (sum,item)=>
+                sum+item.price*item.quantity,
+            0
+        );
 
-    message+="\nالإجمالي: "+total+" جنيه";
+    message+=
+        "\nالإجمالي: "+
+        total+
+        " جنيه";
 
-    const whatsappNumber="201501140025";
+    const whatsappNumber=
+        "201501140025";
 
     const url=
         "https://wa.me/"+
@@ -1974,35 +2573,59 @@ function sendOrderToWhatsApp(){
         "?text="+
         encodeURIComponent(message);
 
-    window.open(url,"_blank");
+    window.open(
+        url,
+        "_blank"
+    );
+
 }
 
-document.getElementById("productModal").addEventListener(
-    "click",
-    function(event){
-        if(event.target===this){
-            closeProductModal();
-        }
-    }
-);
+/* CLOSE MODALS */
 
-document.getElementById("orderOverlay").addEventListener(
-    "click",
-    function(event){
-        if(event.target===this){
-            closeOrderForm();
-        }
-    }
-);
+document
+    .getElementById("productModal")
+    .addEventListener(
+        "click",
+        function(event){
 
-document.getElementById("cartOverlay").addEventListener(
-    "click",
-    function(event){
-        if(event.target===this){
-            closeCart();
+            if(event.target===this){
+
+                closeProductModal();
+
+            }
+
         }
-    }
-);
+    );
+
+document
+    .getElementById("orderOverlay")
+    .addEventListener(
+        "click",
+        function(event){
+
+            if(event.target===this){
+
+                closeOrderForm();
+
+            }
+
+        }
+    );
+
+document
+    .getElementById("cartOverlay")
+    .addEventListener(
+        "click",
+        function(event){
+
+            if(event.target===this){
+
+                closeCart();
+
+            }
+
+        }
+    );
 
 renderProducts();
 updateCart();
