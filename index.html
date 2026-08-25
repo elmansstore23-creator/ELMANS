@@ -42,9 +42,7 @@ body{
 }
 
 
-/* =====================================================
-   WELCOME
-===================================================== */
+/* ================= WELCOME ================= */
 
 .welcome{
     position:fixed;
@@ -76,14 +74,11 @@ body{
     width:94%;
     max-width:700px;
     text-align:center;
-
     animation:welcomeIn 1.2s ease;
 }
 
 
-/* =====================================================
-   LION
-===================================================== */
+/* ================= LION ================= */
 
 .lion-wrapper{
     width:300px;
@@ -94,6 +89,7 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
+    position:relative;
 }
 
 .lion-wrapper img{
@@ -101,6 +97,7 @@ body{
     height:290px;
 
     object-fit:contain;
+    display:block;
 
     mix-blend-mode:screen;
 
@@ -131,7 +128,6 @@ body{
             0 0 6px
             rgba(212,175,55,.65)
         )
-
         drop-shadow(
             0 0 20px
             rgba(212,175,55,.25)
@@ -139,9 +135,7 @@ body{
 }
 
 
-/* =====================================================
-   BRAND
-===================================================== */
+/* ================= BRAND ================= */
 
 .brand{
     direction:ltr;
@@ -162,7 +156,6 @@ body{
     color:var(--gold);
 }
 
-
 .gold-line{
     width:155px;
     height:1px;
@@ -178,7 +171,6 @@ body{
         );
 }
 
-
 .subtitle{
     color:#ddd;
 
@@ -190,7 +182,6 @@ body{
 
     margin-bottom:32px;
 }
-
 
 .enter-btn{
     min-width:225px;
@@ -216,30 +207,22 @@ body{
 
 .enter-btn:hover{
     background:var(--gold);
-
     color:#000;
-
     transform:translateY(-3px);
 }
 
 
-/* =====================================================
-   HEADER
-===================================================== */
+/* ================= HEADER ================= */
 
 .header{
     height:80px;
 
     position:sticky;
-
     top:0;
-
     z-index:1000;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     padding:0 6%;
@@ -253,7 +236,6 @@ body{
         1px solid
         rgba(212,175,55,.15);
 }
-
 
 .logo{
     direction:ltr;
@@ -277,42 +259,31 @@ body{
     color:var(--gold);
 }
 
-
 .header-nav{
     display:flex;
-
     gap:35px;
 }
 
-
 .header-nav a{
     color:#999;
-
     text-decoration:none;
-
     font-size:12px;
-
     transition:.3s;
 }
-
 
 .header-nav a:hover{
     color:var(--gold);
 }
 
 
-/* =====================================================
-   HERO
-===================================================== */
+/* ================= HERO ================= */
 
 .hero{
     min-height:
         calc(100vh - 80px);
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     text-align:center;
@@ -325,24 +296,17 @@ body{
         );
 }
 
-
 .hero-content{
     width:92%;
-
     max-width:900px;
-
     padding:70px 20px;
 }
 
-
 .hero-label{
     color:var(--gold);
-
     font-size:11px;
-
     letter-spacing:7px;
 }
-
 
 .hero h1{
     font-family:
@@ -357,20 +321,15 @@ body{
     margin:22px 0;
 }
 
-
 .hero h1 span{
     color:var(--gold);
 }
 
-
 .hero p{
     color:#777;
-
     font-size:14px;
-
     line-height:2.5;
 }
-
 
 .hero-btn{
     display:inline-block;
@@ -392,17 +351,13 @@ body{
     transition:.35s;
 }
 
-
 .hero-btn:hover{
     background:var(--gold-light);
-
     transform:translateY(-3px);
 }
 
 
-/* =====================================================
-   COLLECTION
-===================================================== */
+/* ================= COLLECTION ================= */
 
 .collection{
     padding:100px 0;
@@ -414,22 +369,16 @@ body{
         rgba(212,175,55,.12);
 }
 
-
 .section-title{
     text-align:center;
-
     margin-bottom:40px;
 }
 
-
 .section-title small{
     color:var(--gold);
-
     font-size:10px;
-
     letter-spacing:6px;
 }
-
 
 .section-title h2{
     font-family:
@@ -442,43 +391,30 @@ body{
     margin-top:8px;
 }
 
-
 .section-title h2 span{
     color:var(--gold);
 }
 
 
-/* =====================================================
-   CATEGORY BAR
-===================================================== */
+/* ================= CATEGORY BAR ================= */
 
 .category-bar{
     width:100%;
-
     overflow-x:auto;
-
     scrollbar-width:none;
-
-    padding:
-        8px 5% 22px;
+    padding:8px 5% 22px;
 }
-
 
 .category-bar::-webkit-scrollbar{
     display:none;
 }
 
-
 .category-track{
     display:flex;
-
     justify-content:center;
-
     gap:10px;
-
     min-width:max-content;
 }
-
 
 .category{
     flex:none;
@@ -509,49 +445,34 @@ body{
     transition:.3s;
 }
 
-
 .category:hover,
 .category.active{
     background:var(--gold);
-
     color:#000;
-
     border-color:var(--gold);
 }
 
 
-/* =====================================================
-   PRODUCTS
-===================================================== */
+/* ================= PRODUCTS ================= */
 
 .products-section{
     width:90%;
-
     max-width:1300px;
-
     margin:45px auto 0;
 }
 
-
 .products-top{
     display:flex;
-
     justify-content:space-between;
-
     align-items:end;
-
     margin-bottom:25px;
 }
 
-
 .products-top small{
     color:var(--gold);
-
     font-size:10px;
-
     letter-spacing:4px;
 }
-
 
 .products-top h3{
     font-family:
@@ -559,39 +480,28 @@ body{
         serif;
 
     font-size:30px;
-
     margin-top:5px;
 }
-
 
 .products-top h3 span{
     color:var(--gold);
 }
 
-
 .products-count{
     color:#777;
-
     font-size:11px;
 }
 
-
 .products-count span{
     color:var(--gold);
-
     font-size:18px;
 }
 
-
 .products-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     gap:20px;
 }
-
 
 .product-card{
     background:var(--card);
@@ -605,7 +515,6 @@ body{
     transition:.4s;
 }
 
-
 .product-card:hover{
     transform:translateY(-7px);
 
@@ -616,7 +525,6 @@ body{
         0 20px 45px
         rgba(0,0,0,.65);
 }
-
 
 .product-image{
     height:300px;
@@ -633,24 +541,18 @@ body{
         );
 }
 
-
 .product-image img{
     width:100%;
     height:100%;
-
     object-fit:cover;
-
     display:block;
-
     transition:.6s;
 }
-
 
 .product-card:hover
 .product-image img{
     transform:scale(1.08);
 }
-
 
 .product-badge{
     position:absolute;
@@ -671,48 +573,34 @@ body{
     z-index:2;
 }
 
-
 .product-info{
     padding:19px;
 }
 
-
 .product-info small{
     color:var(--gold);
-
     font-size:10px;
 }
 
-
 .product-info h4{
     font-size:16px;
-
     margin:8px 0;
 }
 
-
 .product-info p{
     color:#777;
-
     font-size:11px;
-
     line-height:2;
-
     min-height:44px;
 }
 
-
 .product-bottom{
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
     gap:10px;
 
     margin-top:17px;
-
     padding-top:14px;
 
     border-top:
@@ -720,22 +608,16 @@ body{
         rgba(255,255,255,.06);
 }
 
-
 .product-price{
     color:var(--gold);
-
     font-weight:800;
-
     font-size:14px;
 }
 
-
 .product-actions{
     display:flex;
-
     gap:7px;
 }
-
 
 .details-btn,
 .add-product{
@@ -760,33 +642,25 @@ body{
     transition:.3s;
 }
 
-
 .add-product{
     background:var(--gold);
-
     color:#000;
 }
-
 
 .details-btn:hover{
     background:var(--gold);
-
     color:#000;
 }
-
 
 .add-product:hover{
     background:var(--gold-light);
 }
 
 
-/* =====================================================
-   STORY
-===================================================== */
+/* ================= STORY ================= */
 
 .story{
     padding:110px 20px;
-
     text-align:center;
 
     border-top:
@@ -794,22 +668,16 @@ body{
         rgba(212,175,55,.12);
 }
 
-
 .story-content{
     max-width:750px;
-
     margin:auto;
 }
 
-
 .story small{
     color:var(--gold);
-
     letter-spacing:6px;
-
     font-size:10px;
 }
-
 
 .story h2{
     font-family:
@@ -822,24 +690,18 @@ body{
     margin:15px 0;
 }
 
-
 .story h2 span{
     color:var(--gold);
 }
 
-
 .story p{
     color:#777;
-
     font-size:14px;
-
     line-height:2.7;
 }
 
 
-/* =====================================================
-   FOOTER
-===================================================== */
+/* ================= FOOTER ================= */
 
 .footer{
     padding:65px 20px;
@@ -853,7 +715,6 @@ body{
         rgba(212,175,55,.12);
 }
 
-
 .footer-logo{
     direction:ltr;
 
@@ -862,41 +723,31 @@ body{
         serif;
 
     font-size:28px;
-
     letter-spacing:5px;
 }
-
 
 .footer-logo span{
     color:var(--gold);
 }
 
-
 .footer p{
     color:#666;
-
     font-size:11px;
-
     margin-top:10px;
 }
 
 
-/* =====================================================
-   FLOATING CART
-===================================================== */
+/* ================= CART ================= */
 
 .floating-cart{
-
     position:fixed;
 
     right:24px;
-
     bottom:24px;
 
     z-index:7000;
 
     width:62px;
-
     height:62px;
 
     border-radius:50%;
@@ -915,9 +766,7 @@ body{
     color:var(--gold);
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     cursor:pointer;
@@ -929,45 +778,27 @@ body{
         0 0 20px
         rgba(212,175,55,.12);
 
-    transition:
-        transform .3s,
-        box-shadow .3s;
+    transition:.3s;
 }
 
-
 .floating-cart:hover{
-
     transform:
         translateY(-5px)
         scale(1.05);
-
-    box-shadow:
-        0 12px 35px
-        rgba(0,0,0,.8),
-
-        0 0 28px
-        rgba(212,175,55,.25);
 }
 
-
 .cart-icon{
-
     font-size:24px;
-
     line-height:1;
 }
 
-
 .cart-number{
-
     position:absolute;
 
     top:-4px;
-
     right:-3px;
 
     min-width:23px;
-
     height:23px;
 
     padding:0 6px;
@@ -975,9 +806,7 @@ body{
     border-radius:50%;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     background:var(--gold);
@@ -985,15 +814,12 @@ body{
     color:#000;
 
     font-size:10px;
-
     font-weight:900;
 
     border:2px solid #030303;
 }
 
-
 .floating-cart-label{
-
     position:absolute;
 
     right:74px;
@@ -1014,33 +840,24 @@ body{
 
     opacity:0;
 
-    transform:
-        translateX(10px);
+    transform:translateX(10px);
 
     pointer-events:none;
 
     transition:.3s;
 }
 
-
 .floating-cart:hover
 .floating-cart-label{
-
     opacity:1;
-
-    transform:
-        translateX(0);
+    transform:translateX(0);
 }
 
 
-/* =====================================================
-   CART PANEL
-===================================================== */
+/* ================= CART PANEL ================= */
 
 .cart-overlay{
-
     position:fixed;
-
     inset:0;
 
     z-index:8000;
@@ -1049,31 +866,23 @@ body{
         rgba(0,0,0,.82);
 
     opacity:0;
-
     visibility:hidden;
 
     transition:.35s;
 }
 
-
 .cart-overlay.open{
-
     opacity:1;
-
     visibility:visible;
 }
 
-
 .cart-panel{
-
     position:absolute;
 
     top:0;
-
     left:0;
 
     width:min(440px,100%);
-
     height:100%;
 
     background:#090909;
@@ -1083,32 +892,23 @@ body{
         rgba(212,175,55,.2);
 
     display:flex;
-
     flex-direction:column;
 
-    transform:
-        translateX(-100%);
+    transform:translateX(-100%);
 
     transition:.45s;
 }
 
-
 .cart-overlay.open
 .cart-panel{
-
-    transform:
-        translateX(0);
+    transform:translateX(0);
 }
 
-
 .cart-header{
-
     padding:25px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     border-bottom:
@@ -1116,27 +916,18 @@ body{
         rgba(212,175,55,.15);
 }
 
-
 .cart-header small{
-
     color:var(--gold);
-
     font-size:10px;
-
     letter-spacing:4px;
 }
 
-
 .cart-header h3{
-
     margin-top:4px;
 }
 
-
 .close-cart{
-
     width:38px;
-
     height:38px;
 
     border-radius:50%;
@@ -1154,55 +945,36 @@ body{
     cursor:pointer;
 }
 
-
 .cart-items{
-
     flex:1;
-
     overflow:auto;
-
     padding:20px;
 }
 
-
 .cart-empty{
-
     height:100%;
 
     display:flex;
-
     flex-direction:column;
-
     align-items:center;
-
     justify-content:center;
 
     color:#666;
-
     text-align:center;
 }
 
-
 .cart-empty span{
-
     color:var(--gold);
-
     font-size:35px;
 }
 
-
 .cart-empty strong{
-
     color:white;
-
     margin-top:8px;
 }
 
-
 .cart-item{
-
     padding:15px;
-
     margin-bottom:10px;
 
     background:#101010;
@@ -1212,55 +984,35 @@ body{
         rgba(212,175,55,.12);
 
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 }
 
-
 .cart-item h4{
-
     font-size:12px;
 }
 
-
 .cart-item-price{
-
     color:var(--gold);
-
     font-size:11px;
-
     margin-top:5px;
 }
 
-
 .cart-item-qty{
-
     color:#777;
-
     font-size:10px;
-
     margin-top:3px;
 }
 
-
 .remove-item{
-
     border:0;
-
     background:none;
-
     color:#777;
-
     font-size:21px;
-
     cursor:pointer;
 }
 
-
 .cart-footer{
-
     padding:20px;
 
     border-top:
@@ -1268,27 +1020,18 @@ body{
         rgba(212,175,55,.15);
 }
 
-
 .cart-total{
-
     display:flex;
-
     justify-content:space-between;
-
     margin-bottom:15px;
 }
 
-
 .cart-total strong{
-
     color:var(--gold);
 }
 
-
 .checkout-btn{
-
     width:100%;
-
     padding:15px;
 
     border:0;
@@ -1305,22 +1048,16 @@ body{
 }
 
 
-/* =====================================================
-   PRODUCT MODAL
-===================================================== */
+/* ================= MODAL ================= */
 
 .product-modal{
-
     position:fixed;
-
     inset:0;
 
     z-index:8500;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     padding:20px;
@@ -1329,33 +1066,23 @@ body{
         rgba(0,0,0,.88);
 
     opacity:0;
-
     visibility:hidden;
 
     transition:.35s;
 }
 
-
 .product-modal.open{
-
     opacity:1;
-
     visibility:visible;
 }
 
-
 .product-modal-box{
-
     width:min(900px,100%);
-
     max-height:90vh;
-
     overflow:auto;
 
     display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
+    grid-template-columns:1fr 1fr;
 
     background:#0a0a0a;
 
@@ -1370,54 +1097,37 @@ body{
     transition:.4s;
 }
 
-
 .product-modal.open
 .product-modal-box{
-
     transform:
         translateY(0)
         scale(1);
 }
 
-
 .modal-image{
-
     min-height:500px;
-
     background:#050505;
 }
 
-
 .modal-image img{
-
     width:100%;
-
     height:100%;
-
     object-fit:cover;
-
     display:block;
 }
 
-
 .modal-info{
-
     padding:45px 35px;
-
     position:relative;
 }
 
-
 .modal-close{
-
     position:absolute;
 
     top:18px;
-
     left:18px;
 
     width:38px;
-
     height:38px;
 
     border-radius:50%;
@@ -1435,55 +1145,36 @@ body{
     cursor:pointer;
 }
 
-
 .modal-category{
-
     color:var(--gold);
-
     font-size:10px;
-
     letter-spacing:3px;
 }
 
-
 .modal-info h2{
-
     font-family:
         "Playfair Display",
         serif;
 
     font-size:38px;
-
     margin:12px 0;
 }
 
-
 .modal-description{
-
     color:#777;
-
     font-size:13px;
-
     line-height:2.5;
 }
 
-
 .modal-price{
-
     color:var(--gold);
-
     font-size:24px;
-
     font-weight:800;
-
     margin:25px 0;
 }
 
-
 .quantity-box{
-
     display:flex;
-
     align-items:center;
 
     width:max-content;
@@ -1493,11 +1184,8 @@ body{
         rgba(212,175,55,.3);
 }
 
-
 .quantity-box button{
-
     width:42px;
-
     height:42px;
 
     border:0;
@@ -1511,23 +1199,15 @@ body{
     cursor:pointer;
 }
 
-
 .quantity-box span{
-
     width:45px;
-
     text-align:center;
-
     font-weight:700;
 }
 
-
 .modal-add{
-
     width:100%;
-
     margin-top:22px;
-
     padding:15px;
 
     border:0;
@@ -1544,14 +1224,10 @@ body{
 }
 
 
-/* =====================================================
-   ORDER
-===================================================== */
+/* ================= ORDER ================= */
 
 .order-overlay{
-
     position:fixed;
-
     inset:0;
 
     z-index:9000;
@@ -1560,35 +1236,25 @@ body{
         rgba(0,0,0,.9);
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     padding:20px;
 
     opacity:0;
-
     visibility:hidden;
 
     transition:.35s;
 }
 
-
 .order-overlay.open{
-
     opacity:1;
-
     visibility:visible;
 }
 
-
 .order-box{
-
     width:min(650px,100%);
-
     max-height:90vh;
-
     overflow:auto;
 
     background:#090909;
@@ -1600,41 +1266,28 @@ body{
     padding:35px;
 }
 
-
 .order-title{
-
     text-align:center;
-
     margin-bottom:25px;
 }
 
-
 .order-title small{
-
     color:var(--gold);
-
     letter-spacing:4px;
-
     font-size:10px;
 }
 
-
 .order-title h2{
-
     font-family:
         "Playfair Display",
         serif;
 
     font-size:32px;
-
     margin-top:6px;
 }
 
-
 .order-summary{
-
     padding:15px;
-
     margin-bottom:20px;
 
     background:#050505;
@@ -1644,23 +1297,15 @@ body{
         rgba(212,175,55,.12);
 }
 
-
 .order-summary-title{
-
     color:var(--gold);
-
     font-size:11px;
-
     margin-bottom:10px;
 }
 
-
 .summary-row{
-
     display:flex;
-
     justify-content:space-between;
-
     gap:15px;
 
     color:#999;
@@ -1670,47 +1315,33 @@ body{
     padding:5px 0;
 }
 
-
 .summary-total{
-
     border-top:
         1px solid
         rgba(212,175,55,.12);
 
     margin-top:8px;
-
     padding-top:10px;
 }
 
-
 .summary-total strong{
-
     color:var(--gold);
 }
 
-
 .form-group{
-
     margin-bottom:15px;
 }
 
-
 .form-group label{
-
     display:block;
-
     color:#aaa;
-
     font-size:11px;
-
     margin-bottom:7px;
 }
-
 
 .form-group input,
 .form-group textarea,
 .form-group select{
-
     width:100%;
 
     border:
@@ -1730,27 +1361,18 @@ body{
     font-size:12px;
 }
 
-
 .form-group textarea{
-
     min-height:85px;
-
     resize:vertical;
 }
 
-
 .order-buttons{
-
     display:flex;
-
     gap:10px;
-
     margin-top:20px;
 }
 
-
 .send-whatsapp{
-
     flex:1;
 
     padding:15px;
@@ -1768,9 +1390,7 @@ body{
     cursor:pointer;
 }
 
-
 .cancel-order{
-
     padding:15px 25px;
 
     border:
@@ -1787,200 +1407,129 @@ body{
 }
 
 
-/* =====================================================
-   ANIMATION
-===================================================== */
+/* ================= ANIMATION ================= */
 
 @keyframes welcomeIn{
-
     from{
-
         opacity:0;
-
-        transform:
-            translateY(25px);
-
+        transform:translateY(25px);
     }
 
     to{
-
         opacity:1;
-
-        transform:
-            translateY(0);
-
+        transform:translateY(0);
     }
-
 }
 
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:950px){
 
     .products-grid{
-
-        grid-template-columns:
-            repeat(2,1fr);
-
+        grid-template-columns:repeat(2,1fr);
     }
 
 }
-
 
 @media(max-width:700px){
 
     .header{
-
         padding:0 4%;
-
     }
 
     .header-nav{
-
         display:none;
-
     }
 
     .logo{
-
         font-size:20px;
-
     }
 
     .lion-wrapper{
-
         width:240px;
-
         height:240px;
-
     }
 
     .lion-wrapper img{
-
         width:235px;
-
         height:235px;
-
     }
 
     .brand{
-
         font-size:39px;
-
         letter-spacing:9px;
-
     }
 
     .subtitle{
-
         font-size:14px;
-
     }
 
     .category-track{
-
         justify-content:flex-start;
-
     }
 
     .products-grid{
-
         grid-template-columns:1fr;
-
     }
 
     .products-top{
-
         align-items:start;
-
     }
 
     .product-modal-box{
-
         grid-template-columns:1fr;
-
     }
 
     .modal-image{
-
         min-height:320px;
-
         height:320px;
-
     }
 
     .modal-info{
-
         padding:30px 22px;
-
     }
 
     .modal-info h2{
-
         font-size:30px;
-
     }
 
     .order-box{
-
         padding:25px 18px;
-
     }
 
     .order-buttons{
-
         flex-direction:column;
-
     }
 
     .floating-cart{
-
         right:18px;
-
         bottom:18px;
-
         width:58px;
-
         height:58px;
-
     }
 
     .floating-cart-label{
-
         display:none;
-
     }
 
 }
 
-
 @media(max-width:390px){
 
     .brand{
-
         font-size:33px;
-
         letter-spacing:7px;
-
     }
 
     .lion-wrapper{
-
         width:215px;
-
         height:215px;
-
     }
 
     .lion-wrapper img{
-
         width:210px;
-
         height:210px;
-
     }
 
 }
@@ -1988,13 +1537,10 @@ body{
 </style>
 </head>
 
-
 <body>
 
 
-<!-- =====================================================
-     WELCOME
-===================================================== -->
+<!-- ================= WELCOME ================= -->
 
 <section class="welcome" id="welcome">
 
@@ -2003,12 +1549,11 @@ body{
         <div class="lion-wrapper">
 
             <img
-                src="images/logo.png.jpeg"
+                src="logo.png.jpeg"
                 alt="EL MANS Lion Logo"
             >
 
         </div>
-
 
         <div class="brand">
 
@@ -2018,24 +1563,17 @@ body{
 
         </div>
 
-
         <div class="gold-line"></div>
 
-
         <p class="subtitle">
-
             انت الآن في عالمي الخاص
-
         </p>
-
 
         <button
             class="enter-btn"
             onclick="enterStore()"
         >
-
             اكتشف عالمك
-
         </button>
 
     </div>
@@ -2043,63 +1581,42 @@ body{
 </section>
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+<!-- ================= HEADER ================= -->
 
 <header class="header">
 
     <a href="#home" class="logo">
-
         EL <span>MANS</span>
-
     </a>
-
 
     <nav class="header-nav">
 
-        <a href="#home">
-            الرئيسية
-        </a>
+        <a href="#home">الرئيسية</a>
 
-        <a href="#collection">
-            المجموعة
-        </a>
+        <a href="#collection">المجموعة</a>
 
-        <a href="#story">
-            عالم EL MANS
-        </a>
+        <a href="#story">عالم EL MANS</a>
 
     </nav>
 
 </header>
 
 
-<!-- =====================================================
-     HERO
-===================================================== -->
+<!-- ================= HERO ================= -->
 
 <section class="hero" id="home">
 
     <div class="hero-content">
 
         <div class="hero-label">
-
             WELCOME TO EL MANS
-
         </div>
 
-
         <h1>
-
             عالمك
-
             <br>
-
             <span>اختيارك</span>
-
         </h1>
-
 
         <p>
 
@@ -2112,14 +1629,11 @@ body{
 
         </p>
 
-
         <a
             href="#collection"
             class="hero-btn"
         >
-
             اكتشف المجموعة
-
         </a>
 
     </div>
@@ -2127,42 +1641,30 @@ body{
 </section>
 
 
-<!-- =====================================================
-     COLLECTION
-===================================================== -->
+<!-- ================= COLLECTION ================= -->
 
 <section
     class="collection"
     id="collection"
 >
 
-
     <div class="section-title">
 
         <small>
-
             EL MANS COLLECTION
-
         </small>
 
-
         <h2>
-
             اختر
-
             <span>عالمك</span>
-
         </h2>
 
     </div>
 
 
-    <!-- CATEGORY BAR -->
-
     <div class="category-bar">
 
         <div class="category-track">
-
 
             <button
                 class="category active"
@@ -2171,14 +1673,12 @@ body{
                 الكل
             </button>
 
-
             <button
                 class="category"
                 onclick="filterCategory('men-accessories',this)"
             >
                 اكسسورات رجالي
             </button>
-
 
             <button
                 class="category"
@@ -2187,14 +1687,12 @@ body{
                 اكسسورات حريمي
             </button>
 
-
             <button
                 class="category"
                 onclick="filterCategory('men-chains',this)"
             >
                 سلاسل رجالي
             </button>
-
 
             <button
                 class="category"
@@ -2203,14 +1701,12 @@ body{
                 سلاسل حريمي
             </button>
 
-
             <button
                 class="category"
                 onclick="filterCategory('gifts',this)"
             >
                 هدايا
             </button>
-
 
             <button
                 class="category"
@@ -2219,14 +1715,12 @@ body{
                 دباديب
             </button>
 
-
             <button
                 class="category"
                 onclick="filterCategory('men-perfume',this)"
             >
                 برفانات رجالي
             </button>
-
 
             <button
                 class="category"
@@ -2235,14 +1729,12 @@ body{
                 برفانات حريمي
             </button>
 
-
             <button
                 class="category"
                 onclick="filterCategory('men-body-splash',this)"
             >
                 بادي سبلاش رجالي
             </button>
-
 
             <button
                 class="category"
@@ -2251,14 +1743,12 @@ body{
                 بادي سبلاش حريمي
             </button>
 
-
             <button
                 class="category"
                 onclick="filterCategory('parties',this)"
             >
                 حفلات
             </button>
-
 
             <button
                 class="category"
@@ -2267,7 +1757,6 @@ body{
                 ساعات
             </button>
 
-
             <button
                 class="category"
                 onclick="filterCategory('engagement',this)"
@@ -2275,16 +1764,12 @@ body{
                 دبل خطوبة
             </button>
 
-
         </div>
 
     </div>
 
 
-    <!-- PRODUCTS -->
-
     <div class="products-section">
-
 
         <div class="products-top">
 
@@ -2295,17 +1780,11 @@ body{
                 </small>
 
                 <h3>
-
                     مختارات
-
-                    <span>
-                        الفخامة
-                    </span>
-
+                    <span>الفخامة</span>
                 </h3>
 
             </div>
-
 
             <div class="products-count">
 
@@ -2319,21 +1798,17 @@ body{
 
         </div>
 
-
         <div
             class="products-grid"
             id="productsGrid"
         ></div>
-
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     STORY
-===================================================== -->
+<!-- ================= STORY ================= -->
 
 <section
     class="story"
@@ -2343,22 +1818,13 @@ body{
     <div class="story-content">
 
         <small>
-
             THE EL MANS WORLD
-
         </small>
 
-
         <h2>
-
             انت الآن في
-
-            <span>
-                عالمنا
-            </span>
-
+            <span>عالمنا</span>
         </h2>
-
 
         <p>
 
@@ -2376,38 +1842,26 @@ body{
 </section>
 
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+<!-- ================= FOOTER ================= -->
 
 <footer class="footer">
 
     <div class="footer-logo">
-
         EL <span>MANS</span>
-
     </div>
 
-
     <p>
-
         انت الآن في عالمي الخاص
-
     </p>
 
-
     <p>
-
         © 2026 EL MANS — جميع الحقوق محفوظة
-
     </p>
 
 </footer>
 
 
-<!-- =====================================================
-     FLOATING CART BUTTON
-===================================================== -->
+<!-- ================= FLOATING CART ================= -->
 
 <button
     class="floating-cart"
@@ -2419,14 +1873,12 @@ body{
         🛍
     </span>
 
-
     <span
         class="cart-number"
         id="cartCount"
     >
         0
     </span>
-
 
     <span class="floating-cart-label">
         سلة المشتريات
@@ -2435,9 +1887,7 @@ body{
 </button>
 
 
-<!-- =====================================================
-     CART
-===================================================== -->
+<!-- ================= CART ================= -->
 
 <div
     class="cart-overlay"
@@ -2445,7 +1895,6 @@ body{
 >
 
     <aside class="cart-panel">
-
 
         <div class="cart-header">
 
@@ -2461,34 +1910,27 @@ body{
 
             </div>
 
-
             <button
                 class="close-cart"
                 onclick="closeCart()"
             >
-
                 ×
-
             </button>
 
         </div>
-
 
         <div
             class="cart-items"
             id="cartItems"
         ></div>
 
-
         <div class="cart-footer">
-
 
             <div class="cart-total">
 
                 <span>
                     الإجمالي
                 </span>
-
 
                 <strong>
 
@@ -2502,28 +1944,21 @@ body{
 
             </div>
 
-
             <button
                 class="checkout-btn"
                 onclick="openOrderForm()"
             >
-
                 إتمام الطلب
-
             </button>
 
-
         </div>
-
 
     </aside>
 
 </div>
 
 
-<!-- =====================================================
-     PRODUCT MODAL
-===================================================== -->
+<!-- ================= PRODUCT MODAL ================= -->
 
 <div
     class="product-modal"
@@ -2531,7 +1966,6 @@ body{
 >
 
     <div class="product-modal-box">
-
 
         <div class="modal-image">
 
@@ -2543,34 +1977,26 @@ body{
 
         </div>
 
-
         <div class="modal-info">
-
 
             <button
                 class="modal-close"
                 onclick="closeProductModal()"
             >
-
                 ×
-
             </button>
-
 
             <div
                 class="modal-category"
                 id="modalCategory"
             ></div>
 
-
             <h2 id="modalName"></h2>
-
 
             <p
                 class="modal-description"
                 id="modalDescription"
             ></p>
-
 
             <div class="modal-price">
 
@@ -2580,9 +2006,7 @@ body{
 
             </div>
 
-
             <div class="quantity-box">
-
 
                 <button
                     onclick="changeModalQuantity(-1)"
@@ -2590,11 +2014,9 @@ body{
                     −
                 </button>
 
-
                 <span id="modalQuantity">
                     1
                 </span>
-
 
                 <button
                     onclick="changeModalQuantity(1)"
@@ -2602,19 +2024,14 @@ body{
                     +
                 </button>
 
-
             </div>
-
 
             <button
                 class="modal-add"
                 onclick="addModalProduct()"
             >
-
                 أضف للسلة
-
             </button>
-
 
         </div>
 
@@ -2623,9 +2040,7 @@ body{
 </div>
 
 
-<!-- =====================================================
-     ORDER
-===================================================== -->
+<!-- ================= ORDER ================= -->
 
 <div
     class="order-overlay"
@@ -2633,7 +2048,6 @@ body{
 >
 
     <div class="order-box">
-
 
         <div class="order-title">
 
@@ -2647,12 +2061,10 @@ body{
 
         </div>
 
-
         <div
             class="order-summary"
             id="orderSummary"
         ></div>
-
 
         <div class="form-group">
 
@@ -2668,7 +2080,6 @@ body{
 
         </div>
 
-
         <div class="form-group">
 
             <label>
@@ -2683,7 +2094,6 @@ body{
 
         </div>
 
-
         <div class="form-group">
 
             <label>
@@ -2696,98 +2106,32 @@ body{
                     اختر المحافظة
                 </option>
 
-                <option>
-                    القاهرة
-                </option>
-
-                <option>
-                    الجيزة
-                </option>
-
-                <option>
-                    الإسكندرية
-                </option>
-
-                <option>
-                    الغربية
-                </option>
-
-                <option>
-                    الدقهلية
-                </option>
-
-                <option>
-                    الشرقية
-                </option>
-
-                <option>
-                    المنوفية
-                </option>
-
-                <option>
-                    البحيرة
-                </option>
-
-                <option>
-                    كفر الشيخ
-                </option>
-
-                <option>
-                    دمياط
-                </option>
-
-                <option>
-                    بورسعيد
-                </option>
-
-                <option>
-                    الإسماعيلية
-                </option>
-
-                <option>
-                    السويس
-                </option>
-
-                <option>
-                    مطروح
-                </option>
-
-                <option>
-                    الفيوم
-                </option>
-
-                <option>
-                    بني سويف
-                </option>
-
-                <option>
-                    المنيا
-                </option>
-
-                <option>
-                    أسيوط
-                </option>
-
-                <option>
-                    سوهاج
-                </option>
-
-                <option>
-                    قنا
-                </option>
-
-                <option>
-                    الأقصر
-                </option>
-
-                <option>
-                    أسوان
-                </option>
+                <option>القاهرة</option>
+                <option>الجيزة</option>
+                <option>الإسكندرية</option>
+                <option>الغربية</option>
+                <option>الدقهلية</option>
+                <option>الشرقية</option>
+                <option>المنوفية</option>
+                <option>البحيرة</option>
+                <option>كفر الشيخ</option>
+                <option>دمياط</option>
+                <option>بورسعيد</option>
+                <option>الإسماعيلية</option>
+                <option>السويس</option>
+                <option>مطروح</option>
+                <option>الفيوم</option>
+                <option>بني سويف</option>
+                <option>المنيا</option>
+                <option>أسيوط</option>
+                <option>سوهاج</option>
+                <option>قنا</option>
+                <option>الأقصر</option>
+                <option>أسوان</option>
 
             </select>
 
         </div>
-
 
         <div class="form-group">
 
@@ -2802,7 +2146,6 @@ body{
 
         </div>
 
-
         <div class="form-group">
 
             <label>
@@ -2816,29 +2159,21 @@ body{
 
         </div>
 
-
         <div class="order-buttons">
-
 
             <button
                 class="send-whatsapp"
                 onclick="sendOrderToWhatsApp()"
             >
-
                 إرسال الطلب على واتساب
-
             </button>
-
 
             <button
                 class="cancel-order"
                 onclick="closeOrderForm()"
             >
-
                 رجوع
-
             </button>
-
 
         </div>
 
@@ -2849,10 +2184,7 @@ body{
 
 <script>
 
-
-/* =====================================================
-   PRODUCTS
-===================================================== */
+/* ================= PRODUCTS ================= */
 
 const products = [
 
@@ -2990,15 +2322,11 @@ const products = [
 
 
 let cart = [];
-
 let selectedProduct = null;
-
 let modalQuantity = 1;
 
 
-/* =====================================================
-   ENTER
-===================================================== */
+/* ================= ENTER ================= */
 
 function enterStore(){
 
@@ -3009,9 +2337,7 @@ function enterStore(){
 }
 
 
-/* =====================================================
-   FILTER
-===================================================== */
+/* ================= FILTER ================= */
 
 function filterCategory(category,button){
 
@@ -3022,28 +2348,22 @@ function filterCategory(category,button){
             item.classList.remove("active")
         );
 
-
     button.classList.add("active");
-
 
     renderProducts(category);
 
 }
 
 
-/* =====================================================
-   RENDER
-===================================================== */
+/* ================= RENDER ================= */
 
 function renderProducts(category="all"){
 
     const grid =
         document.getElementById("productsGrid");
 
-
     const count =
         document.getElementById("productsCount");
-
 
     const filtered =
         category === "all"
@@ -3055,28 +2375,20 @@ function renderProducts(category="all"){
             product.category === category
         );
 
-
     count.textContent =
         filtered.length;
 
-
     grid.innerHTML =
-
 
         filtered.map(product => `
 
             <article class="product-card">
 
-
                 <div class="product-image">
 
-
                     <span class="product-badge">
-
                         EL MANS
-
                     </span>
-
 
                     <img
                         src="${product.image}"
@@ -3084,36 +2396,23 @@ function renderProducts(category="all"){
                         loading="lazy"
                     >
 
-
                 </div>
-
 
                 <div class="product-info">
 
-
                     <small>
-
                         ${product.categoryName}
-
                     </small>
 
-
                     <h4>
-
                         ${product.name}
-
                     </h4>
 
-
                     <p>
-
                         ${product.description}
-
                     </p>
 
-
                     <div class="product-bottom">
-
 
                         <div class="product-price">
 
@@ -3123,38 +2422,27 @@ function renderProducts(category="all"){
 
                         </div>
 
-
                         <div class="product-actions">
-
 
                             <button
                                 class="details-btn"
                                 onclick="openProductModal(${product.id})"
                             >
-
                                 التفاصيل
-
                             </button>
-
 
                             <button
                                 class="add-product"
                                 onclick="addProduct(${product.id})"
                             >
-
                                 + سلة
-
                             </button>
-
 
                         </div>
 
-
                     </div>
 
-
                 </div>
-
 
             </article>
 
@@ -3163,9 +2451,7 @@ function renderProducts(category="all"){
 }
 
 
-/* =====================================================
-   MODAL
-===================================================== */
+/* ================= MODAL ================= */
 
 function openProductModal(id){
 
@@ -3175,61 +2461,50 @@ function openProductModal(id){
             item.id === id
         );
 
-
     if(!product){
         return;
     }
 
-
     selectedProduct =
         product;
 
-
     modalQuantity =
         1;
-
 
     document
         .getElementById("modalImage")
         .src =
         product.image;
 
-
     document
         .getElementById("modalImage")
         .alt =
         product.name;
-
 
     document
         .getElementById("modalCategory")
         .textContent =
         product.categoryName;
 
-
     document
         .getElementById("modalName")
         .textContent =
         product.name;
-
 
     document
         .getElementById("modalDescription")
         .textContent =
         product.description;
 
-
     document
         .getElementById("modalPrice")
         .textContent =
         product.price.toLocaleString("ar-EG");
 
-
     document
         .getElementById("modalQuantity")
         .textContent =
         modalQuantity;
-
 
     document
         .getElementById("productModal")
@@ -3244,7 +2519,6 @@ function closeProductModal(){
         .getElementById("productModal")
         .classList.remove("open");
 
-
     selectedProduct =
         null;
 
@@ -3255,20 +2529,13 @@ function changeModalQuantity(amount){
 
     modalQuantity += amount;
 
-
     if(modalQuantity < 1){
-
         modalQuantity = 1;
-
     }
-
 
     if(modalQuantity > 20){
-
         modalQuantity = 20;
-
     }
-
 
     document
         .getElementById("modalQuantity")
@@ -3278,9 +2545,7 @@ function changeModalQuantity(amount){
 }
 
 
-/* =====================================================
-   ADD FROM MODAL
-===================================================== */
+/* ================= ADD MODAL ================= */
 
 function addModalProduct(){
 
@@ -3288,14 +2553,12 @@ function addModalProduct(){
         return;
     }
 
-
     const existing =
         cart.find(
             item =>
             item.id ===
             selectedProduct.id
         );
-
 
     if(existing){
 
@@ -3315,7 +2578,6 @@ function addModalProduct(){
 
     }
 
-
     updateCart();
 
     closeProductModal();
@@ -3325,9 +2587,7 @@ function addModalProduct(){
 }
 
 
-/* =====================================================
-   ADD
-===================================================== */
+/* ================= ADD ================= */
 
 function addProduct(id){
 
@@ -3337,18 +2597,15 @@ function addProduct(id){
             item.id === id
         );
 
-
     if(!product){
         return;
     }
-
 
     const existing =
         cart.find(
             item =>
             item.id === id
         );
-
 
     if(existing){
 
@@ -3366,7 +2623,6 @@ function addProduct(id){
 
     }
 
-
     updateCart();
 
     openCart();
@@ -3374,23 +2630,18 @@ function addProduct(id){
 }
 
 
-/* =====================================================
-   UPDATE CART
-===================================================== */
+/* ================= UPDATE CART ================= */
 
 function updateCart(){
 
     const container =
         document.getElementById("cartItems");
 
-
     const countElement =
         document.getElementById("cartCount");
 
-
     const totalElement =
         document.getElementById("cartTotal");
-
 
     const quantity =
         cart.reduce(
@@ -3399,10 +2650,8 @@ function updateCart(){
             0
         );
 
-
     countElement.textContent =
         quantity;
-
 
     if(cart.length === 0){
 
@@ -3426,15 +2675,12 @@ function updateCart(){
 
         `;
 
-
         totalElement.textContent =
             "0";
-
 
         return;
 
     }
-
 
     container.innerHTML =
 
@@ -3443,13 +2689,11 @@ function updateCart(){
 
                 <div class="cart-item">
 
-
                     <div>
 
                         <h4>
                             ${item.name}
                         </h4>
-
 
                         <div class="cart-item-price">
 
@@ -3458,7 +2702,6 @@ function updateCart(){
                             جنيه
 
                         </div>
-
 
                         <div class="cart-item-qty">
 
@@ -3469,22 +2712,17 @@ function updateCart(){
 
                     </div>
 
-
                     <button
                         class="remove-item"
                         onclick="removeProduct(${index})"
                     >
-
                         ×
-
                     </button>
-
 
                 </div>
 
             `
         ).join("");
-
 
     const total =
         cart.reduce(
@@ -3495,16 +2733,13 @@ function updateCart(){
             0
         );
 
-
     totalElement.textContent =
         total.toLocaleString("ar-EG");
 
 }
 
 
-/* =====================================================
-   REMOVE
-===================================================== */
+/* ================= REMOVE ================= */
 
 function removeProduct(index){
 
@@ -3515,9 +2750,7 @@ function removeProduct(index){
 }
 
 
-/* =====================================================
-   CART
-===================================================== */
+/* ================= CART ================= */
 
 function openCart(){
 
@@ -3526,7 +2759,6 @@ function openCart(){
         .classList.add("open");
 
 }
-
 
 function closeCart(){
 
@@ -3537,9 +2769,7 @@ function closeCart(){
 }
 
 
-/* =====================================================
-   ORDER
-===================================================== */
+/* ================= ORDER ================= */
 
 function openOrderForm(){
 
@@ -3553,21 +2783,16 @@ function openOrderForm(){
 
     }
 
-
     const summary =
         document.getElementById("orderSummary");
-
 
     let html = `
 
         <div class="order-summary-title">
-
             ملخص الطلب
-
         </div>
 
     `;
-
 
     cart.forEach(item => {
 
@@ -3584,7 +2809,6 @@ function openOrderForm(){
                     ${item.quantity}
 
                 </span>
-
 
                 <span>
 
@@ -3605,7 +2829,6 @@ function openOrderForm(){
 
     });
 
-
     const total =
         cart.reduce(
             (sum,item) =>
@@ -3614,7 +2837,6 @@ function openOrderForm(){
             item.quantity,
             0
         );
-
 
     html += `
 
@@ -3625,7 +2847,6 @@ function openOrderForm(){
             <span>
                 الإجمالي
             </span>
-
 
             <strong>
 
@@ -3639,13 +2860,10 @@ function openOrderForm(){
 
     `;
 
-
     summary.innerHTML =
         html;
 
-
     closeCart();
-
 
     document
         .getElementById("orderOverlay")
@@ -3663,9 +2881,7 @@ function closeOrderForm(){
 }
 
 
-/* =====================================================
-   WHATSAPP
-===================================================== */
+/* ================= WHATSAPP ================= */
 
 function sendOrderToWhatsApp(){
 
@@ -3675,19 +2891,16 @@ function sendOrderToWhatsApp(){
         .value
         .trim();
 
-
     const phone =
         document
         .getElementById("customerPhone")
         .value
         .trim();
 
-
     const governorate =
         document
         .getElementById("customerGovernorate")
         .value;
-
 
     const address =
         document
@@ -3695,13 +2908,11 @@ function sendOrderToWhatsApp(){
         .value
         .trim();
 
-
     const notes =
         document
         .getElementById("customerNotes")
         .value
         .trim();
-
 
     if(
         !name ||
@@ -3718,34 +2929,28 @@ function sendOrderToWhatsApp(){
 
     }
 
-
     let message =
         "🛍️ طلب جديد من EL MANS%0A%0A";
-
 
     message +=
         "الاسم: " +
         encodeURIComponent(name) +
         "%0A";
 
-
     message +=
         "الموبايل: " +
         encodeURIComponent(phone) +
         "%0A";
-
 
     message +=
         "المحافظة: " +
         encodeURIComponent(governorate) +
         "%0A";
 
-
     message +=
         "العنوان: " +
         encodeURIComponent(address) +
         "%0A";
-
 
     if(notes){
 
@@ -3756,10 +2961,8 @@ function sendOrderToWhatsApp(){
 
     }
 
-
     message +=
         "%0Aالمنتجات:%0A";
-
 
     cart.forEach(item => {
 
@@ -3783,7 +2986,6 @@ function sendOrderToWhatsApp(){
 
     });
 
-
     const total =
         cart.reduce(
             (sum,item) =>
@@ -3793,23 +2995,19 @@ function sendOrderToWhatsApp(){
             0
         );
 
-
     message +=
         "%0Aالإجمالي: " +
         total +
         " جنيه";
 
-
     const whatsappNumber =
         "201501140025";
-
 
     const url =
         "https://wa.me/" +
         whatsappNumber +
         "?text=" +
         message;
-
 
     window.open(
         url,
@@ -3819,9 +3017,7 @@ function sendOrderToWhatsApp(){
 }
 
 
-/* =====================================================
-   OUTSIDE CLICK
-===================================================== */
+/* ================= OUTSIDE CLICK ================= */
 
 document
     .getElementById("productModal")
@@ -3830,9 +3026,7 @@ document
         function(event){
 
             if(event.target === this){
-
                 closeProductModal();
-
             }
 
         }
@@ -3846,9 +3040,7 @@ document
         function(event){
 
             if(event.target === this){
-
                 closeOrderForm();
-
             }
 
         }
@@ -3862,18 +3054,14 @@ document
         function(event){
 
             if(event.target === this){
-
                 closeCart();
-
             }
 
         }
     );
 
 
-/* =====================================================
-   START
-===================================================== */
+/* ================= START ================= */
 
 renderProducts();
 
