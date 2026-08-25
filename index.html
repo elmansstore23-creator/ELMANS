@@ -126,9 +126,6 @@ button,input,textarea,select{
     position:relative;
 }
 
-
-/* دائرة الضوء حول الأسد */
-
 .lion-wrapper::before{
     content:"";
     position:absolute;
@@ -151,9 +148,6 @@ button,input,textarea,select{
     animation:
         lionAura 1.8s ease-in-out infinite alternate;
 }
-
-
-/* حلقة ذهبية خفيفة */
 
 .lion-wrapper::after{
     content:"";
@@ -185,11 +179,6 @@ button,input,textarea,select{
     z-index:2;
 
     transform:scale(1.25);
-
-    /*
-       هنا التأثير الأساسي للأسد
-       يبدأ فورًا عند فتح الموقع
-    */
 
     filter:
         brightness(1.35)
@@ -342,6 +331,7 @@ button,input,textarea,select{
 
 .header-nav{
     display:flex;
+
     gap:35px;
 }
 
@@ -1626,12 +1616,6 @@ button,input,textarea,select{
 
 }
 
-
-/*
-   الأسد يفضل منور طول شاشة الترحيب
-   ويزيد النور ويهدى بشكل سينمائي
-*/
-
 @keyframes lionLight{
 
     0%{
@@ -1849,7 +1833,6 @@ button,input,textarea,select{
 </style>
 </head>
 
-
 <body>
 
 
@@ -1870,7 +1853,6 @@ button,input,textarea,select{
 
         </div>
 
-
         <div class="brand">
 
             <span class="gold">EL</span>
@@ -1878,16 +1860,13 @@ button,input,textarea,select{
 
         </div>
 
-
         <div class="gold-line"></div>
-
 
         <p class="subtitle">
 
             انت الآن في عالمي الخاص
 
         </p>
-
 
         <button
             class="enter-btn"
@@ -1900,7 +1879,6 @@ button,input,textarea,select{
     </div>
 
 </section>
-
 
 
 <!-- ================================
@@ -1916,7 +1894,6 @@ button,input,textarea,select{
         EL <span>MANS</span>
 
     </a>
-
 
     <nav class="header-nav">
 
@@ -1937,7 +1914,6 @@ button,input,textarea,select{
 </header>
 
 
-
 <!-- ================================
      HERO
 ================================ -->
@@ -1954,7 +1930,6 @@ button,input,textarea,select{
 
         </div>
 
-
         <h1>
 
             عالمك
@@ -1967,7 +1942,6 @@ button,input,textarea,select{
 
         </h1>
 
-
         <p>
 
             اكتشف عالمًا من الاختيارات الفاخرة،
@@ -1978,7 +1952,6 @@ button,input,textarea,select{
             إكسسوارات • عطور • هدايا • مناسبات
 
         </p>
-
 
         <a
             href="#collection"
@@ -1993,7 +1966,6 @@ button,input,textarea,select{
 </section>
 
 
-
 <!-- ================================
      COLLECTION
 ================================ -->
@@ -2002,13 +1974,11 @@ button,input,textarea,select{
     class="collection"
     id="collection">
 
-
     <div class="section-title">
 
         <small>
             EL MANS COLLECTION
         </small>
-
 
         <h2>
 
@@ -2020,7 +1990,6 @@ button,input,textarea,select{
         </h2>
 
     </div>
-
 
 
     <!-- CATEGORIES -->
@@ -2128,6 +2097,32 @@ button,input,textarea,select{
             </button>
 
 
+            <!-- =========================
+                 VAPE
+            ========================== -->
+
+            <button
+                class="category"
+                onclick="filterCategory('vape',this)">
+
+                ڤيب
+
+            </button>
+
+
+            <!-- =========================
+                 LIQUID
+            ========================== -->
+
+            <button
+                class="category"
+                onclick="filterCategory('liquid',this)">
+
+                ليكود
+
+            </button>
+
+
             <button
                 class="category"
                 onclick="filterCategory('parties',this)">
@@ -2159,11 +2154,9 @@ button,input,textarea,select{
     </div>
 
 
-
     <!-- PRODUCTS -->
 
     <div class="products-section">
-
 
         <div class="products-top">
 
@@ -2172,7 +2165,6 @@ button,input,textarea,select{
                 <small>
                     EL MANS EDITION
                 </small>
-
 
                 <h3>
 
@@ -2184,7 +2176,6 @@ button,input,textarea,select{
                 </h3>
 
             </div>
-
 
             <div class="products-count">
 
@@ -2210,7 +2201,6 @@ button,input,textarea,select{
 </section>
 
 
-
 <!-- ================================
      STORY
 ================================ -->
@@ -2225,7 +2215,6 @@ button,input,textarea,select{
             THE EL MANS WORLD
         </small>
 
-
         <h2>
 
             انت الآن في
@@ -2234,7 +2223,6 @@ button,input,textarea,select{
             </span>
 
         </h2>
-
 
         <p>
 
@@ -2252,7 +2240,6 @@ button,input,textarea,select{
 </section>
 
 
-
 <!-- ================================
      FOOTER
 ================================ -->
@@ -2265,18 +2252,15 @@ button,input,textarea,select{
 
     </div>
 
-
     <p>
         انت الآن في عالمي الخاص
     </p>
-
 
     <p>
         ©️ 2026 EL MANS — جميع الحقوق محفوظة
     </p>
 
 </footer>
-
 
 
 <!-- ================================
@@ -2288,11 +2272,9 @@ button,input,textarea,select{
     onclick="openCart()"
     aria-label="فتح السلة">
 
-
     <span class="cart-icon">
         🛍
     </span>
-
 
     <span
         class="cart-number"
@@ -2301,7 +2283,6 @@ button,input,textarea,select{
         0
 
     </span>
-
 
     <span class="floating-cart-label">
 
@@ -2312,7 +2293,6 @@ button,input,textarea,select{
 </button>
 
 
-
 <!-- ================================
      CART
 ================================ -->
@@ -2321,9 +2301,7 @@ button,input,textarea,select{
     class="cart-overlay"
     id="cartOverlay">
 
-
     <aside class="cart-panel">
-
 
         <div class="cart-header">
 
@@ -2339,7 +2317,6 @@ button,input,textarea,select{
 
             </div>
 
-
             <button
                 class="close-cart"
                 onclick="closeCart()">
@@ -2350,23 +2327,19 @@ button,input,textarea,select{
 
         </div>
 
-
         <div
             class="cart-items"
             id="cartItems">
 
         </div>
 
-
         <div class="cart-footer">
-
 
             <div class="cart-total">
 
                 <span>
                     إجمالي المنتجات
                 </span>
-
 
                 <strong>
 
@@ -2379,7 +2352,6 @@ button,input,textarea,select{
                 </strong>
 
             </div>
-
 
             <button
                 class="checkout-btn"
@@ -2396,7 +2368,6 @@ button,input,textarea,select{
 </div>
 
 
-
 <!-- ================================
      PRODUCT MODAL
 ================================ -->
@@ -2405,9 +2376,7 @@ button,input,textarea,select{
     class="product-modal"
     id="productModal">
 
-
     <div class="product-modal-box">
-
 
         <div class="modal-image">
 
@@ -2418,9 +2387,7 @@ button,input,textarea,select{
 
         </div>
 
-
         <div class="modal-info">
-
 
             <button
                 class="modal-close"
@@ -2430,23 +2397,19 @@ button,input,textarea,select{
 
             </button>
 
-
             <div
                 class="modal-category"
                 id="modalCategory">
 
             </div>
 
-
             <h2 id="modalName"></h2>
-
 
             <p
                 class="modal-description"
                 id="modalDescription">
 
             </p>
-
 
             <div class="modal-price">
 
@@ -2457,9 +2420,7 @@ button,input,textarea,select{
 
             </div>
 
-
             <div class="quantity-box">
-
 
                 <button
                     onclick="changeModalQuantity(-1)">
@@ -2468,11 +2429,9 @@ button,input,textarea,select{
 
                 </button>
 
-
                 <span id="modalQuantity">
                     1
                 </span>
-
 
                 <button
                     onclick="changeModalQuantity(1)">
@@ -2482,7 +2441,6 @@ button,input,textarea,select{
                 </button>
 
             </div>
-
 
             <button
                 class="modal-add"
@@ -2499,7 +2457,6 @@ button,input,textarea,select{
 </div>
 
 
-
 <!-- ================================
      ORDER
 ================================ -->
@@ -2508,9 +2465,7 @@ button,input,textarea,select{
     class="order-overlay"
     id="orderOverlay">
 
-
     <div class="order-box">
-
 
         <div class="order-title">
 
@@ -2518,13 +2473,11 @@ button,input,textarea,select{
                 EL MANS CHECKOUT
             </small>
 
-
             <h2>
                 بيانات الطلب
             </h2>
 
         </div>
-
 
         <div
             class="order-summary"
@@ -2532,13 +2485,11 @@ button,input,textarea,select{
 
         </div>
 
-
         <div class="form-group">
 
             <label>
                 الاسم بالكامل
             </label>
-
 
             <input
                 type="text"
@@ -2547,13 +2498,11 @@ button,input,textarea,select{
 
         </div>
 
-
         <div class="form-group">
 
             <label>
                 رقم الموبايل
             </label>
-
 
             <input
                 type="tel"
@@ -2562,18 +2511,15 @@ button,input,textarea,select{
 
         </div>
 
-
         <div class="form-group">
 
             <label>
                 المحافظة
             </label>
 
-
             <select
                 id="customerGovernorate"
                 onchange="updateShippingPreview()">
-
 
                 <option value="">
                     اختر المحافظة
@@ -2606,22 +2552,17 @@ button,input,textarea,select{
 
         </div>
 
-
         <div class="form-group">
 
             <label>
                 العنوان بالتفصيل
             </label>
 
-
             <textarea
                 id="customerAddress"
-                placeholder="المنطقة، الشارع، رقم العمارة، الدور...">
-
-            </textarea>
+                placeholder="المنطقة، الشارع، رقم العمارة، الدور..."></textarea>
 
         </div>
-
 
         <div class="form-group">
 
@@ -2629,18 +2570,13 @@ button,input,textarea,select{
                 ملاحظات إضافية
             </label>
 
-
             <textarea
                 id="customerNotes"
-                placeholder="أي ملاحظات على الطلب...">
-
-            </textarea>
+                placeholder="أي ملاحظات على الطلب..."></textarea>
 
         </div>
 
-
         <div class="order-buttons">
-
 
             <button
                 class="send-whatsapp"
@@ -2649,7 +2585,6 @@ button,input,textarea,select{
                 إرسال الطلب على واتساب
 
             </button>
-
 
             <button
                 class="cancel-order"
@@ -2664,7 +2599,6 @@ button,input,textarea,select{
     </div>
 
 </div>
-
 
 
 <script>
@@ -2771,7 +2705,6 @@ async function loadProducts(){
     const grid =
         document.getElementById("productsGrid");
 
-
     grid.innerHTML = `
 
         <div class="empty-products">
@@ -2790,7 +2723,6 @@ async function loadProducts(){
 
     `;
 
-
     try{
 
         const { data,error } =
@@ -2804,14 +2736,12 @@ async function loadProducts(){
                     }
                 );
 
-
         if(error){
 
             console.error(
                 "Supabase Error:",
                 error
             );
-
 
             grid.innerHTML = `
 
@@ -2831,25 +2761,20 @@ async function loadProducts(){
 
             `;
 
-
             document
                 .getElementById("productsCount")
                 .textContent = "0";
 
-
             return;
 
         }
-
 
         products =
             Array.isArray(data)
             ? data
             : [];
 
-
         renderProducts(currentCategory);
-
 
     }catch(error){
 
@@ -2857,7 +2782,6 @@ async function loadProducts(){
             "Unexpected Error:",
             error
         );
-
 
         grid.innerHTML = `
 
@@ -2896,13 +2820,10 @@ function filterCategory(category,button){
 
         });
 
-
     button.classList.add("active");
-
 
     currentCategory =
         category;
-
 
     renderProducts(category);
 
@@ -2918,10 +2839,8 @@ function renderProducts(category="all"){
     const grid =
         document.getElementById("productsGrid");
 
-
     const count =
         document.getElementById("productsCount");
-
 
     const filtered =
         category === "all"
@@ -2933,10 +2852,8 @@ function renderProducts(category="all"){
                 ).trim() === category
         );
 
-
     count.textContent =
         filtered.length;
-
 
     if(filtered.length === 0){
 
@@ -2962,7 +2879,6 @@ function renderProducts(category="all"){
 
     }
 
-
     grid.innerHTML =
         filtered.map(product=>{
 
@@ -2971,45 +2887,37 @@ function renderProducts(category="all"){
                 ? String(product.image).trim()
                 : "";
 
-
             const name =
                 product.name
                 ? product.name
                 : "منتج EL MANS";
-
 
             const categoryName =
                 product.category_name
                 ? product.category_name
                 : "";
 
-
             const description =
                 product.description
                 ? product.description
                 : "منتج مميز من EL MANS";
-
 
             const price =
                 Number(
                     product.price || 0
                 );
 
-
             return `
 
                 <article class="product-card">
 
-
                     <div class="product-image">
-
 
                         <span class="product-badge">
 
                             EL MANS
 
                         </span>
-
 
                         <img
                             src="${escapeHtml(image)}"
@@ -3020,9 +2928,7 @@ function renderProducts(category="all"){
 
                     </div>
 
-
                     <div class="product-info">
-
 
                         <small>
 
@@ -3030,13 +2936,11 @@ function renderProducts(category="all"){
 
                         </small>
 
-
                         <h4>
 
                             ${escapeHtml(name)}
 
                         </h4>
-
 
                         <p>
 
@@ -3044,9 +2948,7 @@ function renderProducts(category="all"){
 
                         </p>
 
-
                         <div class="product-bottom">
-
 
                             <div class="product-price">
 
@@ -3056,9 +2958,7 @@ function renderProducts(category="all"){
 
                             </div>
 
-
                             <div class="product-actions">
-
 
                                 <button
                                     class="details-btn"
@@ -3068,7 +2968,6 @@ function renderProducts(category="all"){
 
                                 </button>
 
-
                                 <button
                                     class="add-product"
                                     onclick="addProduct(${Number(product.id)})">
@@ -3076,7 +2975,6 @@ function renderProducts(category="all"){
                                     + سلة
 
                                 </button>
-
 
                             </div>
 
@@ -3141,35 +3039,28 @@ function openProductModal(id){
                 Number(item.id) === Number(id)
         );
 
-
     if(!product)
         return;
-
 
     selectedProduct =
         product;
 
-
     modalQuantity = 1;
-
 
     document
         .getElementById("modalImage")
         .src =
             product.image || "";
 
-
     document
         .getElementById("modalImage")
         .alt =
             product.name || "";
 
-
     document
         .getElementById("modalCategory")
         .textContent =
             product.category_name || "";
-
 
     document
         .getElementById("modalName")
@@ -3177,12 +3068,10 @@ function openProductModal(id){
             product.name ||
             "منتج EL MANS";
 
-
     document
         .getElementById("modalDescription")
         .textContent =
             product.description || "";
-
 
     document
         .getElementById("modalPrice")
@@ -3191,12 +3080,10 @@ function openProductModal(id){
                 product.price || 0
             ).toLocaleString("ar-EG");
 
-
     document
         .getElementById("modalQuantity")
         .textContent =
             modalQuantity;
-
 
     document
         .getElementById("productModal")
@@ -3211,7 +3098,6 @@ function closeProductModal(){
         .getElementById("productModal")
         .classList.remove("open");
 
-
     selectedProduct = null;
 
 }
@@ -3221,14 +3107,11 @@ function changeModalQuantity(amount){
 
     modalQuantity += amount;
 
-
     if(modalQuantity < 1)
         modalQuantity = 1;
 
-
     if(modalQuantity > 20)
         modalQuantity = 20;
-
 
     document
         .getElementById("modalQuantity")
@@ -3243,14 +3126,12 @@ function addModalProduct(){
     if(!selectedProduct)
         return;
 
-
     const existing =
         cart.find(
             item =>
                 Number(item.id) ===
                 Number(selectedProduct.id)
         );
-
 
     if(existing){
 
@@ -3269,7 +3150,6 @@ function addModalProduct(){
         });
 
     }
-
 
     updateCart();
 
@@ -3292,17 +3172,14 @@ function addProduct(id){
                 Number(item.id) === Number(id)
         );
 
-
     if(!product)
         return;
-
 
     const existing =
         cart.find(
             item =>
                 Number(item.id) === Number(id)
         );
-
 
     if(existing){
 
@@ -3320,7 +3197,6 @@ function addProduct(id){
 
     }
 
-
     updateCart();
 
     openCart();
@@ -3337,14 +3213,11 @@ function updateCart(){
     const container =
         document.getElementById("cartItems");
 
-
     const countElement =
         document.getElementById("cartCount");
 
-
     const totalElement =
         document.getElementById("cartTotal");
-
 
     const quantity =
         cart.reduce(
@@ -3353,10 +3226,8 @@ function updateCart(){
             0
         );
 
-
     countElement.textContent =
         quantity;
-
 
     if(cart.length === 0){
 
@@ -3378,22 +3249,18 @@ function updateCart(){
 
         `;
 
-
         totalElement.textContent =
             "0";
-
 
         return;
 
     }
-
 
     container.innerHTML =
         cart.map(
             (item,index)=>`
 
                 <div class="cart-item">
-
 
                     <div>
 
@@ -3406,7 +3273,6 @@ function updateCart(){
 
                         </h4>
 
-
                         <div class="cart-item-price">
 
                             ${Number(
@@ -3417,7 +3283,6 @@ function updateCart(){
 
                         </div>
 
-
                         <div class="cart-item-qty">
 
                             الكمية:
@@ -3426,7 +3291,6 @@ function updateCart(){
                         </div>
 
                     </div>
-
 
                     <button
                         class="remove-item"
@@ -3441,7 +3305,6 @@ function updateCart(){
             `
         ).join("");
 
-
     const total =
         cart.reduce(
             (sum,item)=>
@@ -3450,7 +3313,6 @@ function updateCart(){
                 item.quantity,
             0
         );
-
 
     totalElement.textContent =
         total.toLocaleString("ar-EG");
@@ -3464,7 +3326,6 @@ function removeProduct(index){
         index,
         1
     );
-
 
     updateCart();
 
@@ -3523,31 +3384,25 @@ function updateShippingPreview(){
             )
             .value;
 
-
     if(!governorate)
         return;
-
 
     const shipping =
         getShippingCost(
             governorate
         );
 
-
     const productsTotal =
         getProductsTotal();
-
 
     const finalTotal =
         productsTotal +
         shipping;
 
-
     const summary =
         document.getElementById(
             "orderSummary"
         );
-
 
     let html = `
 
@@ -3559,13 +3414,11 @@ function updateShippingPreview(){
 
     `;
 
-
     cart.forEach(item=>{
 
         html += `
 
             <div class="summary-row">
-
 
                 <span>
 
@@ -3577,7 +3430,6 @@ function updateShippingPreview(){
                     × ${item.quantity}
 
                 </span>
-
 
                 <span>
 
@@ -3596,16 +3448,13 @@ function updateShippingPreview(){
 
     });
 
-
     html += `
 
         <div class="summary-row">
 
-
             <span>
                 إجمالي المنتجات
             </span>
-
 
             <span>
 
@@ -3617,9 +3466,7 @@ function updateShippingPreview(){
 
         </div>
 
-
         <div class="summary-row shipping-row">
-
 
             <span>
 
@@ -3627,7 +3474,6 @@ function updateShippingPreview(){
                 ${escapeHtml(governorate)}
 
             </span>
-
 
             <strong>
 
@@ -3639,14 +3485,11 @@ function updateShippingPreview(){
 
         </div>
 
-
         <div class="summary-row summary-total final-total">
-
 
             <span>
                 الإجمالي النهائي
             </span>
-
 
             <strong>
 
@@ -3659,7 +3502,6 @@ function updateShippingPreview(){
         </div>
 
     `;
-
 
     summary.innerHTML =
         html;
@@ -3683,16 +3525,13 @@ function openOrderForm(){
 
     }
 
-
     const summary =
         document.getElementById(
             "orderSummary"
         );
 
-
     const productsTotal =
         getProductsTotal();
-
 
     let html = `
 
@@ -3704,13 +3543,11 @@ function openOrderForm(){
 
     `;
 
-
     cart.forEach(item=>{
 
         html += `
 
             <div class="summary-row">
-
 
                 <span>
 
@@ -3722,7 +3559,6 @@ function openOrderForm(){
                     × ${item.quantity}
 
                 </span>
-
 
                 <span>
 
@@ -3741,16 +3577,13 @@ function openOrderForm(){
 
     });
 
-
     html += `
 
         <div class="summary-row summary-total">
 
-
             <span>
                 إجمالي المنتجات
             </span>
-
 
             <strong>
 
@@ -3762,14 +3595,11 @@ function openOrderForm(){
 
         </div>
 
-
         <div class="summary-row shipping-row">
-
 
             <span>
                 🚚 الشحن
             </span>
-
 
             <strong>
                 اختر المحافظة
@@ -3779,13 +3609,10 @@ function openOrderForm(){
 
     `;
 
-
     summary.innerHTML =
         html;
 
-
     closeCart();
-
 
     document
         .getElementById("orderOverlay")
@@ -3821,7 +3648,6 @@ function sendOrderToWhatsApp(){
             .value
             .trim();
 
-
     const phone =
         document
             .getElementById(
@@ -3830,14 +3656,12 @@ function sendOrderToWhatsApp(){
             .value
             .trim();
 
-
     const governorate =
         document
             .getElementById(
                 "customerGovernorate"
             )
             .value;
-
 
     const address =
         document
@@ -3847,7 +3671,6 @@ function sendOrderToWhatsApp(){
             .value
             .trim();
 
-
     const notes =
         document
             .getElementById(
@@ -3855,7 +3678,6 @@ function sendOrderToWhatsApp(){
             )
             .value
             .trim();
-
 
     if(
         !name ||
@@ -3872,49 +3694,40 @@ function sendOrderToWhatsApp(){
 
     }
 
-
     const productsTotal =
         getProductsTotal();
-
 
     const shipping =
         getShippingCost(
             governorate
         );
 
-
     const finalTotal =
         productsTotal +
         shipping;
 
-
     let message =
         "🛍️ طلب جديد من EL MANS\n\n";
-
 
     message +=
         "👤 الاسم: " +
         name +
         "\n";
 
-
     message +=
         "📱 الموبايل: " +
         phone +
         "\n";
-
 
     message +=
         "📍 المحافظة: " +
         governorate +
         "\n";
 
-
     message +=
         "🏠 العنوان: " +
         address +
         "\n";
-
 
     if(notes){
 
@@ -3925,17 +3738,14 @@ function sendOrderToWhatsApp(){
 
     }
 
-
     message +=
         "\n🛒 المنتجات:\n";
-
 
     cart.forEach(item=>{
 
         const itemTotal =
             Number(item.price || 0) *
             item.quantity;
-
 
         message +=
             "• " +
@@ -3948,12 +3758,10 @@ function sendOrderToWhatsApp(){
 
     });
 
-
     message +=
         "\n💰 إجمالي المنتجات: " +
         productsTotal.toLocaleString("ar-EG") +
         " جنيه";
-
 
     message +=
         "\n🚚 سعر الشحن (" +
@@ -3962,25 +3770,16 @@ function sendOrderToWhatsApp(){
         shipping.toLocaleString("ar-EG") +
         " جنيه";
 
-
     message +=
         "\n━━━━━━━━━━━━━━";
-
 
     message +=
         "\n💵 الإجمالي النهائي: " +
         finalTotal.toLocaleString("ar-EG") +
         " جنيه";
 
-
-    /*
-       رقم واتساب المتجر
-       مكتوب بصيغة دولية بدون +
-    */
-
     const whatsappNumber =
         "201501140025";
-
 
     const url =
         "https://wa.me/" +
@@ -3989,7 +3788,6 @@ function sendOrderToWhatsApp(){
         encodeURIComponent(
             message
         );
-
 
     window.open(
         url,
