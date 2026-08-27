@@ -1128,7 +1128,7 @@ PRODUCT FORM
     </div>
 
     <!-- =========================================
-    NEW CATEGORIES
+    CATEGORIES (Ordered)
     ========================================= -->
 
     <div class="form-group">
@@ -1145,6 +1145,10 @@ PRODUCT FORM
 
             <option value="vape">
                 فيب
+            </option>
+
+            <option value="liquid">
+                ليكود
             </option>
 
             <option value="gifts">
@@ -1362,13 +1366,16 @@ let orders = [];
 let editingId = null;
 
 /* =========================================
-CATEGORY NAMES
+CATEGORY NAMES (Ordered)
 ========================================= */
 
 const categoryNames = {
 
     "vape":
         "فيب",
+
+    "liquid":
+        "ليكود",
 
     "gifts":
         "هدايا",
