@@ -1599,7 +1599,6 @@ button,input,textarea,select{
 
 </section>
 
-
 <!-- ================================
      HEADER
 ================================ -->
@@ -1631,7 +1630,6 @@ button,input,textarea,select{
     </nav>
 
 </header>
-
 
 <!-- ================================
      HERO
@@ -1666,7 +1664,7 @@ button,input,textarea,select{
 
             <br>
 
-            إكسسوارات • عطور • هدايا • ساعات • ميكب • جلود
+            فيب • ليكود • هدايا • ساعات • اكسسوارات • عطور جاهزة • عطور تركيب • ميكب • جلود
 
         </p>
 
@@ -1681,7 +1679,6 @@ button,input,textarea,select{
     </div>
 
 </section>
-
 
 <!-- ================================
      COLLECTION
@@ -1708,7 +1705,6 @@ button,input,textarea,select{
 
     </div>
 
-
     <!-- =========================
          NEW CATEGORIES
     ========================== -->
@@ -1716,7 +1712,6 @@ button,input,textarea,select{
     <div class="category-bar">
 
         <div class="category-track">
-
 
             <!-- 1 - VAPE -->
 
@@ -1728,8 +1723,17 @@ button,input,textarea,select{
 
             </button>
 
+            <!-- 2 - LIQUID -->
 
-            <!-- 2 - GIFTS -->
+            <button
+                class="category"
+                onclick="filterCategory('liquid',this)">
+
+                ليكود
+
+            </button>
+
+            <!-- 3 - GIFTS -->
 
             <button
                 class="category"
@@ -1739,8 +1743,7 @@ button,input,textarea,select{
 
             </button>
 
-
-            <!-- 3 - WATCHES -->
+            <!-- 4 - WATCHES -->
 
             <button
                 class="category"
@@ -1750,8 +1753,7 @@ button,input,textarea,select{
 
             </button>
 
-
-            <!-- 4 - ACCESSORIES -->
+            <!-- 5 - ACCESSORIES -->
 
             <button
                 class="category"
@@ -1761,8 +1763,7 @@ button,input,textarea,select{
 
             </button>
 
-
-            <!-- 5 - READY PERFUME -->
+            <!-- 6 - READY PERFUME -->
 
             <button
                 class="category"
@@ -1772,8 +1773,7 @@ button,input,textarea,select{
 
             </button>
 
-
-            <!-- 6 - CUSTOM PERFUME -->
+            <!-- 7 - CUSTOM PERFUME -->
 
             <button
                 class="category"
@@ -1783,8 +1783,7 @@ button,input,textarea,select{
 
             </button>
 
-
-            <!-- 7 - MAKEUP -->
+            <!-- 8 - MAKEUP -->
 
             <button
                 class="category"
@@ -1794,8 +1793,7 @@ button,input,textarea,select{
 
             </button>
 
-
-            <!-- 8 - LEATHER -->
+            <!-- 9 - LEATHER -->
 
             <button
                 class="category"
@@ -1808,7 +1806,6 @@ button,input,textarea,select{
         </div>
 
     </div>
-
 
     <!-- PRODUCTS -->
 
@@ -1845,7 +1842,6 @@ button,input,textarea,select{
 
         </div>
 
-
         <div
             class="products-grid"
             id="productsGrid">
@@ -1855,7 +1851,6 @@ button,input,textarea,select{
     </div>
 
 </section>
-
 
 <!-- ================================
      STORY
@@ -1895,7 +1890,6 @@ button,input,textarea,select{
 
 </section>
 
-
 <!-- ================================
      FOOTER
 ================================ -->
@@ -1917,7 +1911,6 @@ button,input,textarea,select{
     </p>
 
 </footer>
-
 
 <!-- ================================
      FLOATING CART
@@ -1947,7 +1940,6 @@ button,input,textarea,select{
     </span>
 
 </button>
-
 
 <!-- ================================
      CART
@@ -2022,7 +2014,6 @@ button,input,textarea,select{
     </aside>
 
 </div>
-
 
 <!-- ================================
      PRODUCT MODAL
@@ -2111,7 +2102,6 @@ button,input,textarea,select{
     </div>
 
 </div>
-
 
 <!-- ================================
      ORDER
@@ -2256,7 +2246,6 @@ button,input,textarea,select{
 
 </div>
 
-
 <script>
 
 /* =========================================
@@ -2275,7 +2264,6 @@ const supabaseClient =
         SUPABASE_KEY
     );
 
-
 /* =========================================
    VARIABLES
 ========================================= */
@@ -2289,7 +2277,6 @@ let selectedProduct = null;
 let modalQuantity = 1;
 
 let currentCategory = "vape";
-
 
 /* =========================================
    SHIPPING
@@ -2330,13 +2317,11 @@ const shippingPrices = {
 
 };
 
-
 function getShippingCost(governorate){
 
     return shippingPrices[governorate] || 150;
 
 }
-
 
 /* =========================================
    ENTER STORE
@@ -2349,7 +2334,6 @@ function enterStore(){
         .classList.add("hide");
 
 }
-
 
 /* =========================================
    LOAD PRODUCTS
@@ -2460,7 +2444,6 @@ async function loadProducts(){
 
 }
 
-
 /* =========================================
    FILTER
 ========================================= */
@@ -2484,7 +2467,6 @@ function filterCategory(category,button){
 
 }
 
-
 /* =========================================
    CATEGORY NAMES
 ========================================= */
@@ -2494,6 +2476,8 @@ function getCategoryName(category){
     const names = {
 
         "vape":"فيب",
+
+        "liquid":"ليكود",
 
         "gifts":"هدايا",
 
@@ -2514,7 +2498,6 @@ function getCategoryName(category){
     return names[category] || category || "";
 
 }
-
 
 /* =========================================
    RENDER
@@ -2668,7 +2651,6 @@ function renderProducts(category="vape"){
 
 }
 
-
 /* =========================================
    ESCAPE
 ========================================= */
@@ -2703,7 +2685,6 @@ function escapeHtml(value){
         );
 
 }
-
 
 /* =========================================
    PRODUCT MODAL
@@ -2770,7 +2751,6 @@ function openProductModal(id){
 
 }
 
-
 function closeProductModal(){
 
     document
@@ -2780,7 +2760,6 @@ function closeProductModal(){
     selectedProduct = null;
 
 }
-
 
 function changeModalQuantity(amount){
 
@@ -2798,7 +2777,6 @@ function changeModalQuantity(amount){
             modalQuantity;
 
 }
-
 
 function addModalProduct(){
 
@@ -2837,7 +2815,6 @@ function addModalProduct(){
     openCart();
 
 }
-
 
 /* =========================================
    ADD PRODUCT
@@ -2881,7 +2858,6 @@ function addProduct(id){
     openCart();
 
 }
-
 
 /* =========================================
    CART
@@ -2998,7 +2974,6 @@ function updateCart(){
 
 }
 
-
 function removeProduct(index){
 
     cart.splice(
@@ -3009,7 +2984,6 @@ function removeProduct(index){
     updateCart();
 
 }
-
 
 /* =========================================
    CART OPEN / CLOSE
@@ -3023,7 +2997,6 @@ function openCart(){
 
 }
 
-
 function closeCart(){
 
     document
@@ -3031,7 +3004,6 @@ function closeCart(){
         .classList.remove("open");
 
 }
-
 
 /* =========================================
    PRODUCTS TOTAL
@@ -3048,7 +3020,6 @@ function getProductsTotal(){
     );
 
 }
-
 
 /* =========================================
    SHIPPING PREVIEW
@@ -3187,7 +3158,6 @@ function updateShippingPreview(){
 
 }
 
-
 /* =========================================
    ORDER FORM
 ========================================= */
@@ -3299,7 +3269,6 @@ function openOrderForm(){
 
 }
 
-
 /* =========================================
    CLOSE ORDER
 ========================================= */
@@ -3311,7 +3280,6 @@ function closeOrderForm(){
         .classList.remove("open");
 
 }
-
 
 /* =========================================
    WHATSAPP
@@ -3475,7 +3443,6 @@ function sendOrderToWhatsApp(){
 
 }
 
-
 /* =========================================
    CLOSE MODALS OUTSIDE
 ========================================= */
@@ -3497,7 +3464,6 @@ document
         }
     );
 
-
 document
     .getElementById("orderOverlay")
     .addEventListener(
@@ -3515,7 +3481,6 @@ document
         }
     );
 
-
 document
     .getElementById("cartOverlay")
     .addEventListener(
@@ -3532,7 +3497,6 @@ document
 
         }
     );
-
 
 /* =========================================
    START
