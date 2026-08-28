@@ -2483,10 +2483,12 @@ function getCategoryName(category){
 
         "watches":"ساعات",
 
-        "accessories":"اكسسوارات",
+        "accessories":"عطور جاهزة",
 
+        "ready":"عطور جاهزة",
         "ready-perfume":"عطور جاهزة",
 
+        "custom":"عطور تركيب",
         "custom-perfume":"عطور تركيب",
 
         "makeup":"ميكب",
@@ -2512,12 +2514,19 @@ function renderProducts(category="vape"){
         document.getElementById("productsCount");
 
     const filtered =
-        products.filter(
-            product =>
-                String(
-                    product.category || ""
-                ).trim() === category
-        );
+        products.filter(product => {
+            const prodCat = String(product.category || "").trim();
+            
+            // مطابقة مرنة لعطور الجاهزة والتركيب سواء كانت ready أو ready-perfume
+            if (category === "ready-perfume") {
+                return prodCat === "ready" || prodCat === "ready-perfume";
+            }
+            if (category === "custom-perfume") {
+                return prodCat === "custom" || prodCat === "custom-perfume";
+            }
+
+            return prodCat === category;
+        });
 
     count.textContent =
         filtered.length;
